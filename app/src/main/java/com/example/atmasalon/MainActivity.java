@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
                     //sistem
                     //tes
                     //2
+                    //apa
                     //INI AKU UPDATE BANG
+
                 } finally {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
