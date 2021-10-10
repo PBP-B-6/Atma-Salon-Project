@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
             Intent move = new Intent(this, LoginActivity.class);
             startActivity(move);
             finish();
+            //Pujayana Ganteng
         }
         catch(Exception e)
         {
