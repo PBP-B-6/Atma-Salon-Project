@@ -4,25 +4,25 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-public class DatabasePelanggan {
+public class DatabaseUser {
     private Context context;
-    private static DatabasePelanggan databaseUser;
+    private static DatabaseUser databaseUser;
     private AppDatabase database;
 
-    public DatabasePelanggan(Context con)
+    public DatabaseUser(Context con)
     {
         context = con;
         database = Room.databaseBuilder(con, AppDatabase.class, "user").allowMainThreadQueries().build();
     }
 
-    public static synchronized DatabasePelanggan GetInstance(Context con)
+    public static synchronized DatabaseUser GetInstance(Context con)
     {
         if(databaseUser == null)
         {
-            databaseUser = new DatabasePelanggan(con);
+            databaseUser = new DatabaseUser(con);
         }
         return databaseUser;
     }
 
-    public AppDatabase getDatabase(){return database;}
+    public AppDatabase GetDatabase(){return database;}
 }
