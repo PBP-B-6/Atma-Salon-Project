@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                     //Yotam
+                    //Pujayana Ganteng
                 } finally {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
