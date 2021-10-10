@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(123000);
                     //yohan
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
                     //tes
                     //2
                     //apa
+                    //INI AKU UPDATE BANG
+
                 } finally {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
