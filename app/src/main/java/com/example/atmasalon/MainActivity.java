@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                     //Yohan indonesia
                     //sistem
                     //tes
+                    //2
                 } finally {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
