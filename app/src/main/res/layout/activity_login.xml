@@ -39,7 +39,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="234dp"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Nama User"
             android:inputType="text"
             app:passwordToggleEnabled="true"/>
 
@@ -61,7 +61,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="234dp"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Kata Sandi"
             android:inputType="text"
             app:passwordToggleEnabled="true"/>
 
