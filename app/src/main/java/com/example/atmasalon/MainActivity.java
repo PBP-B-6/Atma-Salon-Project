@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(123000);
                     //yohan
                 } catch (InterruptedException e) {
                     e.printStackTrace();
