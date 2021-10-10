@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3000);
+                    //yohan
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                     //Yotam
