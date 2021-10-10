@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
                     sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    //Yotam
                 } finally {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
