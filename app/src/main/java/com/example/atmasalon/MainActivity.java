@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
                     //Yotam
                     //Pujayana
                     //Indonesia
+                    //Yohan indonesia
+                    //sistem
                 } finally {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
