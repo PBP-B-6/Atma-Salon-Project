@@ -13,11 +13,14 @@ import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.ActivityLoginBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserLogin;
+import com.example.atmasalon.preferences.UserPreference;
 
 public class LoginActivity extends Activity implements View.OnClickListener{
 
     private ActivityLoginBinding binding;
     private UserLogin loginData;
+    private UserPreference userPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,10 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         binding.setLoginData(loginData);
         binding.btnLinkDaftar.setOnClickListener(this);
         binding.btnMasuk.setOnClickListener(this);
+
+        userPref = new UserPreference(LoginActivity.this);
+
+        CheckLogin();
     }
 
     @Override
@@ -40,11 +47,9 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                     String pass = loginData.getPassword();
                     if(CheckLoginStatus(usern, pass))
                     {
-                        //Masukkan data ke user preference (Name, ID, User)
-//                        Intent move = new Intent(this, )
-//                        startActivity(move);
-//                        finish();
-                        Toast.makeText(this, "GUUD", Toast.LENGTH_SHORT).show();
+                        int id = GetUserId(usern, pass);
+                        userPref.SetLogin(loginData, GetName(usern, pass), id);
+                        CheckLogin();
                     }
                     else
                     {
@@ -78,6 +83,17 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         return true;
     }
 
+    private void CheckLogin()
+    {
+        if(userPref.CheckLogin())
+        {
+//            Intent move = new Intent(this, )
+//            startActivity(move);
+//            finish();
+            Toast.makeText(this, "GUUD", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private boolean CheckLoginStatus(String usern, String pass)
     {
         return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().CheckLogin(usern, pass);
@@ -86,5 +102,10 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     private String GetName(String usern, String pass)
     {
         return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserName(usern, pass);
+    }
+
+    private int GetUserId(String usern, String pass)
+    {
+        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserId(usern, pass);
     }
 }

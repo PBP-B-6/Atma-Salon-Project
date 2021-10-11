@@ -61,7 +61,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
         if(CekKosong())
         {
             String pwd = binding.getUser().getPassword();
-            TextInputLayout txtInput = findViewById(R.id.inputLayoutRepeatPassword);
+            TextInputLayout txtInput = binding.inputLayoutRepeatPassword;
             String pwdRepeat = txtInput.getEditText().getText().toString();
 
             if(pwd.equals(pwdRepeat))
