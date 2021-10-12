@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDashboard"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            tools:context=".MainActivity">
+
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                mapbox:mapbox_cameraTargetLat="40.74581"
+                mapbox:mapbox_cameraTargetLng="-73.99155"
+                mapbox:mapbox_cameraZoom="11"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutPembayaran"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:fontFamily="@font/inter_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pilih salon terdekat"
+                    android:inputType="text"
+                    android:text=""
+                    android:textColor="@color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnReservasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
+                android:backgroundTint="@color/primary_green"
+                android:text="Lanjut"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

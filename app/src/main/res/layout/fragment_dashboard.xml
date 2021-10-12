@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDashboard"
+    android:padding="20dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/data_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="horizontal"
+            android:background="@drawable/box">
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:orientation="vertical"
+                android:padding="25dp">
+
+                <TextView
+                    android:fontFamily="@font/playfair_display_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selamat datang,"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:fontFamily="@font/playfair_display_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Wendy Winata"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:fontFamily="@font/inter_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Anda dapat melengkapi profil anda  dengan tombol dibawah ini"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/secondary"
+                    android:textSize="12dp" />
+
+                <Button
+                    android:fontFamily="@font/inter_regular"
+                    android:id="@+id/btnLihatProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/custom_border"
+                    android:text="Lihat Profil"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/notify"
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|bottom"
+            android:layout_marginStart="-175dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/notif"
+                android:layout_marginBottom="-55dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/branding" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/data_saldo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data_profil"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:backgroundTint="@color/white"
+        android:orientation="horizontal"
+        android:paddingVertical="25dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/updown" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/inter_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saldo anda,"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:fontFamily="@font/inter_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Rp. 152.000,00"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:src="@drawable/statistic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+            <Button
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnTambahSaldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/primary_green"
+                android:text="Tambah Saldo"
+                android:textColor="@color/white"
+                android:textSize="10dp"
+                android:background="@drawable/custom_border"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data_saldo"
+        android:layout_gravity="start"
+        android:gravity="center"
+        android:background="@drawable/boxwhite"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:src="@drawable/communication"/>
+
+        <TextView
+            android:fontFamily="@font/inter_regular"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Anda dapat melengkapi profil anda  dengan tombol dibawah ini"
+            android:textAlignment="center"
+            android:textColor="@color/secondary"
+            android:textSize="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:fontFamily="@font/inter_regular"
+            android:id="@+id/btnReservasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_green"
+            android:text="Tambah Saldo"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:background="@drawable/custom_border"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
