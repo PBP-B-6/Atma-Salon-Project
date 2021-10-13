@@ -1,8 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
+        // MAPBOX Using Pujayana API / Remove after we have
         google()
         mavenCentral()
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = 'mapbox'
+                password = 'sk.eyJ1IjoicHVqYXlhbmEiLCJhIjoiY2t1bDdnc2x0MDZ4ejJucGYycGJrZzAzNSJ9.IL11LH_kGHo3aiFuDTnu4w'
+            }
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.2"

@@ -24,7 +24,8 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:paddingTop="100dp"
-                android:paddingBottom="100dp">
+                android:paddingBottom="100dp"
+                android:paddingHorizontal="45dp">
                 <ImageView
                     android:layout_width="213dp"
                     android:layout_height="77dp"
@@ -32,6 +33,7 @@
                     android:layout_marginBottom="20dp"/>
 
                 <TextView
+                    android:fontFamily="@font/playfair_display_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Form Daftar"
@@ -42,7 +44,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutNama"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:errorEnabled="true"
@@ -53,10 +55,12 @@
                     app:boxCornerRadiusTopStart="30dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="234dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nama Lengkap"
                         android:inputType="text"
+                        android:textColor="@color/black"
                         android:text="@={user.nama}"
                         app:passwordToggleEnabled="true"/>
 
@@ -64,7 +68,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutEmail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:errorEnabled="true"
@@ -75,10 +79,12 @@
                     app:boxCornerRadiusTopStart="30dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="234dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
                         android:inputType="text"
+                        android:textColor="@color/black"
                         android:text="@={user.email}"
                         app:passwordToggleEnabled="true"/>
 
@@ -86,7 +92,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutPasswordRegister"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:errorEnabled="true"
@@ -98,9 +104,11 @@
                     app:boxCornerRadiusTopStart="30dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="234dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Kata Sandi"
+                        android:textColor="@color/black"
                         android:text="@={user.password}"
                         android:inputType="textPassword"/>
 
@@ -108,7 +116,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutRepeatPassword"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:errorEnabled="true"
@@ -120,9 +128,11 @@
                     app:boxCornerRadiusTopStart="30dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="234dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Ulangi Kata Sandi"
+                        android:textColor="@color/black"
                         android:inputType="textPassword"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -137,22 +147,26 @@
                     app:errorEnabled="true"
                     android:layout_marginBottom="10dp">
                     <RadioButton
+                        android:fontFamily="@font/inter_regular"
                         android:id="@+id/radioPria"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pria"
+                        android:textColor="@color/black"
                         android:layout_marginEnd="30dp"/>
                     <RadioButton
+                        android:fontFamily="@font/inter_regular"
                         android:id="@+id/radioWanita"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wanita"/>
+                        android:text="Wanita"
+                        android:textColor="@color/black"/>
                 </RadioGroup>
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutPhone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:errorEnabled="true"
@@ -163,39 +177,46 @@
                     app:boxCornerRadiusTopStart="30dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="234dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="No. Telepon"
                         android:text="@={user.noTelp}"
-                        android:inputType="text"/>
+                        android:inputType="text"
+                        android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:fontFamily="@font/inter_regular"
                     android:id="@+id/btnDaftar"
-                    android:layout_width="234dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Daftar"
                     android:layout_marginBottom="33dp"
                     android:backgroundTint="@color/primary_green"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_border"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
+                        android:fontFamily="@font/inter_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sudah punya akun? "
+                        android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
+                        android:fontFamily="@font/inter_regular"
                         android:id="@+id/btnLinkMasuk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         app:textAllCaps="false"
-                        android:textColor="#008C6E"
+                        android:textColor="#EDA70A"
                         android:letterSpacing="0"
                         android:text="Masuk"/>
                 </LinearLayout>
