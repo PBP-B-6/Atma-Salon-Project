@@ -2,29 +2,28 @@ package com.example.atmasalon.entity;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.room.ColumnInfo;
 
 import com.example.atmasalon.BR;
 
 public class UserLogin extends BaseObservable {
-    private String username;
+    private String email;
     private String password;
 
     public UserLogin(){};
 
-    public UserLogin(String username, String password) {
-        this.username = username;
+    public UserLogin(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
     @Bindable
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-        notifyPropertyChanged(BR.username);
+    public void setEmail(String email) {
+        this.email = email;
+        notifyPropertyChanged(BR.email);
     }
 
     @Bindable

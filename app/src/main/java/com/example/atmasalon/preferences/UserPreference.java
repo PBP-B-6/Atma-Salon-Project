@@ -12,7 +12,7 @@ public class UserPreference {
     Context con;
 
     public static final String IS_LOGIN = "IsLogin";
-    public static final String KEY_USERNAME = "Username";
+    public static final String KEY_EMAIL = "Username";
     public static final String KEY_PASSWORD = "Password";
     public static final String KEY_NAME = "Name";
     public static final String KEY_ID = "0";
@@ -27,7 +27,7 @@ public class UserPreference {
     public void SetLogin(UserLogin User, String nama, int ID)
     {
         editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_USERNAME, User.getUsername());
+        editor.putString(KEY_EMAIL, User.getEmail());
         editor.putString(KEY_PASSWORD, User.getPassword());
         editor.putString(KEY_NAME, nama);
         editor.putInt(KEY_ID, ID);
@@ -36,11 +36,11 @@ public class UserPreference {
 
     public UserLogin GetUserLogin()
     {
-        String Usern, Pass;
+        String email, pass;
 
-        Usern = sharedPreference.getString(KEY_USERNAME, null);
-        Pass = sharedPreference.getString(KEY_PASSWORD, null);
-        return new UserLogin(Usern, Pass);
+        email = sharedPreference.getString(KEY_EMAIL, null);
+        pass = sharedPreference.getString(KEY_PASSWORD, null);
+        return new UserLogin(email, pass);
     }
 
     public int GetUserID()
