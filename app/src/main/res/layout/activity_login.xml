@@ -50,7 +50,7 @@
                 android:fontFamily="@font/inter_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nama User"
+                android:hint="Email"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:text="@={loginData.username}"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 app:textAllCaps="false"
-                android:textColor="#EDA70A"
+                android:textColor="@color/yellow"
                 android:letterSpacing="0"
                 android:text="Daftar"/>
 

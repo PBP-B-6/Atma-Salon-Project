@@ -1,7 +1,6 @@
 package com.example.atmasalon;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
@@ -30,13 +29,13 @@ public class ContainerActivity extends Activity {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId() == R.id.menu_beranda){
-//            changeFragment(new DashboardFragment());
+            changeFragment(new FragmentDashboard());
         }else if(item.getItemId() == R.id.menu_riwayat) {
-            changeFragment(new RiwayatFragment());
+            changeFragment(new FragmentRiwayat());
         }else if(item.getItemId() == R.id.menu_reservasi) {
-            changeFragment(new Reservation2_Fragment());
+            changeFragment(new FragmentReservation2());
         }else{
-            changeFragment(new ProfilFragment());
+            changeFragment(new FragmentProfil());
         }
 
         return true;

@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RiwayatFragment#newInstance} factory method to
+ * Use the {@link FragmentRiwayat#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RiwayatFragment extends Fragment {
+public class FragmentRiwayat extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class RiwayatFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public RiwayatFragment() {
+    public FragmentRiwayat() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class RiwayatFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RiwayatFragment.
+     * @return A new instance of fragment FragmentRiwayat.
      */
     // TODO: Rename and change types and number of parameters
-    public static RiwayatFragment newInstance(String param1, String param2) {
-        RiwayatFragment fragment = new RiwayatFragment();
+    public static FragmentRiwayat newInstance(String param1, String param2) {
+        FragmentRiwayat fragment = new FragmentRiwayat();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
