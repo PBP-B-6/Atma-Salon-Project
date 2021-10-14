@@ -47,7 +47,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="234dp"
                 android:layout_height="wrap_content"
-                android:hint="Nama User"
+                android:hint="Email"
                 android:inputType="text"
                 android:text="@={loginData.username}"
                 app:passwordToggleEnabled="true"/>
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 app:textAllCaps="false"
-                android:textColor="#008C6E"
+                android:textColor="@color/primary_yellow"
                 android:letterSpacing="0"
                 android:text="Daftar"/>
 

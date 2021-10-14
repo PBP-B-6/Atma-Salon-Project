@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AtmaSalon">
         <activity
+            android:name=".ContainerActivity"
+            android:exported="true" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
@@ -25,7 +28,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

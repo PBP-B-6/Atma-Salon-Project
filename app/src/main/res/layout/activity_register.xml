@@ -195,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         app:textAllCaps="false"
-                        android:textColor="#008C6E"
+                        android:textColor="@color/primary_yellow"
                         android:letterSpacing="0"
                         android:text="Masuk"/>
                 </LinearLayout>
