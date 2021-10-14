@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_beranda"
+        android:title="Beranda"
+        android:enabled="true"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item android:id="@+id/menu_riwayat"
+        android:title="Riwayat"
+        android:enabled="true"
+        android:icon="@drawable/ic_riwayat"/>
+
+    <item android:id="@+id/menu_reservasi"
+        android:title="Reservasi"
+        android:enabled="true"
+        android:icon="@drawable/ic_reservasi"/>
+
+    <item android:id="@+id/menu_profil"
+        android:title="Profil"
+        android:enabled="true"
+        android:icon="@drawable/ic_profil"/>
+</menu>
