@@ -15,7 +15,7 @@ import com.example.atmasalon.databinding.ActivityRegisterBinding;
 import com.example.atmasalon.entity.User;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class RegisterActivity extends Activity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
     private ActivityRegisterBinding binding;
     private User user;
 
@@ -33,26 +33,24 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch(view.getId())
+        if(view.getId() == R.id.btnDaftar)
         {
-            case R.id.btnDaftar:
-                if(Validasi())
-                {
-                    User data = binding.getUser();
-                    data.setSaldo(0);
-                    data.setJenisKelamin(GetKelamin());
-                    AddUser(data);
-                    Intent move = new Intent(this, LoginActivity.class);
-                    startActivity(move);
-                    finish();
-                }
-                break;
-
-            case R.id.btnLinkMasuk:
+            if(Validasi())
+            {
+                User data = binding.getUser();
+                data.setSaldo(0);
+                data.setJenisKelamin(GetKelamin());
+                AddUser(data);
                 Intent move = new Intent(this, LoginActivity.class);
                 startActivity(move);
                 finish();
-                break;
+            }
+        }
+        else if(view.getId() == R.id.btnLinkMasuk)
+        {
+            Intent move = new Intent(this, LoginActivity.class);
+            startActivity(move);
+            finish();
         }
     }
 
@@ -86,23 +84,23 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
         {
             return false;
         }
-        if(binding.inputLayoutEmail.getEditText().getText().toString().isEmpty())
+        else if(binding.inputLayoutEmail.getEditText().getText().toString().isEmpty())
         {
             return false;
         }
-        if(binding.inputLayoutPasswordRegister.getEditText().getText().toString().isEmpty())
+        else if(binding.inputLayoutPasswordRegister.getEditText().getText().toString().isEmpty())
         {
             return false;
         }
-        if(binding.inputLayoutPhone.getEditText().getText().toString().isEmpty())
+        else if(binding.inputLayoutPhone.getEditText().getText().toString().isEmpty())
         {
             return false;
         }
-        if(binding.inputLayoutRepeatPassword.getEditText().getText().toString().isEmpty())
+        else if(binding.inputLayoutRepeatPassword.getEditText().getText().toString().isEmpty())
         {
             return false;
         }
-        if(!binding.radioPria.isChecked() && !binding.radioWanita.isChecked())
+        else if(!binding.radioPria.isChecked() && !binding.radioWanita.isChecked())
         {
             return false;
         }

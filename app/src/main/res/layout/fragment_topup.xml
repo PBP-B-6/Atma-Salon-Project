@@ -1,80 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FragmentDashboard"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
-    android:padding="20dp">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="25dp">
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/topup"
-            android:layout_marginBottom="15dp"/>
+        tools:context=".FragmentTopup"
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="start"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="25dp">
 
-            <TextView
-                android:fontFamily="@font/inter_regular"
-                android:layout_width="250dp"
+            <ImageView
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:text="Tambah Saldo"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:src="@drawable/topup"
+                android:layout_marginBottom="15dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputLayoutPembayaran"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxCornerRadiusBottomEnd="30dp"
-                app:boxCornerRadiusBottomStart="30dp"
-                app:boxCornerRadiusTopEnd="30dp"
-                app:boxCornerRadiusTopStart="30dp"
-                app:errorEnabled="true"
-                app:startIconDrawable="@drawable/ic_baseline_account_balance_wallet_24">
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:fontFamily="@font/inter_regular"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Tambah Saldo"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutTambahSaldo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Jumlah Saldo"
-                    android:inputType="text"
-                    android:text=""
-                    android:textColor="@color/black"/>
+                    app:boxCornerRadiusBottomEnd="30dp"
+                    app:boxCornerRadiusBottomStart="30dp"
+                    app:boxCornerRadiusTopEnd="30dp"
+                    app:boxCornerRadiusTopStart="30dp"
+                    app:errorEnabled="true"
+                    app:startIconDrawable="@drawable/ic_baseline_account_balance_wallet_24">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Jumlah Saldo"
+                        android:inputType="text"
+                        android:text=""
+                        android:textColor="@color/black"/>
 
-            <Button
-                android:fontFamily="@font/inter_regular"
-                android:id="@+id/btnReservasi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:backgroundTint="@color/primary_green"
-                android:text="Tambah Saldo"
-                android:textColor="@color/white"
-                android:textSize="10dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:fontFamily="@font/inter_regular"
+                    android:id="@+id/btnTopupSaldo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_border"
+                    android:backgroundTint="@color/primary_green"
+                    android:text="Tambah Saldo"
+                    android:textColor="@color/white"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
-
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

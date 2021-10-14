@@ -1,68 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FragmentProfil">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <FrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="25dp">
+        tools:context=".FragmentProfil">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@color/yellow"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="2dp"
-            android:layout_marginBottom="20dp"/>
-
-        <TextView
-            android:id="@+id/nama_profil"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wendy Winata"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="25dp">
 
-        <TextView
-            android:id="@+id/email_profil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="wendywinata@atmasalon.com"
-            android:textSize="15dp"
-            android:textAlignment="center"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@color/yellow"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                android:layout_marginBottom="20dp"/>
 
-        <Button
-            android:fontFamily="@font/inter_regular"
-            android:id="@+id/btnTambahSaldo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tambah Saldo"
-            android:layout_marginBottom="33dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/primary_green"
-            android:textColor="@color/white"
-            android:background="@drawable/custom_border"/>
+            <TextView
+                android:id="@+id/nama_profil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wendy Winata"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
-        <Button
-            android:fontFamily="@font/inter_regular"
-            android:id="@+id/btnKeluar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Masuk"
-            android:layout_marginBottom="33dp"
-            android:layout_marginTop="125dp"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:textColor="@color/white"
-            android:background="@drawable/custom_border"/>
+            <TextView
+                android:id="@+id/email_profil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="wendywinata@atmasalon.com"
+                android:textSize="15dp"
+                android:textAlignment="center"/>
 
-    </LinearLayout>
+            <Button
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnTambahSaldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tambah Saldo"
+                android:layout_marginBottom="33dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/primary_green"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_border"/>
 
-</FrameLayout>
+            <Button
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnKeluar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keluar"
+                android:layout_marginBottom="33dp"
+                android:layout_marginTop="125dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_border"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

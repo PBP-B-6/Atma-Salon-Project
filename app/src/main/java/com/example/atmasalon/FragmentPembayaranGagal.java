@@ -8,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentReservation2 extends Fragment {
+public class FragmentPembayaranGagal extends Fragment {
 
-    public FragmentReservation2() {
+
+    public FragmentPembayaranGagal() {
         // Required empty public constructor
     }
 
@@ -24,6 +25,6 @@ public class FragmentReservation2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reservation_2, container, false);
+        return inflater.inflate(R.layout.fragment_pembayaran_gagal, container, false);
     }
 }

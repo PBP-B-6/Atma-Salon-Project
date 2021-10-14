@@ -1,64 +1,86 @@
 package com.example.atmasalon;
 
+import android.icu.number.NumberFormatter;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentTopup#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentTopup extends Fragment {
+import com.example.atmasalon.database.DatabaseUser;
+import com.example.atmasalon.databinding.FragmentProfilBinding;
+import com.example.atmasalon.databinding.FragmentTopupBinding;
+import com.example.atmasalon.entity.User;
+import com.example.atmasalon.preferences.UserPreference;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class FragmentTopup extends Fragment implements View.OnClickListener{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FragmentTopupBinding binding;
+    private UserPreference userPref;
+    private User userToUpdate;
 
     public FragmentTopup() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentTopup.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentTopup newInstance(String param1, String param2) {
-        FragmentTopup fragment = new FragmentTopup();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_topup, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_topup, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        userPref = new UserPreference(this.getActivity());
+        binding.btnTopupSaldo.setOnClickListener(this);
+        userToUpdate = GetUser();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.btnTopupSaldo)
+        {
+            if(Validasi())
+            {
+                //Update Saldo
+                Toast.makeText(getActivity(), "Update Saldo", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private boolean Validasi()
+    {
+        try
+        {
+            String text = binding.inputLayoutTambahSaldo.getEditText().getText().toString();
+            if(text.isEmpty())
+            {
+                return false;
+            }
+            else if(Double.parseDouble(text) < 1)
+            {
+                return false;
+            }
+        }catch(NumberFormatException e)
+        {
+            Toast.makeText(this.getActivity(), "Silahkan isi dengan angka!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private User GetUser()
+    {
+        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPref.GetUserID());
     }
 }

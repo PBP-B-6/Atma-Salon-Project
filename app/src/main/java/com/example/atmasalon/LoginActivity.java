@@ -3,7 +3,6 @@ package com.example.atmasalon;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +10,10 @@ import android.widget.Toast;
 
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.ActivityLoginBinding;
-import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserLogin;
 import com.example.atmasalon.preferences.UserPreference;
 
-public class LoginActivity extends Activity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ActivityLoginBinding binding;
     private UserLogin loginData;
@@ -38,35 +36,33 @@ public class LoginActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
+        if(view.getId() == R.id.btnMasuk)
         {
-            case R.id.btnMasuk:
-                if(CekKosong())
+            if(CekKosong())
+            {
+                String email = loginData.getEmail();
+                String pass = loginData.getPassword();
+                if(CheckLoginStatus(email, pass))
                 {
-                    String usern = loginData.getUsername();
-                    String pass = loginData.getPassword();
-                    if(CheckLoginStatus(usern, pass))
-                    {
-                        int id = GetUserId(usern, pass);
-                        userPref.SetLogin(loginData, GetName(usern, pass), id);
-                        CheckLogin();
-                    }
-                    else
-                    {
-                        Toast.makeText(this, "Nama / Sandi salah!", Toast.LENGTH_SHORT).show();
-                    }
+                    int id = GetUserId(email, pass);
+                    userPref.SetLogin(loginData, GetName(email, pass), id);
+                    CheckLogin();
                 }
                 else
                 {
-                    Toast.makeText(this, "Silahkan isi semua field", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Email / Sandi salah!", Toast.LENGTH_SHORT).show();
                 }
-                break;
-
-            case R.id.btnLinkDaftar:
-                Intent move = new Intent(this, RegisterActivity.class);
-                startActivity(move);
-                finish();
-                break;
+            }
+            else
+            {
+                Toast.makeText(this, "Silahkan isi semua field", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(view.getId() == R.id.btnLinkDaftar)
+        {
+            Intent move = new Intent(this, RegisterActivity.class);
+            startActivity(move);
+            finish();
         }
     }
 
@@ -75,8 +71,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         if(binding.inputLayoutUsername.getEditText().getText().toString().isEmpty())
         {
             return false;
-        }
-        if(binding.inputLayoutPassword.getEditText().getText().toString().isEmpty())
+        }else if(binding.inputLayoutPassword.getEditText().getText().toString().isEmpty())
         {
             return false;
         }
@@ -87,25 +82,24 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     {
         if(userPref.CheckLogin())
         {
-//            Intent move = new Intent(this, )
-//            startActivity(move);
-//            finish();
-            Toast.makeText(this, "GUUD", Toast.LENGTH_SHORT).show();
+            Intent move = new Intent(this, ContainerActivity.class);
+            startActivity(move);
+            finish();
         }
     }
 
-    private boolean CheckLoginStatus(String usern, String pass)
+    private boolean CheckLoginStatus(String email, String pass)
     {
-        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().CheckLogin(usern, pass);
+        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().CheckLogin(email, pass);
     }
 
-    private String GetName(String usern, String pass)
+    private String GetName(String email, String pass)
     {
-        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserName(usern, pass);
+        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserName(email, pass);
     }
 
-    private int GetUserId(String usern, String pass)
+    private int GetUserId(String email, String pass)
     {
-        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserId(usern, pass);
+        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserId(email, pass);
     }
 }
