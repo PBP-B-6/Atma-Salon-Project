@@ -71,7 +71,8 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
             {
                 return false;
             }
-        }catch(NumberFormatException e)
+        }
+        catch(NumberFormatException e)
         {
             Toast.makeText(this.getActivity(), "Silahkan isi dengan angka!", Toast.LENGTH_SHORT).show();
             return false;
