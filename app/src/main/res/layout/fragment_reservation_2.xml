@@ -88,7 +88,7 @@
 
 <!--        </ScrollView>-->
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:fontFamily="@font/inter_regular"
             android:id="@+id/btnMasuk"
             android:layout_width="match_parent"
