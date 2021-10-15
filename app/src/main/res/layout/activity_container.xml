@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ContainerActivity">
@@ -12,7 +12,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/HeaderLayout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingVertical="15dp"
             tools:ignore="MissingConstraints">
 
             <TextView
@@ -75,10 +77,8 @@
             android:id="@+id/scrollViewPage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/HeaderLayout">
+            android:layout_below="@+id/HeaderLayout"
+            android:paddingBottom="50dp">
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/layout_fragment"
@@ -91,16 +91,14 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentBottom="true"
             app:menu="@menu/navbar_menu"
             app:labelVisibilityMode="labeled"
             style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:background="@color/primary_green"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 
 </layout>

@@ -61,7 +61,7 @@
                         android:textColor="@color/secondary"
                         android:textSize="12dp" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:fontFamily="@font/inter_regular"
                         android:id="@+id/btnLihatProfil"
                         android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:fontFamily="@font/inter_regular"
                     android:id="@+id/btnTambahSaldo"
                     android:layout_width="wrap_content"
@@ -193,14 +193,14 @@
                 android:textColor="@color/secondary"
                 android:textSize="12dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnReservasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_border"
                 android:backgroundTint="@color/primary_green"
                 android:fontFamily="@font/inter_regular"
-                android:text="Tambah Saldo"
+                android:text="Reservasi"
                 android:textColor="@color/white"
                 android:textSize="10dp" />
 

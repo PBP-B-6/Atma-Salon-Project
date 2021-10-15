@@ -64,7 +64,7 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:fontFamily="@font/inter_regular"
                     android:id="@+id/btnTopupSaldo"
                     android:layout_width="match_parent"
