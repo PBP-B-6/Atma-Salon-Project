@@ -42,7 +42,7 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         }else if(item.getItemId() == R.id.menu_riwayat) {
             changeFragment(new FragmentRiwayat());
         }else if(item.getItemId() == R.id.menu_reservasi) {
-            changeFragment(new FragmentReservation2());
+            changeFragment(new FragmentReservasi());
         }else{
             changeFragment(new FragmentProfil());
         }

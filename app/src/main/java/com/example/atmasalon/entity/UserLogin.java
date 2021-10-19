@@ -6,6 +6,8 @@ import androidx.databinding.Bindable;
 import com.example.atmasalon.BR;
 
 public class UserLogin extends BaseObservable {
+    //UserLogin merupakan Kelas yang digunakan sebagai kelas temp / penyimpanan sementara
+    //  untuk data Login pengguna
     private String email;
     private String password;
 

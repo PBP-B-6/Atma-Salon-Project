@@ -15,6 +15,9 @@ import com.example.atmasalon.databinding.FragmentPembayaranBinding;
 
 public class FragmentPembayaran extends Fragment implements View.OnClickListener{
 
+    //FRAGMENT PEMBAYARAN SAAT BERHASIL, insert ke database DataPelanggannya
+    //jangan lupa Clear ReservationPreference
+
     private FragmentPembayaranBinding binding;
 
     public FragmentPembayaran() {
