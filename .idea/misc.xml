@@ -3,25 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_dashboard.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_pembayaran.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_pembayaran_gagal.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_profil.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_reservasi.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_reservation_2.xml" value="0.16666666666666666" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_riwayat.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/fragment_topup.xml" value="0.16354166666666667" />
+        <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Atma Salon/app/src/main/res/layout/rv_riwayat.xml" value="0.16354166666666667" />
         <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Salon/app/src/main/res/layout/activity_login.xml" value="0.16354166666666667" />
         <entry key="..\:/Atma Jaya/Semester 5/1 Pemrograman Berbasis Platform (PBP)/! Salon/app/src/main/res/layout/activity_main.xml" value="0.16354166666666667" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/drawable/custom_border.xml" value="0.24375" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/activity_container.xml" value="0.1" />
         <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/activity_login.xml" value="0.2234375" />
         <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/activity_main.xml" value="0.2234375" />
         <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_dashboard.xml" value="0.6" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_pembayaran.xml" value="0.536" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_pembayaran_gagal.xml" value="0.2234375" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_profil.xml" value="0.264" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_reservasi.xml" value="0.1" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_reservation_2.xml" value="0.1" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_riwayat.xml" value="0.2234375" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/fragment_topup.xml" value="0.4" />
         <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/layout/test.xml" value="0.2234375" />
-        <entry key="..\:/Kuliah/Semester_5/2_PemrogramanBerbasisPlatform/AndroidStudio/AtmaSalon/app/src/main/res/menu/navbar_menu.xml" value="0.2234375" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/drawable/circle.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/drawable/custom_border.xml" value="0.20625" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/drawable/custom_button.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/drawable/img_circle.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/activity_container.xml" value="0.5" />
         <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/activity_main.xml" value="0.27717391304347827" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/activity_register.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_dashboard.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_pembayaran.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_pembayaran_gagal.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_profil.xml" value="0.22" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_reservasi.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_reservation_2.xml" value="0.25" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_riwayat.xml" value="0.22" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/fragment_topup.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/layout/rv_riwayat.xml" value="0.33" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/menu/navbar_menu.xml" value="0.33" />
+        <entry key="..\:/Users/YOHAN/AndroidStudioProjects/Atma-Salon-Project/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.381025641025641" />
       </map>
     </option>
   </component>
