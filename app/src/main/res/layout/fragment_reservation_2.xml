@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".FragmentReservation2"
@@ -61,35 +61,261 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--        <ScrollView-->
-            <!--            android:id="@+id/sv_model"-->
-            <!--            android:layout_width="fill_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginBottom="20dp">-->
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal" >-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model Rambut:"
+                android:textColor="@color/black"
+                android:layout_marginBottom="15dp"/>
 
+            <RelativeLayout
+                android:id="@+id/background_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:layout_marginBottom="25dp">
 
-            <!--            </LinearLayout>-->
+                <HorizontalScrollView
+                    android:id="@+id/hsv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fillViewport="true"
+                    android:measureAllChildren="false"
+                    android:scrollbars="none">
 
-            <!--        </ScrollView>-->
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            <!--        <ScrollView-->
-            <!--            android:id="@+id/sv_model"-->
-            <!--            android:layout_width="fill_parent"-->
-            <!--            android:layout_height="wrap_content">-->
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal" >-->
+                    <LinearLayout
+                        android:id="@+id/innerLay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
 
+                        <LinearLayout
+                            android:id="@+id/asthma_action_plan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
 
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="match_parent">
 
-            <!--            </LinearLayout>-->
+                                <ImageView
+                                    android:id="@+id/testing"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/topup" />
 
-            <!--        </ScrollView>-->
+                                <RadioButton
+                                    android:id="@+id/radio_pirates"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/testing"
+                                    android:layout_centerInParent="true"
+                                    android:button="@null"
+                                    android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                    android:gravity="center"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:text="Testing" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/controlled_medication"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginHorizontal="25dp"
+                            android:orientation="vertical" >
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="match_parent" >
+
+                                <ImageView
+                                    android:id="@+id/testing2"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/pembayaran" />
+                                <RadioButton
+                                    android:id="@+id/radio_pirates2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/testing2"
+                                    android:layout_centerInParent="true"
+                                    android:button="@null"
+                                    android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                    android:gravity="center"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:text="Testing" />
+                            </RelativeLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/as_needed_medication"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal" >
+                                <ImageView
+                                    android:id="@+id/testing3"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/pembayaran_gagal" />
+                                <RadioButton
+                                    android:id="@+id/radio_pirates3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/testing3"
+                                    android:layout_centerInParent="true"
+                                    android:button="@null"
+                                    android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                    android:gravity="center"
+                                    android:onClick="onRadioButtonClicked"
+                                    android:text="Testing" />
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RadioGroup>
+            </HorizontalScrollView>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilihan Warna:"
+                android:textColor="@color/black"
+                android:layout_marginBottom="15dp"/>
+
+            <RelativeLayout
+                android:id="@+id/background_color2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:layout_marginBottom="25dp">
+
+                <HorizontalScrollView
+                    android:id="@+id/hsv2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fillViewport="true"
+                    android:measureAllChildren="false"
+                    android:scrollbars="none">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/innerLay2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <LinearLayout
+                                android:id="@+id/asthma_action_plan2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical" >
+
+                                <RelativeLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent">
+
+                                    <ImageView
+                                        android:id="@+id/testing4"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/topup" />
+
+                                    <RadioButton
+                                        android:id="@+id/radio_pirates4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/testing4"
+                                        android:layout_centerInParent="true"
+                                        android:button="@null"
+                                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                        android:gravity="center"
+                                        android:onClick="onRadioButtonClicked"
+                                        android:text="Testing" />
+
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/controlled_medication5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_marginHorizontal="25dp"
+                                android:orientation="vertical" >
+                                <RelativeLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent" >
+
+                                    <ImageView
+                                        android:id="@+id/testing25"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/pembayaran" />
+                                    <RadioButton
+                                        android:id="@+id/radio_pirates25"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/testing25"
+                                        android:layout_centerInParent="true"
+                                        android:button="@null"
+                                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                        android:gravity="center"
+                                        android:onClick="onRadioButtonClicked"
+                                        android:text="Testing" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/as_needed_medication5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical" >
+                                <RelativeLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal" >
+                                    <ImageView
+                                        android:id="@+id/testing35"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/pembayaran_gagal" />
+                                    <RadioButton
+                                        android:id="@+id/radio_pirates35"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/testing35"
+                                        android:layout_centerInParent="true"
+                                        android:button="@null"
+                                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                        android:gravity="center"
+                                        android:onClick="onRadioButtonClicked"
+                                        android:text="Testing" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RadioGroup>
+                </HorizontalScrollView>
+            </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:fontFamily="@font/inter_regular"
