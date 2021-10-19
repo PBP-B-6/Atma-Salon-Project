@@ -14,12 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.atmasalon.databinding.FragmentProfilBinding;
+import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
 
 public class FragmentProfil extends Fragment implements View.OnClickListener{
 
     private FragmentProfilBinding binding;
     private UserPreference userPref;
+    private ReservationPreference reservationPreference;
 
     public FragmentProfil() {
         // Required empty public constructor
@@ -37,6 +39,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
+        reservationPreference = new ReservationPreference(this.getActivity());
         binding.namaProfil.setText(userPref.GetNamaUser());
         binding.emailProfil.setText(userPref.GetUserLogin().getEmail());
         binding.btnKeluar.setOnClickListener(this);
@@ -56,6 +59,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener{
         else if(view.getId() == R.id.btnKeluar)
         {
             userPref.Logout();
+            reservationPreference.ClearPreference();
             Intent move = new Intent(this.getActivity(), LoginActivity.class);
             startActivity(move);
         }
