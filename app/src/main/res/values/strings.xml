@@ -2,4 +2,12 @@
     <string name="app_name">AtmaSalon</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mohawk">Mohawk</string>
+    <string name="keriting">Keriting</string>
+    <string name="lurus">Lurus</string>
+    <string name="hitam">Hitam</string>
+    <string name="cokelat">Cokelat</string>
+    <string name="silver">Silver</string>
+    <string name="merah">Merah</string>
+    <string name="oranye">Oranye</string>
 </resources>

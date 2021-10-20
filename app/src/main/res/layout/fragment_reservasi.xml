@@ -43,7 +43,7 @@
                 android:layout_marginTop="25dp">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutLokasiSalon"
+                    android:id="@+id/inputLayoutLokasiSalonss"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

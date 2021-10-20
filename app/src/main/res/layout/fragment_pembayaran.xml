@@ -43,7 +43,7 @@
                     android:textSize="15dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputLayoutPembayaran"
+                    android:id="@+id/inputLayoutTotalHargaBerhasil"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,15 +58,17 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Rp. 0,00"
+                        android:hint="Total Harga"
                         android:inputType="text"
+                        android:editable="false"
+                        android:enabled="false"
                         android:text=""
                         android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnBayarSekarang"
+                    android:id="@+id/btnBayarPembayaranBerhasil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_border"
@@ -85,7 +87,7 @@
 
                 <TextView
                     android:fontFamily="@font/inter_regular"
-                    android:id="@+id/btnLinkMasuk"
+                    android:id="@+id/btnLinkTopupPembayaran"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:letterSpacing="0"

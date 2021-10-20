@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.atmasalon.databinding.FragmentProfilBinding;
@@ -44,6 +45,9 @@ public class FragmentProfil extends Fragment implements View.OnClickListener{
         binding.emailProfil.setText(userPref.GetUserLogin().getEmail());
         binding.btnKeluar.setOnClickListener(this);
         binding.btnTambahSaldo.setOnClickListener(this);
+
+        TextView text = getActivity().findViewById(R.id.page_name);
+        text.setText("Profil");
     }
 
     @Override
@@ -62,6 +66,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener{
             reservationPreference.ClearPreference();
             Intent move = new Intent(this.getActivity(), LoginActivity.class);
             startActivity(move);
+            getActivity().finish();
         }
     }
 }

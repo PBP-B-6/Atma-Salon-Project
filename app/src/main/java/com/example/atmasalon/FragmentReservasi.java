@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.atmasalon.databinding.FragmentReservasiBinding;
@@ -38,15 +39,9 @@ public class FragmentReservasi extends Fragment implements View.OnClickListener{
         binding.btnReservasi1.setOnClickListener(this);
         reservationPreference = new ReservationPreference(this.getActivity());
         CheckFill();
-    }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if(!binding.inputLayoutLokasiSalon.getEditText().getText().toString().isEmpty())
-        {
-            reservationPreference.SetFilled(binding.inputLayoutLokasiSalon.getEditText().getText().toString());
-        }
+        TextView text = getActivity().findViewById(R.id.page_name);
+        text.setText("Reservasi");
     }
 
     @Override
@@ -54,7 +49,7 @@ public class FragmentReservasi extends Fragment implements View.OnClickListener{
 
         if(view.getId() == R.id.btnReservasi1)
         {
-            if(!binding.inputLayoutLokasiSalon.getEditText().getText().toString().isEmpty())
+            if(!binding.inputLayoutLokasiSalonss.getEditText().getText().toString().isEmpty())
             {
                 this.getActivity()
                     .getSupportFragmentManager()
@@ -71,10 +66,8 @@ public class FragmentReservasi extends Fragment implements View.OnClickListener{
 
     private void CheckFill()
     {
-        if(reservationPreference.GetIsFilled())
-        {
-            binding.inputLayoutLokasiSalon.getEditText().setText(reservationPreference.GetLokasi());
-        }
+        binding.inputLayoutLokasiSalonss.getEditText().setText(reservationPreference.GetLokasi());
+
     }
 
 }

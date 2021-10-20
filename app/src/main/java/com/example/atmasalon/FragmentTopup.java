@@ -16,6 +16,7 @@ import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.atmasalon.database.DatabaseUser;
@@ -52,6 +53,8 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
         bottomNav = getActivity().findViewById(R.id.bottom_navigation);
         binding.btnTopupSaldo.setOnClickListener(this);
         userToUpdate = GetUser();
+        TextView text = getActivity().findViewById(R.id.page_name);
+        text.setText("Tambah Saldo");
     }
 
     @Override
