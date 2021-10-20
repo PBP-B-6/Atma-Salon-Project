@@ -18,6 +18,29 @@
             android:gravity="center_horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutLokasiSalon"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:fontFamily="@font/inter_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pilih salon terdekat"
+                    android:inputType="text"
+                    android:text=""
+                    android:textColor="@color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutNamaReservasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,6 +109,7 @@
                     android:scrollbars="none">
 
                     <RadioGroup
+                        android:id="@+id/radioGroupModel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -114,7 +138,7 @@
                                     android:src="@drawable/topup" />
 
                                 <RadioButton
-                                    android:id="@+id/radio_pirates"
+                                    android:id="@+id/radio_model_lurus"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/testing"
@@ -122,8 +146,7 @@
                                     android:button="@null"
                                     android:drawableTop="?android:attr/listChoiceIndicatorSingle"
                                     android:gravity="center"
-                                    android:onClick="onRadioButtonClicked"
-                                    android:text="Testing" />
+                                    android:text="@string/lurus" />
 
                             </RelativeLayout>
                         </LinearLayout>
@@ -144,7 +167,7 @@
                                     android:layout_height="150dp"
                                     android:src="@drawable/pembayaran" />
                                 <RadioButton
-                                    android:id="@+id/radio_pirates2"
+                                    android:id="@+id/radio_model_keriting"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/testing2"
@@ -152,8 +175,7 @@
                                     android:button="@null"
                                     android:drawableTop="?android:attr/listChoiceIndicatorSingle"
                                     android:gravity="center"
-                                    android:onClick="onRadioButtonClicked"
-                                    android:text="Testing" />
+                                    android:text="@string/keriting" />
                             </RelativeLayout>
                         </LinearLayout>
                         <LinearLayout
@@ -172,7 +194,7 @@
                                     android:layout_height="150dp"
                                     android:src="@drawable/pembayaran_gagal" />
                                 <RadioButton
-                                    android:id="@+id/radio_pirates3"
+                                    android:id="@+id/radio_model_mohawk"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/testing3"
@@ -180,8 +202,7 @@
                                     android:button="@null"
                                     android:drawableTop="?android:attr/listChoiceIndicatorSingle"
                                     android:gravity="center"
-                                    android:onClick="onRadioButtonClicked"
-                                    android:text="Testing" />
+                                    android:text="@string/mohawk" />
                             </RelativeLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -214,6 +235,7 @@
                     android:scrollbars="none">
 
                     <RadioGroup
+                        android:id="@+id/radioGroupWarna"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -239,10 +261,10 @@
                                         android:id="@+id/testing4"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/topup" />
+                                        android:src="@drawable/hitam" />
 
                                     <RadioButton
-                                        android:id="@+id/radio_pirates4"
+                                        android:id="@+id/radio_warna_hitam"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/testing4"
@@ -250,11 +272,11 @@
                                         android:button="@null"
                                         android:drawableTop="?android:attr/listChoiceIndicatorSingle"
                                         android:gravity="center"
-                                        android:onClick="onRadioButtonClicked"
-                                        android:text="Testing" />
+                                        android:text="@string/hitam" />
 
                                 </RelativeLayout>
                             </LinearLayout>
+
                             <LinearLayout
                                 android:id="@+id/controlled_medication5"
                                 android:layout_width="wrap_content"
@@ -270,9 +292,9 @@
                                         android:id="@+id/testing25"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/pembayaran" />
+                                        android:src="@drawable/cokelat" />
                                     <RadioButton
-                                        android:id="@+id/radio_pirates25"
+                                        android:id="@+id/radio_warna_cokelat"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/testing25"
@@ -280,15 +302,16 @@
                                         android:button="@null"
                                         android:drawableTop="?android:attr/listChoiceIndicatorSingle"
                                         android:gravity="center"
-                                        android:onClick="onRadioButtonClicked"
-                                        android:text="Testing" />
+                                        android:text="@string/cokelat" />
                                 </RelativeLayout>
                             </LinearLayout>
+
                             <LinearLayout
                                 android:id="@+id/as_needed_medication5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
+                                android:layout_marginHorizontal="25dp"
                                 android:orientation="vertical" >
                                 <RelativeLayout
                                     android:layout_width="fill_parent"
@@ -298,9 +321,9 @@
                                         android:id="@+id/testing35"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/pembayaran_gagal" />
+                                        android:src="@drawable/silver" />
                                     <RadioButton
-                                        android:id="@+id/radio_pirates35"
+                                        android:id="@+id/radio_warna_silver"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/testing35"
@@ -308,10 +331,71 @@
                                         android:button="@null"
                                         android:drawableTop="?android:attr/listChoiceIndicatorSingle"
                                         android:gravity="center"
-                                        android:onClick="onRadioButtonClicked"
-                                        android:text="Testing" />
+                                        android:text="@string/silver" />
                                 </RelativeLayout>
                             </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/as_needed_medication6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_marginHorizontal="25dp"
+                                android:orientation="vertical" >
+                                <RelativeLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal" >
+                                    <ImageView
+                                        android:id="@+id/testing36"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/merah" />
+                                    <RadioButton
+                                        android:id="@+id/radio_warna_merah"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/testing36"
+                                        android:layout_centerInParent="true"
+                                        android:button="@null"
+                                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                        android:gravity="center"
+                                        android:text="@string/merah" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/as_needed_medication7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_marginHorizontal="25dp"
+                                android:orientation="vertical" >
+                                <RelativeLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal" >
+                                    <ImageView
+                                        android:id="@+id/testing37"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/oranye" />
+                                    <RadioButton
+                                        android:id="@+id/radio_warna_oranye"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/testing37"
+                                        android:layout_centerInParent="true"
+                                        android:button="@null"
+                                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                        android:gravity="center"
+                                        android:text="@string/oranye" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+
+
+
                         </LinearLayout>
                     </RadioGroup>
                 </HorizontalScrollView>

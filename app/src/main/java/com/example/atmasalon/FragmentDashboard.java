@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentDashboardBinding;
@@ -44,6 +45,9 @@ public class FragmentDashboard extends Fragment {
         double saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";
         binding.dashboardProfileSaldo.setText(saldoStr);
+
+        TextView text = getActivity().findViewById(R.id.page_name);
+        text.setText("Dashboard");
 
     }
 

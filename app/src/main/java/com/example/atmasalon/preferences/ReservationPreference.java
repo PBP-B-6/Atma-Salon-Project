@@ -26,15 +26,15 @@ public class ReservationPreference {
         editor = sharedPreference.edit();
     }
 
-    public void SetFilled(String lokasi)
+    public void SetFilled()
     {
         editor.putBoolean(IS_FILLED, true);
-        editor.putString(KEY_LOKASI, lokasi);
         editor.commit();
     }
 
-    public void FillDataPage2(String nama, String telp, String model, String warna, double totalHarga)
+    public void FillDataPage2(String lokasi, String nama, String telp, String model, String warna, double totalHarga)
     {
+        editor.putString(KEY_LOKASI, lokasi);
         editor.putString(KEY_NAMA, nama);
         editor.putString(KEY_NOTELP, telp);
         editor.putString(KEY_MODELRAMBUT, model);
@@ -73,7 +73,13 @@ public class ReservationPreference {
 
     public void ClearPreference()
     {
-        editor.clear();
+        editor.putString(KEY_LOKASI, "");
+        editor.putString(KEY_NAMA, "");
+        editor.putString(KEY_NOTELP, "");
+        editor.putString(KEY_MODELRAMBUT, "");
+        editor.putString(KEY_WARNARAMBUT, "");
+        editor.putString(KEY_TOTALHARGA, "0");
+        editor.putBoolean(IS_FILLED, false);
         editor.commit();
     }
 }
