@@ -14,14 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentRiwayatBinding;
+import com.example.atmasalon.entity.DataPelanggan;
 import com.example.atmasalon.entity.DataReservasi;
+import com.example.atmasalon.preferences.UserPreference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentRiwayat extends Fragment {
+
     private FragmentRiwayatBinding binding;
-    public ArrayList<DataReservasi> dataReservasi;
+    private UserPreference userPreference;
+    public List<DataPelanggan> dataPelanggan;
 
     public FragmentRiwayat() {
         // Required empty public constructor
@@ -37,7 +43,6 @@ public class FragmentRiwayat extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_riwayat, container, false);
-
         return binding.getRoot();
     }
 
@@ -45,16 +50,19 @@ public class FragmentRiwayat extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        userPreference = new UserPreference(getActivity());
+        dataPelanggan = GetAll(userPreference.GetUserID());
+
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Riwayat");
 
-        binding = DataBindingUtil.setContentView(this.getActivity(), R.layout.fragment_riwayat);
-
-        dataReservasi = new ArrayList<>();
-        binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL,false));
-        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(dataReservasi));
+        binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
+        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(dataPelanggan));
 
     }
 
-
+    private List<DataPelanggan> GetAll(int userId)
+    {
+        return DatabaseUser.GetInstance(getContext()).GetDatabase().dataPelangganDao().GetAll(userId);
+    }
 }
