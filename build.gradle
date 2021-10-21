@@ -1,7 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
-        // MAPBOX Using Pujayana API / Remove after we have
         google()
         mavenCentral()
         maven {
@@ -11,7 +10,7 @@ buildscript {
             }
             credentials {
                 username = 'mapbox'
-                password = 'sk.eyJ1IjoicHVqYXlhbmEiLCJhIjoiY2t1bDdnc2x0MDZ4ejJucGYycGJrZzAzNSJ9.IL11LH_kGHo3aiFuDTnu4w'
+                password = 'sk.eyJ1IjoicHVqYXlhbmEiLCJhIjoiY2t2MHlzeTlnMGpnbjJucGE2bGQ5Nzl2dCJ9.4pMotzixoT5KUVXxupalHQ'
             }
         }
     }
