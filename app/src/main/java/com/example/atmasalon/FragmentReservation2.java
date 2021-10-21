@@ -60,9 +60,17 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         {
             if(Validation())
             {
+                String nama, telp, lokasi, model, warna;
+                nama = binding.inputLayoutNamaReservasi.getEditText().getText().toString();
+                telp = binding.inputLayoutTelpReservasi.getEditText().getText().toString();
+                lokasi = binding.inputLayoutLokasiSalon.getEditText().getText().toString();
+                model = GetSelectedModel().trim();
+                warna = GetSelectedWarna().trim();
                 totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
                 reservationPreference.SetFilled();
+                reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
+
                 if(GetUser().getSaldo() >= totalHarga)
                 {
                     this.getActivity()

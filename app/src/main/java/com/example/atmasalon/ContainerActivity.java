@@ -10,12 +10,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.ActivityContainerBinding;
-import com.example.atmasalon.entity.User;
-import com.example.atmasalon.entity.UserLogin;
 import com.example.atmasalon.preferences.UserPreference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class ContainerActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -27,6 +25,8 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_container);
         binding.bottomNavigation.setOnItemSelectedListener(this);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("sample_notification");
 
         userPref = new UserPreference(this);
 
