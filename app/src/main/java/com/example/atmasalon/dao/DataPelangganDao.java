@@ -16,11 +16,11 @@ public interface DataPelangganDao {
     List<DataPelanggan> GetAll(int userId);
 
     @Insert
-    void InsertTodo(DataPelanggan data);
+    void InsertDataPelanggan(DataPelanggan data);
 
     @Update
-    void UpdateTodo(DataPelanggan data);
+    void UpdateDataPelanggan(DataPelanggan data);
 
     @Delete
-    void DeleteTodo(DataPelanggan data);
+    void DeleteDataPelanggan(DataPelanggan data);
 }
