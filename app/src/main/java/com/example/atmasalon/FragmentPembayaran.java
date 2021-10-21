@@ -1,10 +1,13 @@
 package com.example.atmasalon;
 
+import android.app.Notification;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -25,13 +28,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentPembayaran extends Fragment implements View.OnClickListener{
 
-    //FRAGMENT PEMBAYARAN SAAT BERHASIL, insert ke database DataPelanggannya
-    //jangan lupa Clear ReservationPreference
-
     private FragmentPembayaranBinding binding;
     private UserPreference userPreference;
     private ReservationPreference reservationPreference;
     private BottomNavigationView bottomNav;
+    private NotificationManagerCompat notificationManager;
+    private static final String CHANNEL_1 = "channel1";
+    private String namaPemesan = "";
 
     public FragmentPembayaran() {
         // Required empty public constructor
@@ -52,6 +55,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         reservationPreference = new ReservationPreference(this.getActivity());
 
         bottomNav = getActivity().findViewById(R.id.bottom_navigation);
+        notificationManager = NotificationManagerCompat.from(this.getActivity());
 
         double totalHarga = reservationPreference.GetTotalHarga();
         String saldoStr = "Rp. " + String.format("%.0f", totalHarga) + ",00";
@@ -82,6 +86,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
 
             //Insert Data
             DataReservasi reservasi = reservationPreference.GetAllData();
+            namaPemesan = reservasi.getNamaPemesan();
             DataPelanggan data = new DataPelanggan(userPreference.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(),
                     reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), "Lunas");
             AddDataPelanggan(data);
@@ -130,7 +135,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
             protected void onPostExecute(Void unused) {
                 super.onPostExecute(unused);
                 Toast.makeText(getActivity(), "Berhasil menambah data", Toast.LENGTH_SHORT).show();
-                //firebase?
+                SendOnChannel(getView());
 
                 getActivity()
                     .getSupportFragmentManager()
@@ -144,5 +149,19 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         }
         AddingUser Add = new AddingUser();
         Add.execute();
+    }
+
+    public void SendOnChannel(View v)
+    {
+        String title = "Reservasi Berhasil!";
+        String message = namaPemesan + " telah berhasil melakukan reservasi!";
+        Notification notification = new NotificationCompat.Builder(this.getActivity(), CHANNEL_1)
+                .setSmallIcon(R.drawable.logo)
+                .setContentText(message)
+                .setContentTitle(title)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .build();
+
+        notificationManager.notify(2, notification);
     }
 }

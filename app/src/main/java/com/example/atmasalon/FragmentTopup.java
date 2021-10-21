@@ -1,7 +1,6 @@
 package com.example.atmasalon;
 
-import android.content.Context;
-import android.icu.number.NumberFormatter;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -9,10 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
-import androidx.room.Update;
 
-import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.atmasalon.database.DatabaseUser;
-import com.example.atmasalon.databinding.ActivityContainerBinding;
-import com.example.atmasalon.databinding.FragmentProfilBinding;
+
 import com.example.atmasalon.databinding.FragmentTopupBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.UserPreference;

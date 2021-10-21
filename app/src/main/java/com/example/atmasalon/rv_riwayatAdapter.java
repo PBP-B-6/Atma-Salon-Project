@@ -1,23 +1,17 @@
 package com.example.atmasalon;
 
-import android.content.Context;
+
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.atmasalon.databinding.FragmentRiwayatBinding;
+
 import com.example.atmasalon.databinding.RvRiwayatBinding;
 import com.example.atmasalon.entity.DataPelanggan;
-import com.example.atmasalon.entity.DataReservasi;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.MyViewHolder>{
@@ -50,7 +44,6 @@ public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.My
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         private RvRiwayatBinding binding;
-        private TextView tvSalon, tvNama, tvTelp, tvModel, tvWarna, tvStatus;
 
         public MyViewHolder(@NonNull RvRiwayatBinding binding){
             super(binding.getRoot());
