@@ -142,7 +142,7 @@
                                     android:id="@+id/testing"
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/topup" />
+                                    android:src="@drawable/lurus" />
 
                                 <RadioButton
                                     android:id="@+id/radio_model_lurus"
@@ -172,7 +172,7 @@
                                     android:id="@+id/testing2"
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/pembayaran" />
+                                    android:src="@drawable/curly" />
                                 <RadioButton
                                     android:id="@+id/radio_model_keriting"
                                     android:layout_width="wrap_content"
@@ -199,7 +199,7 @@
                                     android:id="@+id/testing3"
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/pembayaran_gagal" />
+                                    android:src="@drawable/mohawk" />
                                 <RadioButton
                                     android:id="@+id/radio_model_mohawk"
                                     android:layout_width="wrap_content"
