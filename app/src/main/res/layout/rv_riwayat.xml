@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name=""-->
-<!--            type="" />-->
-<!--    </data>-->
+    <data>
+        <variable
+            name="data"
+            type="com.example.atmasalon.entity.DataReservasi" />
+    </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:layout_margin="20dp"
         app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="true"
@@ -35,7 +35,7 @@
                 android:layout_marginBottom="5dp"/>
 
             <GridLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
                 android:rowCount="6"
@@ -62,38 +62,14 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
-                    android:text="test"
                     android:textColor="@color/black"
-                    android:hint="test"/>
+                    android:text="@{data.lokasiSalon}"
+                    android:hint="Lokasi Salon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lokasi"
-                    android:fontFamily="@font/inter_regular"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginBottom="2dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/tvLokasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginStart="10dp"
-                    android:text="test"
-                    android:fontFamily="@font/inter_regular"
-                    android:textColor="@color/black"
-                    android:hint="test"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama"
                     android:fontFamily="@font/inter_regular"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -109,65 +85,65 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
-                    android:text="test"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
-                    android:hint="test"/>
+                    android:text="@{data.namaPemesan}"
+                    android:hint="Nama"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
                     android:text="No. Telepon"
                     android:layout_rowWeight="1"
-                    android:fontFamily="@font/inter_regular"
-                    android:textColor="@color/black"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvTelp"
-                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    android:fontFamily="@font/inter_regular"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
-                    android:text="test"
-                    android:hint="test"/>
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
+                    android:text="@{data.noTelp}"
+                    android:hint="No. Telepon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Model"
+                    android:layout_rowWeight="1"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
-                    android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/tvModel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
+                    android:fontFamily="@font/inter_regular"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
-                    android:text="test"
-                    android:fontFamily="@font/inter_regular"
-                    android:textColor="@color/black"
-                    android:hint="test"/>
+                    android:text="@{data.modelRambut}"
+                    android:hint="Model"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Warna"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
+                    android:text="Warna"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
@@ -181,10 +157,36 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
-                    android:text="test"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
-                    android:hint="test"/>
+                    android:text="@{data.warnaRambut}"
+                    android:hint="Warna"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
+                    android:text="Harga"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvHarga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
+                    android:text="@{String.valueOf(data.totalHarga)}"
+                    android:hint="Harga"/>
 
             </GridLayout>
         </LinearLayout>

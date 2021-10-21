@@ -46,10 +46,6 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         reservationPreference = new ReservationPreference(this.getActivity());
         userPreference = new UserPreference(this.getActivity());
         binding.btnBayarReservasi.setOnClickListener(this);
-        if(!reservationPreference.GetIsFilled())
-        {
-            totalHarga = 0;
-        }
 
         SetAllRadioOnClick();
         CheckFilled();
@@ -64,12 +60,6 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         {
             if(Validation())
             {
-                String nama, telp, lokasi, model, warna;
-                nama = binding.inputLayoutNamaReservasi.getEditText().getText().toString();
-                telp = binding.inputLayoutTelpReservasi.getEditText().getText().toString();
-                lokasi = binding.inputLayoutLokasiSalon.getEditText().getText().toString();
-                model = GetSelectedModel().trim();
-                warna = GetSelectedWarna().trim();
                 totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
                 reservationPreference.SetFilled();
