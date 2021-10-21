@@ -19,7 +19,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutLokasiSalon"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/InputAtmaSalon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxCornerRadiusBottomEnd="30dp"
@@ -36,6 +36,8 @@
                     android:hint="Pilih salon terdekat"
                     android:inputType="text"
                     android:text=""
+                    android:textSize="14dp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -44,7 +46,7 @@
                 android:id="@+id/inputLayoutNamaReservasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/InputAtmaSalon"
                 app:errorEnabled="true"
                 app:startIconDrawable="@drawable/ic_user"
                 app:boxCornerRadiusBottomEnd="30dp"
@@ -58,6 +60,8 @@
                     android:hint="Nama Pemesan"
                     android:inputType="text"
                     android:text=""
+                    android:textSize="14dp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     app:passwordToggleEnabled="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -66,7 +70,7 @@
                 android:id="@+id/inputLayoutTelpReservasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/InputAtmaSalon"
                 app:errorEnabled="true"
                 app:startIconDrawable="@drawable/ic_phone"
                 app:boxCornerRadiusBottomEnd="30dp"
@@ -80,6 +84,8 @@
                     android:hint="Nomor Telepon Pemesan"
                     android:inputType="text"
                     android:text=""
+                    android:textSize="14dp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     app:passwordToggleEnabled="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:text="Model Rambut:"
                 android:textColor="@color/black"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="15dp"/>
 
             <RelativeLayout
@@ -215,6 +222,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pilihan Warna:"
                 android:textColor="@color/black"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="15dp"/>
 
             <RelativeLayout
@@ -407,6 +415,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Pembayaran"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="14dp"
                 android:layout_marginBottom="33dp"
                 android:backgroundTint="@color/primary_green"
                 android:textColor="@color/white"

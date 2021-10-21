@@ -23,6 +23,17 @@
             android:padding="10dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:fontFamily="@font/playfair_display_bold"
+                android:text="Reservasi #"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="5dp"/>
+
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +48,9 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/inter_regular"
                     android:text="Salon"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -45,19 +58,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
+                    android:fontFamily="@font/inter_regular"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
                     android:text="@{data.lokasiSalon}"
                     android:hint="Lokasi Salon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nama"
+                    android:text="Lokasi"
+                    android:fontFamily="@font/inter_regular"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -68,16 +85,20 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:text="@{data.namaPemesan}"
                     android:hint="Nama"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
                     android:text="No. Telepon"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -88,6 +109,8 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:text="@{data.noTelp}"
                     android:hint="No. Telepon"/>
 
@@ -96,15 +119,19 @@
                     android:layout_height="wrap_content"
                     android:text="Model"
                     android:layout_rowWeight="1"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/tvModel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
+                    android:fontFamily="@font/inter_regular"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
@@ -114,6 +141,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:text="Warna"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -128,12 +157,18 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:text="@{data.warnaRambut}"
                     android:hint="Warna"/>
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Harga"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:text="Harga"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -148,6 +183,8 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
                     android:text="@{String.valueOf(data.totalHarga)}"
                     android:hint="Harga"/>
 

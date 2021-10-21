@@ -38,7 +38,7 @@
             android:id="@+id/inputLayoutUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/InputAtmaSalon"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_user"
             app:boxCornerRadiusBottomEnd="30dp"
@@ -52,6 +52,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:inputType="text"
+                android:textSize="14dp"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:textColor="@color/black"
                 android:text="@={loginData.email}"
                 app:passwordToggleEnabled="true"/>
@@ -62,7 +64,7 @@
             android:id="@+id/inputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/InputAtmaSalon"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_password"
             app:passwordToggleEnabled="true"
@@ -77,6 +79,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Kata Sandi"
                 android:inputType="text"
+                android:textSize="14dp"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:textColor="@color/black"
                 android:text="@={loginData.password}"
                 app:passwordToggleEnabled="true"/>
@@ -90,6 +94,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Masuk"
+            android:textAllCaps="false"
+            android:textSize="14dp"
+            android:textStyle="bold"
             android:layout_marginBottom="33dp"
             android:textColor="@color/white"
             android:background="@drawable/custom_border"/>
@@ -103,6 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Belum punya akun? "
+                android:textSize="14dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
@@ -112,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 app:textAllCaps="false"
+                android:textSize="14dp"
                 android:textColor="@color/yellow"
                 android:letterSpacing="0"
                 android:text="Daftar"/>

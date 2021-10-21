@@ -46,7 +46,7 @@
                     android:id="@+id/inputLayoutNama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_user"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -60,6 +60,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Nama Lengkap"
                         android:inputType="text"
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"
                         android:text="@={user.nama}"
                         app:passwordToggleEnabled="true"/>
@@ -70,7 +72,7 @@
                     android:id="@+id/inputLayoutEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_user"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -83,6 +85,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:text="@={user.email}"
@@ -94,7 +98,7 @@
                     android:id="@+id/inputLayoutPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_password"
                     app:passwordToggleEnabled="true"
@@ -108,6 +112,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Kata Sandi"
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"
                         android:text="@={user.password}"
                         android:inputType="textPassword"/>
@@ -118,7 +124,7 @@
                     android:id="@+id/inputLayoutRepeatPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_password"
                     app:passwordToggleEnabled="true"
@@ -132,6 +138,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Ulangi Kata Sandi"
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"
                         android:inputType="textPassword"/>
 
@@ -152,6 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pria"
+                        android:textSize="14dp"
                         android:textColor="@color/black"
                         android:layout_marginEnd="30dp"/>
                     <RadioButton
@@ -160,6 +169,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Wanita"
+                        android:textSize="14dp"
                         android:textColor="@color/black"/>
                 </RadioGroup>
 
@@ -168,7 +178,7 @@
                     android:id="@+id/inputLayoutPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_phone"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -181,6 +191,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="No. Telepon"
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:text="@={user.noTelp}"
                         android:inputType="text"
                         android:textColor="@color/black"/>
@@ -193,6 +205,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Daftar"
+                    android:textAllCaps="false"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                     android:layout_marginBottom="33dp"
                     android:backgroundTint="@color/primary_green"
                     android:textColor="@color/white"
@@ -207,6 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sudah punya akun? "
+                        android:textSize="14dp"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
@@ -216,6 +232,7 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         app:textAllCaps="false"
+                        android:textSize="14dp"
                         android:textColor="@color/yellow"
                         android:letterSpacing="0"
                         android:text="Masuk"/>

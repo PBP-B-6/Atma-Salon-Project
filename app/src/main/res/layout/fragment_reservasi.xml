@@ -44,7 +44,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutLokasiSalonss"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -61,6 +61,8 @@
                         android:hint="Pilih salon terdekat"
                         android:inputType="text"
                         android:text=""
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -73,8 +75,11 @@
                     android:background="@drawable/custom_border"
                     android:backgroundTint="@color/primary_green"
                     android:text="Lanjut"
+                    android:paddingHorizontal="25dp"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="14dp" />
             </LinearLayout>
 
         </LinearLayout>
