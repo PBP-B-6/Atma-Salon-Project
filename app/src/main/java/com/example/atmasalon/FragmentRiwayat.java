@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +16,15 @@ import android.widget.TextView;
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentRiwayatBinding;
 import com.example.atmasalon.entity.DataPelanggan;
-import com.example.atmasalon.entity.DataReservasi;
 import com.example.atmasalon.preferences.UserPreference;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentRiwayat extends Fragment {
 
     private FragmentRiwayatBinding binding;
     private UserPreference userPreference;
-    public List<DataPelanggan> dataPelanggan;
+    private List<DataPelanggan> dataPelanggan;
 
     public FragmentRiwayat() {
         // Required empty public constructor
