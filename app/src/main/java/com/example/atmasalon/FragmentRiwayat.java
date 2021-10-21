@@ -21,9 +21,7 @@ import java.util.ArrayList;
 
 public class FragmentRiwayat extends Fragment {
     private FragmentRiwayatBinding binding;
-    private rv_riwayatAdapter adapter;
     public ArrayList<DataReservasi> dataReservasi;
-    private RecyclerView recyclerView;
 
     public FragmentRiwayat() {
         // Required empty public constructor

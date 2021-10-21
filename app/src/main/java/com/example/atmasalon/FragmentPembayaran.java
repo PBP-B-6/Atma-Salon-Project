@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentPembayaranBinding;
+import com.example.atmasalon.entity.DataPelanggan;
+import com.example.atmasalon.entity.DataReservasi;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
@@ -71,7 +73,6 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         }
         else if(view.getId() == R.id.btnBayarPembayaranBerhasil)
         {
-            //Insert Data
 
             // kurang saldo
             User user = GetUser();
@@ -79,8 +80,16 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
             user.setSaldo(saldo);
             UpdateUserSaldo(user);
 
+            //Insert Data
+            DataReservasi reservasi = reservationPreference.GetAllData();
+            DataPelanggan data = new DataPelanggan(userPreference.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(),
+                    reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), "Lunas");
+            AddDataPelanggan(data);
+
             //clear prefereceReserv
             reservationPreference.ClearPreference();
+
+            //Firebase
         }
     }
 
@@ -95,14 +104,6 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
             @Override
             protected void onPostExecute(Void unused) {
                 super.onPostExecute(unused);
-                Toast.makeText(getActivity(), "Tambah Saldo Berhasil!", Toast.LENGTH_SHORT).show();
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.layout_fragment, new FragmentDashboard())
-                        .commit();
-
-                bottomNav.setSelectedItemId(R.id.menu_beranda);
             }
         }
         UpdatingTodo up = new UpdatingTodo();
@@ -112,5 +113,36 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
     private User GetUser()
     {
         return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPreference.GetUserID());
+    }
+
+    private void AddDataPelanggan(DataPelanggan data)
+    {
+
+        class AddingUser extends AsyncTask<Void, Void, Void>
+        {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().dataPelangganDao().InsertDataPelanggan(data);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+                Toast.makeText(getActivity(), "Berhasil menambah data", Toast.LENGTH_SHORT).show();
+                //firebase?
+
+                getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                        //Fargment Dashboard gant riwayat
+                    .replace(R.id.layout_fragment, new FragmentDashboard())
+                    .commit();
+
+                bottomNav.setSelectedItemId(R.id.menu_beranda);
+            }
+        }
+        AddingUser Add = new AddingUser();
+        Add.execute();
     }
 }
