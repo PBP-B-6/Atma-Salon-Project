@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:orientation="horizontal"
-                android:background="@drawable/box">
+                android:background="@drawable/custom_box">
 
                 <LinearLayout
                     android:layout_width="250dp"
@@ -56,21 +56,24 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Anda dapat melengkapi profil anda  dengan tombol dibawah ini"
+                        android:text="Anda dapat melengkapi profil anda  dengan tombol di bawah ini"
                         android:textAlignment="textStart"
                         android:textColor="@color/secondary"
                         android:textSize="12dp" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:fontFamily="@font/inter_regular"
                         android:id="@+id/btnLihatProfil"
+                        android:fontFamily="@font/inter_regular"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="32dp"
                         android:layout_marginTop="15dp"
+                        android:paddingHorizontal="15dp"
                         android:background="@drawable/custom_border"
                         android:text="Lihat Profil"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="10dp"/>
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
 
@@ -79,7 +82,7 @@
             <LinearLayout
                 android:id="@+id/notify"
                 android:layout_width="175dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:layout_marginStart="-175dp"
                 android:layout_centerVertical="true"
@@ -87,9 +90,8 @@
 
                 <ImageView
                     android:id="@+id/notif"
-                    android:layout_marginBottom="-55dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:layout_gravity="bottom|end"
                     android:src="@drawable/branding" />
 
@@ -142,7 +144,7 @@
 
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_marginHorizontal="15dp"
                 android:src="@drawable/statistic" />
 
@@ -152,21 +154,24 @@
                 android:gravity="end">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:fontFamily="@font/inter_regular"
                     android:id="@+id/btnTambahSaldo"
+                    android:fontFamily="@font/inter_regular"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:backgroundTint="@color/primary_green"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingHorizontal="15dp"
+                    android:background="@drawable/custom_border"
                     android:text="Tambah Saldo"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
-                    android:background="@drawable/custom_border"/>
+                    android:textSize="12dp"/>
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/reser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/data_saldo"
@@ -178,7 +183,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="175dp"
                 android:layout_marginHorizontal="15dp"
                 android:src="@drawable/communication" />
 
@@ -188,7 +193,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/inter_regular"
-                android:text="Anda dapat melengkapi profil anda  dengan tombol dibawah ini"
+                android:text="Anda dapat melakukan reservasi dengan menekan tombol di bawah ini"
                 android:textAlignment="center"
                 android:textColor="@color/secondary"
                 android:textSize="12dp" />
@@ -196,15 +201,31 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnReservasi"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/custom_border"
-                android:backgroundTint="@color/primary_green"
                 android:fontFamily="@font/inter_regular"
+                android:paddingHorizontal="25dp"
                 android:text="Reservasi"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="10dp" />
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnTentangKami"
+            android:layout_below="@id/reser"
+            android:fontFamily="@font/inter_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tentang_kami"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:textAlignment="center"
+            android:textColor="@color/yellow"
+            android:textSize="15dp" />
 
 
     </RelativeLayout>

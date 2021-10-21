@@ -44,7 +44,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutTotalHargaBerhasil"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/InputAtmaSalon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -63,6 +63,8 @@
                         android:editable="false"
                         android:enabled="false"
                         android:text=""
+                        android:textSize="14dp"
+                        android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +78,9 @@
                     android:fontFamily="@font/inter_regular"
                     android:text="Bayar Sekarang"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textSize="14dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -94,7 +98,8 @@
                     android:text="Tambah Saldo"
                     android:textColor="#EDA70A"
                     android:textStyle="bold"
-                    app:textAllCaps="false" />
+                    app:textAllCaps="false"
+                    android:textSize="14dp"/>
             </LinearLayout>
 
         </LinearLayout>

@@ -10,4 +10,7 @@
     <string name="silver">Silver</string>
     <string name="merah">Merah</string>
     <string name="oranye">Oranye</string>
+    <string name="tentang_kami">
+        <u>Tentang Kami</u>.
+    </string>
 </resources>
