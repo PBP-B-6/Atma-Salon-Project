@@ -17,7 +17,7 @@
             android:layout_gravity="start"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -77,7 +77,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/notify"

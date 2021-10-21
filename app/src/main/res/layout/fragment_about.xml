@@ -14,24 +14,33 @@
             android:id="@+id/about_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
             android:fontFamily="@font/playfair_display_bold"
-            android:text="Tentang Kami"
+            android:text="@string/tentang_kami_new"
             android:textAlignment="center"
             android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/kelompok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about_title"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/kelompok_6"
+            android:textAlignment="center"
+            android:textColor="@color/yellow"
             android:textSize="20dp" />
 
         <!-- Pujayana -->
         <LinearLayout
             android:id="@+id/pujayana"
-            android:layout_below="@+id/about_title"
+            android:layout_below="@+id/kelompok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:orientation="horizontal"
-            android:layout_marginBottom="25dp"
-            >
+            android:layout_marginBottom="25dp">
 
             <ImageView
                 android:layout_width="100dp"
@@ -50,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Putu Gede Pujayana"
+                    android:text="@string/putu_gede_pujayana"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
@@ -59,7 +68,7 @@
                     android:fontFamily="@font/inter_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="190710088"
+                    android:text="@string/_190710088"
                     android:textAlignment="textStart"
                     android:textColor="@color/primary_green"
                     android:textSize="15dp" />
@@ -74,13 +83,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:orientation="horizontal"
-            android:layout_marginBottom="25dp"
-            >
+            android:layout_marginBottom="25dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/pujayana"
+                android:src="@drawable/yotam"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/custom_image"/>
 
@@ -94,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Yotam Niki Rahardja"
+                    android:text="@string/yotam_niki_rahardja"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
@@ -103,7 +111,7 @@
                     android:fontFamily="@font/inter_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="190710171"
+                    android:text="@string/_190710171"
                     android:textAlignment="textStart"
                     android:textColor="@color/primary_green"
                     android:textSize="15dp" />
@@ -118,13 +126,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:orientation="horizontal"
-            android:layout_marginBottom="25dp"
-            >
+            android:layout_marginBottom="25dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/pujayana"
+                android:src="@drawable/yohan"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/custom_image"/>
 
@@ -138,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Yohan Adi Wijaya"
+                    android:text="@string/yohan_hadi_wijaya"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
@@ -147,14 +154,12 @@
                     android:fontFamily="@font/inter_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="190710182"
+                    android:text="@string/_190710182"
                     android:textAlignment="textStart"
                     android:textColor="@color/primary_green"
                     android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
-
-
 
         <!-- Geolocation -->
 

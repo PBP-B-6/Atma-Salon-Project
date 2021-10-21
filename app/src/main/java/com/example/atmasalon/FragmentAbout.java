@@ -10,11 +10,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.atmasalon.databinding.FragmentTopupBinding;
+import android.widget.TextView;
+
+import com.example.atmasalon.databinding.FragmentAboutBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentAbout extends Fragment{
 
-    private FragmentTopupBinding binding;
+    private FragmentAboutBinding binding;
 
     public FragmentAbout() {
         // Required empty public constructor
@@ -31,5 +34,7 @@ public class FragmentAbout extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        TextView text = getActivity().findViewById(R.id.page_name);
+        text.setText("Tentang Kami");
     }
 }
