@@ -216,13 +216,13 @@
 
         <TextView
             android:id="@+id/btnTentangKami"
-            android:layout_below="@id/reser"
-            android:fontFamily="@font/inter_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tentang_kami"
+            android:layout_below="@id/reser"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/tentang_kami"
             android:textAlignment="center"
             android:textColor="@color/yellow"
             android:textSize="15dp" />

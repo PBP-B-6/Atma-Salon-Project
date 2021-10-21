@@ -81,11 +81,16 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
                     .replace(R.id.layout_fragment, new FragmentReservation2())
                     .commit();
         } else if(view.getId() == R.id.btnTentangKami){
-            this.getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.layout_fragment, new FragmentAbout())
-                    .commit();
+                Intent move = new Intent(this.getActivity(), AboutActivity.class);
+                startActivity(move);
+                getActivity().finish();
+
+                //Dengan Fragment tapi Map ga muncul karena Fragment itu masuk ke ScrollView
+//                this.getActivity()
+//                        .getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.layout_fragment, new FragmentAbout())
+//                        .commit();
         }
     }
 }
