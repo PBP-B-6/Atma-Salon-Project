@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_beranda"
-        android:title="Beranda"
+        android:title="@string/beranda"
         android:enabled="true"
         android:icon="@drawable/ic_dashboard"/>
 
     <item android:id="@+id/menu_riwayat"
-        android:title="Riwayat"
+        android:title="@string/riwayat"
         android:enabled="true"
         android:icon="@drawable/ic_riwayat"/>
 
     <item android:id="@+id/menu_reservasi"
-        android:title="Reservasi"
+        android:title="@string/reservasi"
         android:enabled="true"
         android:icon="@drawable/ic_reservasi"/>
 
     <item android:id="@+id/menu_profil"
-        android:title="Profil"
+        android:title="@string/profil"
         android:enabled="true"
         android:icon="@drawable/ic_profil"/>
 </menu>

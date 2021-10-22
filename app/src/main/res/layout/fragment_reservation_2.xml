@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Isi Formulir:"
+                android:text="@string/isi_formulir"
                 android:textColor="@color/black"
                 android:layout_marginBottom="15dp"/>
 
@@ -39,10 +39,10 @@
                     android:fontFamily="@font/inter_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Pilih salon terdekat"
+                    android:hint="@string/pilih_salon_terdekat"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textCursorDrawable="@drawable/custom_cursor"
                     android:textColor="@color/black"/>
 
@@ -63,10 +63,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nama Pemesan"
+                    android:hint="@string/nama_pemesan"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textCursorDrawable="@drawable/custom_cursor"
                     app:passwordToggleEnabled="true"/>
 
@@ -87,10 +87,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nomor Telepon Pemesan"
+                    android:hint="@string/nomor_telepon_pemesan"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textCursorDrawable="@drawable/custom_cursor"
                     app:passwordToggleEnabled="true"/>
 
@@ -99,7 +99,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Model Rambut:"
+                android:text="@string/model_rambut"
                 android:textColor="@color/black"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="15dp"/>
@@ -123,7 +123,7 @@
 
                     <RadioGroup
                         android:id="@+id/radioGroupModel"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                     <LinearLayout
@@ -148,7 +148,8 @@
                                     android:id="@+id/testing"
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/lurus" />
+                                    android:src="@drawable/lurus"
+                                    android:contentDescription="@string/image"/>
 
                                 <RadioButton
                                     android:id="@+id/radio_model_lurus"
@@ -178,7 +179,8 @@
                                     android:id="@+id/testing2"
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/curly" />
+                                    android:src="@drawable/curly"
+                                    android:contentDescription="@string/image"/>
                                 <RadioButton
                                     android:id="@+id/radio_model_keriting"
                                     android:layout_width="wrap_content"
@@ -205,7 +207,8 @@
                                     android:id="@+id/testing3"
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/mohawk" />
+                                    android:src="@drawable/mohawk"
+                                    android:contentDescription="@string/image"/>
                                 <RadioButton
                                     android:id="@+id/radio_model_mohawk"
                                     android:layout_width="wrap_content"
@@ -226,7 +229,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pilihan Warna:"
+                android:text="@string/pilihan_warna"
                 android:textColor="@color/black"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="15dp"/>
@@ -250,7 +253,7 @@
 
                     <RadioGroup
                         android:id="@+id/radioGroupWarna"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
@@ -275,7 +278,8 @@
                                         android:id="@+id/testing4"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/hitam" />
+                                        android:src="@drawable/hitam"
+                                        android:contentDescription="@string/image"/>
 
                                     <RadioButton
                                         android:id="@+id/radio_warna_hitam"
@@ -306,7 +310,8 @@
                                         android:id="@+id/testing25"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/cokelat" />
+                                        android:src="@drawable/cokelat"
+                                        android:contentDescription="@string/image"/>
                                     <RadioButton
                                         android:id="@+id/radio_warna_cokelat"
                                         android:layout_width="wrap_content"
@@ -335,7 +340,8 @@
                                         android:id="@+id/testing35"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/silver" />
+                                        android:src="@drawable/silver"
+                                        android:contentDescription="@string/image"/>
                                     <RadioButton
                                         android:id="@+id/radio_warna_silver"
                                         android:layout_width="wrap_content"
@@ -364,7 +370,8 @@
                                         android:id="@+id/testing36"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/merah" />
+                                        android:src="@drawable/merah"
+                                        android:contentDescription="@string/image"/>
                                     <RadioButton
                                         android:id="@+id/radio_warna_merah"
                                         android:layout_width="wrap_content"
@@ -393,7 +400,8 @@
                                         android:id="@+id/testing37"
                                         android:layout_width="150dp"
                                         android:layout_height="150dp"
-                                        android:src="@drawable/oranye" />
+                                        android:src="@drawable/oranye"
+                                        android:contentDescription="@string/image"/>
                                     <RadioButton
                                         android:id="@+id/radio_warna_oranye"
                                         android:layout_width="wrap_content"
@@ -420,10 +428,10 @@
                 android:id="@+id/btnBayarReservasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pembayaran"
+                android:text="@string/pembayaran"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:layout_marginBottom="33dp"
                 android:backgroundTint="@color/primary_green"
                 android:textColor="@color/white"

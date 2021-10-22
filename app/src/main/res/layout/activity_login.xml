@@ -22,16 +22,17 @@
             android:layout_width="213dp"
             android:layout_height="77dp"
             android:src="@drawable/logo"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/image"/>
 
         <TextView
             android:fontFamily="@font/playfair_display_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Form Masuk"
+            android:text="@string/form_masuk"
             android:textColor="#008C6E"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginBottom="26dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,9 +51,9 @@
                 android:fontFamily="@font/inter_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="text"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textCursorDrawable="@drawable/custom_cursor"
                 android:textColor="@color/black"
                 android:text="@={loginData.email}"
@@ -77,9 +78,9 @@
                 android:fontFamily="@font/inter_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Kata Sandi"
+                android:hint="@string/kata_sandi"
                 android:inputType="text"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textCursorDrawable="@drawable/custom_cursor"
                 android:textColor="@color/black"
                 android:text="@={loginData.password}"
@@ -93,9 +94,9 @@
             android:id="@+id/btnMasuk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Masuk"
+            android:text="@string/masuk"
             android:textAllCaps="false"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:layout_marginBottom="33dp"
             android:textColor="@color/white"
@@ -109,8 +110,8 @@
                 android:fontFamily="@font/inter_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Belum punya akun? "
-                android:textSize="14dp"
+                android:text="@string/belum_punya_akun"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
@@ -120,10 +121,10 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 app:textAllCaps="false"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textColor="@color/yellow"
                 android:letterSpacing="0"
-                android:text="Daftar"/>
+                android:text="@string/daftar"/>
 
         </LinearLayout>
 
