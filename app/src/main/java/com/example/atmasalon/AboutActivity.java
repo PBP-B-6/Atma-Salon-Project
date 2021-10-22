@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.example.atmasalon.databinding.ActivityAboutBinding;
 import com.example.atmasalon.databinding.ActivityContainerBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mapbox.android.core.permissions.PermissionsListener;
@@ -17,6 +20,7 @@ import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.location.LocationComponentOptions;
@@ -29,9 +33,9 @@ import com.mapbox.mapboxsdk.maps.Style;
 
 import java.util.List;
 
-public class AboutActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class AboutActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, View.OnClickListener {
 
-    private ActivityContainerBinding binding;
+    private ActivityAboutBinding binding;
     private PermissionsManager permissionsManager;
     private MapboxMap mapboxMap;
     private MapView mapView;
@@ -39,39 +43,18 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_container);
-        binding.bottomNavigation.setOnItemSelectedListener(this);
-
         Mapbox.getInstance(this, getString(R.string.APP_TOKEN));
 
-        setContentView(R.layout.activity_about);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
+        binding.btnKembali.setOnClickListener(this);
 
-        mapView = findViewById(R.id.mapView);
+
+        mapView = binding.mapView;
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.menu_beranda){
-            changeFragment(new FragmentDashboard());
-        }else if(item.getItemId() == R.id.menu_riwayat) {
-            changeFragment(new FragmentRiwayat());
-        }else if(item.getItemId() == R.id.menu_reservasi) {
-            changeFragment(new FragmentReservation2());
-        }else{
-            changeFragment(new FragmentProfil());
-        }
 
-        return true;
-    }
-
-    public void changeFragment(Fragment fragment){
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.layout_fragment, fragment)
-                .commit();
-    }
 
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap){
@@ -184,5 +167,15 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
     public void onLowMemory(){
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.btnKembali)
+        {
+            Intent move = new Intent(this, ContainerActivity.class);
+            startActivity(move);
+            finish();
+        }
     }
 }

@@ -77,7 +77,7 @@
         <ScrollView
             android:id="@+id/scrollViewPage"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:layout_below="@+id/HeaderLayout">
 
             <LinearLayout
@@ -244,21 +244,27 @@
         <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:layout_below="@id/scrollViewPage"
             mapbox:mapbox_cameraTargetLat="40.74581"
             mapbox:mapbox_cameraTargetLng="-73.99155"
             mapbox:mapbox_cameraZoom="11" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnKembali"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/navbar_menu"
-            app:labelVisibilityMode="labeled"
-            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-            android:background="@color/primary_green"/>
+            android:layout_below="@id/mapView"
+            android:layout_marginTop="125dp"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/custom_border"
+            android:backgroundTint="#B94343"
+            android:fontFamily="@font/inter_regular"
+            android:text="Kembali"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>
