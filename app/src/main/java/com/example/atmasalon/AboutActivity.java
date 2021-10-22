@@ -13,10 +13,15 @@ import android.widget.Toast;
 
 import com.example.atmasalon.databinding.ActivityAboutBinding;
 import com.example.atmasalon.databinding.ActivityContainerBinding;
+import com.google.android.gms.common.Feature;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -59,20 +64,25 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap){
         AboutActivity.this.mapboxMap = mapboxMap;
+
+        mapboxMap.addMarker(new MarkerOptions()
+                .position(new LatLng(-7.779467,110.416046))
+                .title("Atma Salon"));
+
         mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded(){
             @Override
             public void onStyleLoaded(@NonNull Style style) {
 
 
                 CameraPosition position = new CameraPosition.Builder()
-                        .target(new LatLng(6, 106))
-                        .zoom(20)
+                        .target(new LatLng(-7.779467,110.416046))
+                        .zoom(14)
                         .tilt(20)
                         .build();
 
                 mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 1000);
-
-                enableLocationComponent(style);
+                mapboxMap.getUiSettings().setAllGesturesEnabled(false);
+//                enableLocationComponent(style);
             }
         });
 
@@ -89,7 +99,7 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
                     LocationComponentActivationOptions.builder(this, loadedMapStyle).
                             locationComponentOptions(customLocaitioLocationComponentOptions).build());
 
-            locationComponent.setLocationComponentEnabled(true);
+            locationComponent.setLocationComponentEnabled(false);
 
             locationComponent.setCameraMode(CameraMode.TRACKING);
 
