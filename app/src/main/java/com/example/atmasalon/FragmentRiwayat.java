@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentRiwayatBinding;
@@ -20,7 +22,7 @@ import com.example.atmasalon.preferences.UserPreference;
 
 import java.util.List;
 
-public class FragmentRiwayat extends Fragment {
+public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
 
     private FragmentRiwayatBinding binding;
     private UserPreference userPreference;
@@ -50,12 +52,30 @@ public class FragmentRiwayat extends Fragment {
         userPreference = new UserPreference(getActivity());
         dataPelanggan = GetAll(userPreference.GetUserID());
 
+        binding.btnMulaiReservasi.setOnClickListener(this);
+
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Riwayat");
 
-        binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
-        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(dataPelanggan));
+        if( dataPelanggan.isEmpty() ){
+            binding.riwayatStatus.setVisibility(View.VISIBLE);
+            Toast.makeText(getActivity(), "Data Riwayat masih kosong!", Toast.LENGTH_SHORT).show();
+        } else {
+            binding.riwayatStatus.setVisibility(View.GONE);
+            binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
+            binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(dataPelanggan));
+        }
 
+    }
+
+    public void onClick(View view) {
+        if(view.getId() == R.id.btnMulaiReservasi) {
+            this.getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.layout_fragment, new FragmentReservation2())
+                    .commit();
+        }
     }
 
     private List<DataPelanggan> GetAll(int userId)

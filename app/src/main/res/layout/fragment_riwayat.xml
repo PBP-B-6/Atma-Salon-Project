@@ -10,6 +10,46 @@
         tools:context=".FragmentRiwayat"
         android:gravity="center">
 
+        <LinearLayout
+            android:id="@+id/riwayatStatus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="125dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="175dp"
+                android:layout_marginBottom="25dp"
+                android:src="@drawable/pembayaran" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular"
+                android:text="Data Riwayat masih kosong"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="5dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnMulaiReservasi"
+                android:fontFamily="@font/inter_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="15dp"
+                android:paddingHorizontal="15dp"
+                android:background="@drawable/custom_border"
+                android:text="Mulai Reservasi"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRiwayat"
             android:layout_width="match_parent"
