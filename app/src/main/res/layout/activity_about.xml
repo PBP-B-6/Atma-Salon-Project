@@ -22,7 +22,7 @@
                 android:id="@+id/app_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Atma Salon"
+                android:text="@string/atma_salon"
                 android:textColor="@color/yellow"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
                 android:id="@+id/slash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/"
+                android:text="@string/textV"
                 android:textColor="@color/primary_green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
                 android:id="@+id/page_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tentang Kami"
+                android:text="@string/tentang_kami"
                 android:textColor="@color/primary_green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
                     android:text="@string/tentang_kami_new"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="30dp" />
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/kelompok"
@@ -107,7 +107,7 @@
                     android:text="@string/kelompok_6"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
 
                 <!-- Pujayana -->
                 <LinearLayout
@@ -124,7 +124,8 @@
                         android:layout_height="100dp"
                         android:layout_marginRight="20dp"
                         android:background="@drawable/custom_image"
-                        android:src="@drawable/pujayana" />
+                        android:src="@drawable/pujayana"
+                        android:contentDescription="@string/image"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -139,7 +140,7 @@
                             android:text="@string/putu_gede_pujayana"
                             android:textAlignment="textStart"
                             android:textColor="@color/black"
-                            android:textSize="18dp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -148,7 +149,7 @@
                             android:text="@string/_190710088"
                             android:textAlignment="textStart"
                             android:textColor="@color/primary_green"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -167,7 +168,8 @@
                         android:layout_height="100dp"
                         android:layout_marginRight="20dp"
                         android:background="@drawable/custom_image"
-                        android:src="@drawable/yotam" />
+                        android:src="@drawable/yotam"
+                        android:contentDescription="@string/image"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -182,7 +184,7 @@
                             android:text="@string/yotam_niki_rahardja"
                             android:textAlignment="textStart"
                             android:textColor="@color/black"
-                            android:textSize="18dp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -191,7 +193,7 @@
                             android:text="@string/_190710171"
                             android:textAlignment="textStart"
                             android:textColor="@color/primary_green"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -210,7 +212,8 @@
                         android:layout_height="100dp"
                         android:layout_marginRight="20dp"
                         android:background="@drawable/custom_image"
-                        android:src="@drawable/yohan" />
+                        android:src="@drawable/yohan"
+                        android:contentDescription="@string/image"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -225,7 +228,7 @@
                             android:text="@string/yohan_hadi_wijaya"
                             android:textAlignment="textStart"
                             android:textColor="@color/black"
-                            android:textSize="18dp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -234,7 +237,7 @@
                             android:text="@string/_190710182"
                             android:textAlignment="textStart"
                             android:textColor="@color/primary_green"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -246,7 +249,7 @@
                     android:text="@string/temukan"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -257,7 +260,7 @@
                     android:text="@string/alamat"
                     android:textAlignment="center"
                     android:textColor="@color/primary_green"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:layout_marginBottom="20dp"/>
 
                 <!-- Geolocation -->
@@ -266,29 +269,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginBottom="20dp"
-                    android:layout_below="@id/scrollViewPage"
+                    android:layout_below="@id/alamatKami"
                     mapbox:mapbox_cameraTargetLat="40.74581"
                     mapbox:mapbox_cameraTargetLng="-73.99155"
                     mapbox:mapbox_cameraZoom="11" />
-            </LinearLayout>
-        </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnKembali"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/scrollViewPage"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/custom_border"
-            android:backgroundTint="#B94343"
-            android:fontFamily="@font/inter_regular"
-            android:text="Kembali"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnKembali"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mapView"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:background="@drawable/custom_border"
+                    android:backgroundTint="#B94343"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@string/kembali"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+        </ScrollView>
 
 
     </RelativeLayout>

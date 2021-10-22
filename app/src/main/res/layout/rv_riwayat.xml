@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:fontFamily="@font/playfair_display_bold"
-                android:text="Reservasi"
+                android:text="@string/reservasi"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="@color/black"
@@ -49,7 +49,7 @@
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
                     android:fontFamily="@font/inter_regular"
-                    android:text="Salon"
+                    android:text="@string/salon"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
@@ -64,12 +64,12 @@
                     android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:text="@{data.lokasiSalon}"
-                    android:hint="Lokasi Salon"/>
+                    android:hint="@string/lokasi_salon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nama"
+                    android:text="@string/nama"
                     android:fontFamily="@font/inter_regular"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
@@ -88,13 +88,13 @@
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
                     android:text="@{data.namaPemesan}"
-                    android:hint="Nama"/>
+                    android:hint="@string/nama"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_regular"
-                    android:text="No. Telepon"
+                    android:text="@string/no_telepon"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
@@ -112,12 +112,12 @@
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
                     android:text="@{data.noTelp}"
-                    android:hint="No. Telepon"/>
+                    android:hint="@string/no_telepon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Model"
+                    android:text="@string/model"
                     android:layout_rowWeight="1"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
@@ -136,14 +136,14 @@
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="10dp"
                     android:text="@{data.modelRambut}"
-                    android:hint="Model"/>
+                    android:hint="@string/model"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
-                    android:text="Warna"
+                    android:text="@string/warna"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginBottom="2dp"
@@ -160,13 +160,13 @@
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
                     android:text="@{data.warnaRambut}"
-                    android:hint="Warna"/>
+                    android:hint="@string/warna"/>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status"
+                    android:text="@string/status"
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
                     android:layout_rowWeight="1"
@@ -185,7 +185,7 @@
                     android:fontFamily="@font/inter_regular"
                     android:textColor="@color/black"
                     android:text="@{data.statusPembayaran}"
-                    android:hint="Harga"/>
+                    android:hint="@string/status"/>
 
             </GridLayout>
         </LinearLayout>

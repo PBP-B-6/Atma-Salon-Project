@@ -9,7 +9,6 @@
         tools:context=".FragmentDashboard"
         android:padding="20dp">
 
-        <!-- TODO: Update blank fragment layout -->
         <LinearLayout
             android:id="@+id/data_profil"
             android:layout_width="match_parent"
@@ -35,10 +34,10 @@
                         android:fontFamily="@font/playfair_display_bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Selamat datang,"
+                        android:text="@string/selamat_datang"
                         android:textAlignment="textStart"
                         android:textColor="@color/black"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:fontFamily="@font/playfair_display_bold"
@@ -48,18 +47,18 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="Wendy Winata"
+                        android:text="@string/wendy_winata"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Anda dapat melengkapi profil anda  dengan tombol di bawah ini"
+                        android:text="@string/anda_dapat_melengkapi_profil_anda_dengan_tombol_di_bawah_ini"
                         android:textAlignment="textStart"
                         android:textColor="@color/secondary"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnLihatProfil"
@@ -69,11 +68,11 @@
                         android:layout_marginTop="15dp"
                         android:paddingHorizontal="15dp"
                         android:background="@drawable/custom_border"
-                        android:text="Lihat Profil"
+                        android:text="@string/lihat_profil"
                         android:textAllCaps="false"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="12dp"/>
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
 
@@ -113,7 +112,8 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/updown" />
+                android:src="@drawable/updown"
+                android:contentDescription="@string/image"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -125,10 +125,10 @@
                     android:fontFamily="@font/inter_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Saldo anda,"
+                    android:text="@string/saldo_anda"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <TextView
                     android:fontFamily="@font/inter_regular"
@@ -136,9 +136,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Rp. 152.000,00"
+                    android:text="@string/rp_152_000_00"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -146,7 +146,8 @@
                 android:layout_width="50dp"
                 android:layout_height="fill_parent"
                 android:layout_marginHorizontal="15dp"
-                android:src="@drawable/statistic" />
+                android:src="@drawable/statistic"
+                android:contentDescription="@string/image"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,11 +162,11 @@
                     android:layout_marginTop="15dp"
                     android:paddingHorizontal="15dp"
                     android:background="@drawable/custom_border"
-                    android:text="Tambah Saldo"
+                    android:text="@string/tambah_saldo"
                     android:textAllCaps="false"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="12dp"/>
+                    android:textSize="12sp"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -193,10 +194,10 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/inter_regular"
-                android:text="Anda dapat melakukan reservasi dengan menekan tombol di bawah ini"
+                android:text="@string/anda_dapat_melakukan_reservasi_dengan_menekan_tombol_di_bawah_ini"
                 android:textAlignment="center"
                 android:textColor="@color/secondary"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnReservasi"
@@ -206,10 +207,10 @@
                 android:background="@drawable/custom_border"
                 android:fontFamily="@font/inter_regular"
                 android:paddingHorizontal="25dp"
-                android:text="Reservasi"
+                android:text="@string/reservasi"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -225,7 +226,7 @@
             android:text="@string/tentang_kami"
             android:textAlignment="center"
             android:textColor="@color/yellow"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
 
     </RelativeLayout>

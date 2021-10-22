@@ -30,16 +30,17 @@
                     android:layout_width="213dp"
                     android:layout_height="77dp"
                     android:src="@drawable/logo"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:contentDescription="@string/image"/>
 
                 <TextView
                     android:fontFamily="@font/playfair_display_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Form Daftar"
+                    android:text="@string/form_daftar"
                     android:textColor="#008C6E"
                     android:textStyle="bold"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_marginBottom="26dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -58,9 +59,9 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nama Lengkap"
+                        android:hint="@string/nama_lengkap"
                         android:inputType="text"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"
                         android:text="@={user.nama}"
@@ -84,8 +85,8 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:textSize="14dp"
+                        android:hint="@string/email"
+                        android:textSize="14sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:inputType="text"
                         android:textColor="@color/black"
@@ -111,8 +112,8 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Kata Sandi"
-                        android:textSize="14dp"
+                        android:hint="@string/kata_sandi"
+                        android:textSize="14sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"
                         android:text="@={user.password}"
@@ -137,8 +138,8 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Ulangi Kata Sandi"
-                        android:textSize="14dp"
+                        android:hint="@string/ulangi_kata_sandi"
+                        android:textSize="14sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColor="@color/black"
                         android:inputType="textPassword"/>
@@ -159,8 +160,8 @@
                         android:id="@+id/radioPria"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pria"
-                        android:textSize="14dp"
+                        android:text="@string/pria"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_marginEnd="30dp"/>
                     <RadioButton
@@ -168,8 +169,8 @@
                         android:id="@+id/radioWanita"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wanita"
-                        android:textSize="14dp"
+                        android:text="@string/wanita"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
                 </RadioGroup>
 
@@ -190,8 +191,8 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="No. Telepon"
-                        android:textSize="14dp"
+                        android:hint="@string/no_telepon"
+                        android:textSize="14sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:text="@={user.noTelp}"
                         android:inputType="text"
@@ -204,9 +205,9 @@
                     android:id="@+id/btnDaftar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Daftar"
+                    android:text="@string/daftar"
                     android:textAllCaps="false"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="33dp"
                     android:backgroundTint="@color/primary_green"
@@ -221,8 +222,8 @@
                         android:fontFamily="@font/inter_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sudah punya akun? "
-                        android:textSize="14dp"
+                        android:text="@string/sudah_punya_akun"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
@@ -232,10 +233,10 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         app:textAllCaps="false"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textColor="@color/yellow"
                         android:letterSpacing="0"
-                        android:text="Masuk"/>
+                        android:text="@string/masuk"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

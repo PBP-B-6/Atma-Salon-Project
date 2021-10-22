@@ -11,7 +11,6 @@
         android:gravity="center"
         android:padding="20dp">
 
-        <!-- TODO: Update blank fragment layout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +23,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:src="@drawable/pembayaran_gagal" />
+                android:src="@drawable/pembayaran_gagal"
+                android:contentDescription="@string/image"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,10 +37,10 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/inter_regular"
-                    android:text="Total Pembayaran"
+                    android:text="@string/total_pembayaran"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputLayoutTotalHargaGagal"
@@ -57,15 +57,14 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
                         android:enabled="false"
                         android:fontFamily="@font/inter_regular"
-                        android:hint="Total Harga"
+                        android:hint="@string/total_harga"
                         android:inputType="text"
                         android:text=""
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/custom_cursor"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,10 +75,10 @@
                     android:background="@drawable/custom_border"
                     android:backgroundTint="@color/primary_green"
                     android:fontFamily="@font/inter_regular"
-                    android:text="Saldo Tidak Cukup"
+                    android:text="@string/saldo_tidak_cukup"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -95,10 +94,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_regular"
                     android:letterSpacing="0"
-                    android:text="Tambah Saldo"
+                    android:text="@string/tambah_saldo"
                     android:textColor="#EDA70A"
                     android:textStyle="bold"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     app:textAllCaps="false" />
             </LinearLayout>
 
