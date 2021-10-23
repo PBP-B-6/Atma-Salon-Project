@@ -113,6 +113,7 @@
                 android:text="@string/belum_punya_akun"
                 android:textSize="14sp"
                 android:textColor="@color/black"
+                android:layout_marginEnd="5dp"
                 android:textStyle="bold"/>
             <TextView
                 android:fontFamily="@font/inter_regular"
