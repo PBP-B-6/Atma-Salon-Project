@@ -16,6 +16,7 @@ public class UserPreference {
     public static final String KEY_PASSWORD = "Password";
     public static final String KEY_NAME = "Name";
     public static final String KEY_ID = "0";
+    public static final String KEY_URLGAMBAR = "URL";
 
     public UserPreference(Context C)
     {
@@ -24,13 +25,15 @@ public class UserPreference {
         editor = sharedPreference.edit();
     }
 
-    public void SetLogin(UserLogin User, String nama, int ID)
+    public void SetLogin(UserLogin User, String nama, int ID, String url)
     {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_EMAIL, User.getEmail());
         editor.putString(KEY_PASSWORD, User.getPassword());
         editor.putString(KEY_NAME, nama);
         editor.putInt(KEY_ID, ID);
+        //TODO: bawah diunhide kalo sudah siap backend
+//        editor.putString(KEY_URLGAMBAR, url);
         editor.commit();
     }
 
@@ -56,6 +59,17 @@ public class UserPreference {
     public boolean CheckLogin()
     {
         return sharedPreference.getBoolean(IS_LOGIN, false);
+    }
+
+    public void SetURLProfilePic(String url)
+    {
+        editor.putString(KEY_URLGAMBAR, url);
+        editor.commit();
+    }
+
+    public String GetURLProfilePic()
+    {
+        return sharedPreference.getString(KEY_URLGAMBAR, null);
     }
 
     public void Logout()

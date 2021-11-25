@@ -45,7 +45,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(CheckLoginStatus(email, pass))
                 {
                     int id = GetUserId(email, pass);
-                    userPref.SetLogin(loginData, GetName(email, pass), id);
+                    //TODO: URL dikasi url orang yg login sekarang
+                    userPref.SetLogin(loginData, GetName(email, pass), id, "");
                     CheckLogin();
                 }
                 else
