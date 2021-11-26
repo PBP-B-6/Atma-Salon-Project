@@ -27,9 +27,11 @@ public class User extends BaseObservable {
     @ColumnInfo(name = "password")
     private String password;
 
-    @SerializedName("jenisKelamin")
     @ColumnInfo(name = "jenisKelamin")
-    private String jenisKelamin;
+    private String jenisKelamin="";
+
+    @SerializedName("jenisKelamin")
+    private boolean kelamin;
 
     @SerializedName("noTelpUser")
     @ColumnInfo(name = "noTelp")
@@ -37,13 +39,13 @@ public class User extends BaseObservable {
 
     @SerializedName("saldo")
     @ColumnInfo(name = "saldo")
-    private double saldo;
+    private double saldo=0;
 
     @SerializedName("urlGambar")
-    private String urlGambar;
+    private String urlGambar="";
 
     @SerializedName("status")
-    private boolean status;
+    private boolean status=false;
 
     public User(){}
 
@@ -57,15 +59,23 @@ public class User extends BaseObservable {
         this.saldo = saldo;
     }
 
-    public User(String nama, String email, String password, String jenisKelamin, String noTelp, double saldo, String urlGambar, boolean status) {
+    public User(String nama, String email, String password, boolean kelamin, String noTelp, double saldo, String urlGambar, boolean status) {
         this.nama = nama;
         this.email = email;
         this.password = password;
-        this.jenisKelamin = jenisKelamin;
+        this.kelamin = kelamin;
         this.noTelp = noTelp;
         this.saldo = saldo;
         this.urlGambar = urlGambar;
         this.status = status;
+    }
+
+    public User(String nama, String email, String password, boolean kelamin, String noTelp) {
+        this.nama = nama;
+        this.email = email;
+        this.password = password;
+        this.kelamin = kelamin;
+        this.noTelp = noTelp;
     }
 
     public int getId() {
@@ -166,6 +176,14 @@ public class User extends BaseObservable {
     @Bindable
     public boolean isStatus() {
         return status;
+    }
+
+    public boolean isKelamin() {
+        return kelamin;
+    }
+
+    public void setKelamin(boolean kelamin) {
+        this.kelamin = kelamin;
     }
 
     public void setStatus(boolean status) {
