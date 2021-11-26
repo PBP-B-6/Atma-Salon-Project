@@ -6,21 +6,21 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.atmasalon.entity.DataPelanggan;
+import com.example.atmasalon.entity.Pelanggan;
 
 import java.util.List;
 
 @Dao
 public interface DataPelangganDao {
     @Query("SELECT * FROM dataPelanggan WHERE userid = :userId")
-    List<DataPelanggan> GetAll(int userId);
+    List<Pelanggan> GetAll(int userId);
 
     @Insert
-    void InsertDataPelanggan(DataPelanggan data);
+    void InsertDataPelanggan(Pelanggan data);
 
     @Update
-    void UpdateDataPelanggan(DataPelanggan data);
+    void UpdateDataPelanggan(Pelanggan data);
 
     @Delete
-    void DeleteDataPelanggan(DataPelanggan data);
+    void DeleteDataPelanggan(Pelanggan data);
 }

@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import android.app.Notification;
 import android.os.AsyncTask;
@@ -17,9 +17,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.atmasalon.R;
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentPembayaranBinding;
-import com.example.atmasalon.entity.DataPelanggan;
+import com.example.atmasalon.entity.Pelanggan;
 import com.example.atmasalon.entity.DataReservasi;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.ReservationPreference;
@@ -87,7 +88,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
             //Insert Data
             DataReservasi reservasi = reservationPreference.GetAllData();
             namaPemesan = reservasi.getNamaPemesan();
-            DataPelanggan data = new DataPelanggan(userPreference.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(),
+            Pelanggan data = new Pelanggan(userPreference.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(),
                     reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), "Lunas");
             AddDataPelanggan(data);
 
@@ -120,7 +121,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPreference.GetUserID());
     }
 
-    private void AddDataPelanggan(DataPelanggan data)
+    private void AddDataPelanggan(Pelanggan data)
     {
 
         class AddingUser extends AsyncTask<Void, Void, Void>
@@ -163,5 +164,11 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
                 .build();
 
         notificationManager.notify(2, notification);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

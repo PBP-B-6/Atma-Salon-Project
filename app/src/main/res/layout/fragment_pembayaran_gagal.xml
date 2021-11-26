@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FragmentPembayaranGagal"
+        tools:context=".fragments.FragmentPembayaranGagal"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:gravity="center"
         android:padding="20dp">
