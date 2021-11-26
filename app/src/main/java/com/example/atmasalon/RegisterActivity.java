@@ -20,7 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.atmasalon.api.UserApi;
-import com.example.atmasalon.database.DatabaseUser;
+
 import com.example.atmasalon.databinding.ActivityRegisterBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserResponse;
@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         queue = Volley.newRequestQueue(this.getApplicationContext());
 
         user = new User();
-        binding.setUser(user);
+        binding.setUser(user);sad
 
         binding.btnDaftar.setOnClickListener(this);
         binding.btnLinkMasuk.setOnClickListener(this);
