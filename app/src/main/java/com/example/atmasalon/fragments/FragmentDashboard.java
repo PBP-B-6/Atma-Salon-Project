@@ -21,6 +21,7 @@ import com.example.atmasalon.preferences.UserPreference;
 
 public class FragmentDashboard extends Fragment implements View.OnClickListener {
 
+    //TODO: nanti GetUser itu dari userPreferencenya
     private FragmentDashboardBinding binding;
     private UserPreference userPref;
     private User userNow;
@@ -41,7 +42,9 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
-        userNow = GetUser();
+
+        //TODO: diisi userPref
+//        userNow = GetUser();
         binding.dashboardProfileName.setText(userNow.getNama());
         double saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";
@@ -53,11 +56,6 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Dashboard");
-    }
-
-    private User GetUser()
-    {
-        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPref.GetUserID());
     }
 
     @Override
@@ -84,13 +82,6 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
                 Intent move = new Intent(this.getActivity(), AboutActivity.class);
                 startActivity(move);
                 getActivity().finish();
-
-                //Dengan Fragment tapi Map ga muncul karena Fragment itu masuk ke ScrollView
-//                this.getActivity()
-//                        .getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.layout_fragment, new FragmentAbout())
-//                        .commit();
         }
     }
 

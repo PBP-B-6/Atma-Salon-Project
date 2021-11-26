@@ -47,7 +47,8 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
         userPref = new UserPreference(this.getActivity());
         bottomNav = getActivity().findViewById(R.id.bottom_navigation);
         binding.btnTopupSaldo.setOnClickListener(this);
-        userToUpdate = GetUser();
+        //TODO: UserToUpdate
+//        userToUpdate = GetUser();
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Tambah Saldo");
     }
@@ -61,7 +62,8 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
                 //Update Saldo
                 double saldoBaru = userToUpdate.getSaldo() + Double.parseDouble(binding.inputLayoutTambahSaldo.getEditText().getText().toString());
                 userToUpdate.setSaldo(saldoBaru);
-                UpdateUserSaldo(userToUpdate);
+                //TODO: UpdateUser
+//                UpdateUserSaldo(userToUpdate);
             }
         }
     }
@@ -88,36 +90,6 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
             return false;
         }
         return true;
-    }
-
-    private User GetUser()
-    {
-        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPref.GetUserID());
-    }
-
-    private void UpdateUserSaldo(User user) {
-        class UpdatingTodo extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                DatabaseUser.GetInstance(getActivity()).GetDatabase().userDao().UpdateUser(user);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void unused) {
-                super.onPostExecute(unused);
-                Toast.makeText(getActivity(), "Tambah Saldo Berhasil!", Toast.LENGTH_SHORT).show();
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.layout_fragment, new FragmentDashboard())
-                        .commit();
-
-                bottomNav.setSelectedItemId(R.id.menu_beranda);
-            }
-        }
-        UpdatingTodo up = new UpdatingTodo();
-        up.execute();
     }
 
     @Override

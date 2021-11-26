@@ -71,22 +71,23 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
                 reservationPreference.SetFilled();
                 reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
 
-                if(GetUser().getSaldo() >= totalHarga)
-                {
-                    this.getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.layout_fragment, new FragmentPembayaran())
-                        .commit();
-                }
-                else
-                {
-                    this.getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.layout_fragment, new FragmentPembayaranGagal())
-                        .commit();
-                }
+                //TODO: Uncomment, disesuailkan
+//                if(GetUser().getSaldo() >= totalHarga)
+//                {
+//                    this.getActivity()
+//                        .getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.layout_fragment, new FragmentPembayaran())
+//                        .commit();
+//                }
+//                else
+//                {
+//                    this.getActivity()
+//                        .getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.layout_fragment, new FragmentPembayaranGagal())
+//                        .commit();
+//                }
 
             }
             else
@@ -317,8 +318,4 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         }
     }
 
-    private User GetUser()
-    {
-        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPreference.GetUserID());
-    }
 }

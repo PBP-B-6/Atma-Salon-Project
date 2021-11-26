@@ -7,9 +7,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         queue = Volley.newRequestQueue(this.getApplicationContext());
 
         user = new User();
-        binding.setUser(user);sad
+        binding.setUser(user);
 
         binding.btnDaftar.setOnClickListener(this);
         binding.btnLinkMasuk.setOnClickListener(this);
@@ -64,7 +62,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 data.setUrlGambar("");
                 data.setStatus(false);
 
-//                AddUser(data);
                 //TODO: diubah yang volley, set URL jadi "", isVerified e 0
                 CreateUser();
 
@@ -147,33 +144,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void AddUser(User user)
-    {
-
-        class AddingUser extends AsyncTask<Void, Void, Void>
-        {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().InsertUser(user);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void unused) {
-                super.onPostExecute(unused);
-                Toast.makeText(RegisterActivity.this, "Berhasil menambah data", Toast.LENGTH_SHORT).show();
-            }
-        }
-        AddingUser Add = new AddingUser();
-        Add.execute();
-    }
-
     private void CreateUser() {
         //TODO: Mau ada loading nda?
 //        setLoading(true);
         User data = binding.getUser();
 
-        User user = new User(data.getNama(), data.getEmail(), data.getPassword(), GetKelamin(), data.getNoTelp());
+        User user = new User(data.getNama(), data.getEmail(), data.getPassword(), GetKelamin(), data.getNoTelp(), 0, "", false);
 
         final StringRequest stringRequest = new StringRequest(POST, UserApi.ADD_URL,
                 new Response.Listener<String>() {
