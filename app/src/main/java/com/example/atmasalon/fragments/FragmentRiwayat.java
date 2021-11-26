@@ -50,7 +50,9 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
         super.onViewCreated(view, savedInstanceState);
 
         userPreference = new UserPreference(getActivity());
-        pelanggan = GetAll(userPreference.GetUserID());
+
+        //TODO: GetAll Data diperbaiki
+//        pelanggan = GetAll(userPreference.GetUserID());
 
         binding.btnMulaiReservasi.setOnClickListener(this);
 
@@ -76,11 +78,6 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                     .replace(R.id.layout_fragment, new FragmentReservation2())
                     .commit();
         }
-    }
-
-    private List<Pelanggan> GetAll(int userId)
-    {
-        return DatabaseUser.GetInstance(getContext()).GetDatabase().dataPelangganDao().GetAll(userId);
     }
 
     @Override

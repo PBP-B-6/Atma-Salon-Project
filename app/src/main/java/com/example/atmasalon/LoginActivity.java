@@ -68,18 +68,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 //TODO: Panggil Login() buat cek ke API
                 Login(new UserLogin(email, pass));
 
-                if(CheckLoginStatus(email, pass))
-                {
-                    //TODO: kalo backend dah jalan, ini nanti dihapus jaa, jadi tinggal panggil Login tok
-                    int id = GetUserId(email, pass);
-                    //TODO: URL dikasi url orang yg login sekarang
-                    userPref.SetLogin(loginData, GetName(email, pass), id, "");
-                    CheckLogin();
-                }
-                else
-                {
-                    Toast.makeText(this, "Email / Sandi salah!", Toast.LENGTH_SHORT).show();
-                }
+                //TODO: Cek login ini
+//                if(CheckLoginStatus(email, pass))
+//                {
+//                    //TODO: kalo backend dah jalan, ini nanti dihapus jaa, jadi tinggal panggil Login tok
+//                    int id = GetUserId(email, pass);
+//                    //TODO: URL dikasi url orang yg login sekarang
+//                    userPref.SetLogin(loginData, GetName(email, pass), id, "");
+//                    CheckLogin();
+//                }
+//                else
+//                {
+//                    Toast.makeText(this, "Email / Sandi salah!", Toast.LENGTH_SHORT).show();
+//                }
             }
             else
             {
@@ -116,22 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    //TODO: modifikasi 3 fungsi dibawah ini, jadi ambil data dari database lewat API, kalo merasa jadi tidak butuh
-    //hapus aja
-    private boolean CheckLoginStatus(String email, String pass)
-    {
-        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().CheckLogin(email, pass);
-    }
-
-    private String GetName(String email, String pass)
-    {
-        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserName(email, pass);
-    }
-
-    private int GetUserId(String email, String pass)
-    {
-        return DatabaseUser.GetInstance(getApplicationContext()).GetDatabase().userDao().GetUserId(email, pass);
-    }
+    //TODO: Fungsi2Login?
 
     private void Login(UserLogin user) {
         //TODO: Mau ada loading nda?
