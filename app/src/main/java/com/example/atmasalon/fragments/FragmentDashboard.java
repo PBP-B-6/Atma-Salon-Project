@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.atmasalon.AboutActivity;
 import com.example.atmasalon.R;
-import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentDashboardBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.UserPreference;

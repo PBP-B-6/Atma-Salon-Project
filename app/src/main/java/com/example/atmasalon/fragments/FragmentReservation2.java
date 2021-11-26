@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.atmasalon.R;
-import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentReservation2Binding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.ReservationPreference;
