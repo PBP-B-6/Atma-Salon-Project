@@ -11,12 +11,12 @@ public class DataReservasi extends BaseObservable {
     private String noTelp;
     private String modelRambut;
     private String warnaRambut;
-    private double totalHarga;
+    private float totalHarga;
 
     public DataReservasi(){}
 
 
-    public DataReservasi(String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, double totalHarga) {
+    public DataReservasi(String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga) {
         this.lokasiSalon = lokasiSalon;
         this.namaPemesan = namaPemesan;
         this.noTelp = noTelp;
@@ -71,11 +71,11 @@ public class DataReservasi extends BaseObservable {
     }
 
     @Bindable
-    public double getTotalHarga() {
+    public float getTotalHarga() {
         return totalHarga;
     }
 
-    public void setTotalHarga(double totalHarga) {
+    public void setTotalHarga(float totalHarga) {
         this.totalHarga = totalHarga;
     }
 }

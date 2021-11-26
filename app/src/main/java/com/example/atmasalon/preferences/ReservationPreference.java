@@ -52,7 +52,7 @@ public class ReservationPreference {
         model = sharedPreference.getString(KEY_MODELRAMBUT, "");
         warna = sharedPreference.getString(KEY_WARNARAMBUT, "");
 
-        double total = Double.parseDouble(sharedPreference.getString(KEY_TOTALHARGA, "0"));
+        float total = Float.parseFloat(sharedPreference.getString(KEY_TOTALHARGA, "0"));
         return new DataReservasi(lokasi, nama, telp, model, warna, total);
     }
 
