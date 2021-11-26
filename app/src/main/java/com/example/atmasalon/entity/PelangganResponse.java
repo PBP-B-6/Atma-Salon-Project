@@ -6,10 +6,10 @@ import java.util.List;
 
 public class PelangganResponse
 {
+    @SerializedName("message")
     private String message;
 
-    //TODO: disesuaiin juga
-    @SerializedName("produk")
+    @SerializedName("data")
     private List<Pelanggan> pelangganList;
 
     public String getMessage() {

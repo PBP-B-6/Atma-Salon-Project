@@ -7,33 +7,47 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.atmasalon.BR;
+import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = "user")
 public class User extends BaseObservable {
-    //TODO: Sesuaiin sama database baru
+    //TODO: Sesuaiin sama database baru, database internal hapus2 ja
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @SerializedName("namaUser")
     @ColumnInfo(name = "nama")
     private String nama;
 
+    @SerializedName("email")
     @ColumnInfo(name = "email")
     private String email;
 
+    @SerializedName("password")
     @ColumnInfo(name = "password")
     private String password;
 
+    @SerializedName("jenisKelamin")
     @ColumnInfo(name = "jenisKelamin")
     private String jenisKelamin;
 
+    @SerializedName("noTelpUser")
     @ColumnInfo(name = "noTelp")
     private String noTelp;
 
+    @SerializedName("saldo")
     @ColumnInfo(name = "saldo")
     private double saldo;
 
+    @SerializedName("urlGambar")
+    private String urlGambar;
+
+    @SerializedName("status")
+    private boolean status;
+
     public User(){}
 
+    //TODO: kalo dah full backend bisa, ini hapus aja, trs yang baru, kalo tidak perlu, kurangi parameter
     public User(String nama, String email, String password, String jenisKelamin, String noTelp, double saldo) {
         this.nama = nama;
         this.email = email;
@@ -41,6 +55,17 @@ public class User extends BaseObservable {
         this.jenisKelamin = jenisKelamin;
         this.noTelp = noTelp;
         this.saldo = saldo;
+    }
+
+    public User(String nama, String email, String password, String jenisKelamin, String noTelp, double saldo, String urlGambar, boolean status) {
+        this.nama = nama;
+        this.email = email;
+        this.password = password;
+        this.jenisKelamin = jenisKelamin;
+        this.noTelp = noTelp;
+        this.saldo = saldo;
+        this.urlGambar = urlGambar;
+        this.status = status;
     }
 
     public int getId() {
@@ -127,5 +152,23 @@ public class User extends BaseObservable {
             this.saldo = Double.parseDouble(saldo);
         }
         notifyPropertyChanged(BR.saldo);
+    }
+
+    @Bindable
+    public String getUrlGambar() {
+        return urlGambar;
+    }
+
+    public void setUrlGambar(String urlGambar) {
+        this.urlGambar = urlGambar;
+    }
+
+    @Bindable
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

@@ -6,10 +6,10 @@ import java.util.List;
 
 public class UserResponse
 {
+    @SerializedName("message")
     private String message;
 
-    //TODO: Dibenerin dan disesuaiin namanya sama api
-    @SerializedName("produk")
+    @SerializedName("data")
     private List<User> userList;
 
     public String getMessage() {
