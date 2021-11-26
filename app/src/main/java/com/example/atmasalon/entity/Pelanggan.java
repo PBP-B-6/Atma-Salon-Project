@@ -10,6 +10,7 @@ import com.example.atmasalon.BR;
 
 @Entity(tableName = "dataPelanggan")
 public class Pelanggan extends BaseObservable {
+    //TODO: Sesuaiin sama database baru
     @PrimaryKey(autoGenerate = true)
     private int id;
 
