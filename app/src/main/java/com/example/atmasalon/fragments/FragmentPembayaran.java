@@ -87,8 +87,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
             //Insert Data
             DataReservasi reservasi = reservationPreference.GetAllData();
             namaPemesan = reservasi.getNamaPemesan();
-            Pelanggan data = new Pelanggan(userPreference.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(),
-                    reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), "Lunas");
+            Pelanggan data = new Pelanggan(reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), reservasi.getTotalHarga(), "Lunas");
             //TODO: AddData
 //            AddDataPelanggan(data);
 
