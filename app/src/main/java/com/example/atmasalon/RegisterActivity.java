@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -59,10 +60,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             {
                 User data = binding.getUser();
                 data.setSaldo(0);
-                data.setJenisKelamin(GetKelamin());
-                AddUser(data);
+//                data.setJenisKelamin(GetKelamin());
+                data.setUrlGambar("");
+                data.setStatus(false);
+
+//                AddUser(data);
                 //TODO: diubah yang volley, set URL jadi "", isVerified e 0
-//                CreateUser(data);
+                CreateUser();
 
                 Intent move = new Intent(this, LoginActivity.class);
                 startActivity(move);
@@ -130,18 +134,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
-    private String GetKelamin()
+    private boolean GetKelamin()
     {
-        String jawaban;
         if(binding.radioGroupKelamin.getCheckedRadioButtonId() == binding.radioPria.getId())
         {
-            jawaban = "Pria";
+            //pria
+            return true;
         }
         else
         {
-            jawaban = "Wanita";
+            return false;
         }
-        return jawaban;
     }
 
     private void AddUser(User user)
@@ -165,9 +168,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Add.execute();
     }
 
-    private void CreateUser(User user) {
+    private void CreateUser() {
         //TODO: Mau ada loading nda?
 //        setLoading(true);
+        User data = binding.getUser();
+
+        User user = new User(data.getNama(), data.getEmail(), data.getPassword(), GetKelamin(), data.getNoTelp());
 
         final StringRequest stringRequest = new StringRequest(POST, UserApi.ADD_URL,
                 new Response.Listener<String>() {
@@ -197,11 +203,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                     Toast.makeText(RegisterActivity.this, errors.getString("message"),
                             Toast.LENGTH_SHORT).show();
+
                 } catch (Exception e) {
                     Toast.makeText(RegisterActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
-            }
+
+                }
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -220,6 +228,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public byte[] getBody() throws AuthFailureError {
                 Gson gson = new Gson();
                 String requestBody = gson.toJson(user);
+
 
                 return requestBody.getBytes(StandardCharsets.UTF_8);
             }

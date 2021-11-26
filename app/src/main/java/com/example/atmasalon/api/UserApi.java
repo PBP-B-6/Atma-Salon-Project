@@ -3,7 +3,7 @@ package com.example.atmasalon.api;
 public class UserApi
 {
     //TODO: isi URL dengan api asli
-    public static final String BASE_URL = "";
+    public static final String BASE_URL = "http://192.168.1.5:8000/";
     public static final String API_URL = BASE_URL + "api/";
 
     //TODO: ini diganti2 juga, diganti berdasarkan route
