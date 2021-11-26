@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         queue = Volley.newRequestQueue(this.getApplicationContext());
 
         user = new User();
-        binding.setUser(user);
+        binding.setUser(user);sad
 
         binding.btnDaftar.setOnClickListener(this);
         binding.btnLinkMasuk.setOnClickListener(this);
