@@ -7,7 +7,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FragmentReservation2"
+        tools:context=".fragments.FragmentReservation2"
         android:padding="20dp">
 
         <LinearLayout

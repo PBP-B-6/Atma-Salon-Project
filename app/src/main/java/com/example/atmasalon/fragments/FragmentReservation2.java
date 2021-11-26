@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.atmasalon.R;
 import com.example.atmasalon.database.DatabaseUser;
 import com.example.atmasalon.databinding.FragmentReservation2Binding;
 import com.example.atmasalon.entity.User;
@@ -118,6 +119,7 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
         reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
+        binding = null;
     }
 
     private boolean Validation()

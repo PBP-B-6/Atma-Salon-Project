@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import android.os.Bundle;
 
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentPembayaranGagalBinding;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
@@ -61,5 +62,11 @@ public class FragmentPembayaranGagal extends Fragment implements View.OnClickLis
                     .commit();
         }
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

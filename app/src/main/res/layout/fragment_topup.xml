@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:gravity="center"
-        tools:context=".FragmentTopup"
+        tools:context=".fragments.FragmentTopup"
         android:padding="20dp">
 
         <LinearLayout

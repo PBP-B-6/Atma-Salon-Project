@@ -1,27 +1,26 @@
 package com.example.atmasalon;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.atmasalon.databinding.ActivityContainerBinding;
+import com.example.atmasalon.fragments.FragmentDashboard;
+import com.example.atmasalon.fragments.FragmentProfil;
+import com.example.atmasalon.fragments.FragmentReservation2;
+import com.example.atmasalon.fragments.FragmentRiwayat;
 import com.example.atmasalon.preferences.UserPreference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-
-import java.io.ByteArrayOutputStream;
 
 public class ContainerActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 

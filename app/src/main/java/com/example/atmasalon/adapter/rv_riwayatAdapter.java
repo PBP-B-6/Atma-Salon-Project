@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.adapter;
 
 
 import android.view.LayoutInflater;
@@ -9,15 +9,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.atmasalon.BR;
+import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.RvRiwayatBinding;
-import com.example.atmasalon.entity.DataPelanggan;
+import com.example.atmasalon.entity.Pelanggan;
 
 import java.util.List;
 
 public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.MyViewHolder>{
-    private List<DataPelanggan> listReservasi;
+    private List<Pelanggan> listReservasi;
 
-    public rv_riwayatAdapter(List<DataPelanggan> listReservasi) {
+    public rv_riwayatAdapter(List<Pelanggan> listReservasi) {
         this.listReservasi = listReservasi;
     }
 
@@ -32,7 +34,7 @@ public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        DataPelanggan data = listReservasi.get(position);
+        Pelanggan data = listReservasi.get(position);
         holder.binding.setVariable(BR.data, data);
     }
 

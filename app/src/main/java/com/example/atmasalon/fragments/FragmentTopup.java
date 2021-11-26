@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 
 import android.os.AsyncTask;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.atmasalon.R;
 import com.example.atmasalon.database.DatabaseUser;
 
 import com.example.atmasalon.databinding.FragmentTopupBinding;
@@ -118,5 +119,11 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
         }
         UpdatingTodo up = new UpdatingTodo();
         up.execute();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

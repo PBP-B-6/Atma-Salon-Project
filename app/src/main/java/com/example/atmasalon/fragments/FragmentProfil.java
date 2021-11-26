@@ -1,14 +1,12 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,17 +19,16 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.example.atmasalon.LoginActivity;
+import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentProfilBinding;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -208,6 +205,12 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         {
             return null;
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
 }

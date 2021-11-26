@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 import com.example.atmasalon.BR;
 
 @Entity(tableName = "dataPelanggan")
-public class DataPelanggan extends BaseObservable {
+public class Pelanggan extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -34,9 +34,9 @@ public class DataPelanggan extends BaseObservable {
     @ColumnInfo(name = "statusPembayaran")
     private String statusPembayaran;
 
-    public DataPelanggan (){}
+    public Pelanggan(){}
 
-    public DataPelanggan(int userId, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, String statusPembayaran) {
+    public Pelanggan(int userId, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, String statusPembayaran) {
         this.userId = userId;
         this.lokasiSalon = lokasiSalon;
         this.namaPemesan = namaPemesan;
