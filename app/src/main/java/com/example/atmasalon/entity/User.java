@@ -8,6 +8,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class User extends BaseObservable {
     //TODO: Sesuaiin sama database baru, database internal hapus2 ja
+    @SerializedName("id")
+    private int id;
+
     @SerializedName("namaUser")
     private String nama;
 
@@ -33,6 +36,18 @@ public class User extends BaseObservable {
     private boolean status = false;
 
     public User(){}
+
+    public User(int id, String nama, String email, String password, boolean kelamin, String noTelp, float saldo, String urlGambar, boolean status) {
+        this.id = id;
+        this.nama = nama;
+        this.email = email;
+        this.password = password;
+        this.jenisKelamin = kelamin;
+        this.noTelp = noTelp;
+        this.saldo = saldo;
+        this.urlGambar = urlGambar;
+        this.status = status;
+    }
 
     public User(String nama, String email, String password, boolean kelamin, String noTelp, float saldo, String urlGambar, boolean status) {
         this.nama = nama;
@@ -137,5 +152,13 @@ public class User extends BaseObservable {
 
     public void setJenisKelamin(boolean jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
