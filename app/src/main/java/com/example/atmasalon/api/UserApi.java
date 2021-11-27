@@ -10,8 +10,8 @@ public class UserApi
     public static final String ADD_URL       = API_URL + "register";
     public static final String LOGIN_URL       = API_URL + "login";
 
-    public static final String GET_URL       = API_URL + "produk";
-    public static final String GET_BY_ID_URL = API_URL + "produk/";
-    public static final String UPDATE_URL    = API_URL + "produk/";
-    public static final String DELETE_URL    = API_URL + "produk/";
+    public static final String GET_URL       = API_URL + "user";
+    public static final String GET_BY_ID_URL = API_URL + "user/";
+    public static final String UPDATE_URL    = API_URL + "user/";
+    public static final String DELETE_URL    = API_URL + "user/";
 }

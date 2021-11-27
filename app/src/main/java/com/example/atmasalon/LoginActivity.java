@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Intent returnIntent = new Intent();
                             setResult(Activity.RESULT_OK, returnIntent);
 
-                            userPref.SetLogin(user, userLogin.getNama(), userLogin.getUrlGambar());
+                            userPref.SetLogin(user, userLogin.getNama(), userLogin.getUrlGambar(), userLogin.getId());
                             CheckLogin();
                         }
 

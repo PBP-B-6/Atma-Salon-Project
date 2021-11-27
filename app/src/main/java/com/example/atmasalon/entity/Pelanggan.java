@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Pelanggan extends BaseObservable {
     //TODO: Sesuaiin sama database baru, mungkin ada delet2 beberapa
+    @SerializedName("id")
+    private int id = 0;
 
     @SerializedName("lokasiSalon")
     private String lokasiSalon;
@@ -33,6 +35,17 @@ public class Pelanggan extends BaseObservable {
     public Pelanggan(){}
 
     //TODO: Constructor hapus ini, trs yang baru, kalo tidak perlu, kurangi parameter
+    public Pelanggan(int id, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
+        this.id = id;
+        this.lokasiSalon = lokasiSalon;
+        this.namaPemesan = namaPemesan;
+        this.noTelp = noTelp;
+        this.modelRambut = modelRambut;
+        this.warnaRambut = warnaRambut;
+        this.totalHarga = totalHarga;
+        this.statusPembayaran = statusPembayaran;
+    }
+
     public Pelanggan(String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
         this.lokasiSalon = lokasiSalon;
         this.namaPemesan = namaPemesan;
@@ -111,5 +124,13 @@ public class Pelanggan extends BaseObservable {
 
     public void setTotalHarga(float totalHarga) {
         this.totalHarga = totalHarga;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
