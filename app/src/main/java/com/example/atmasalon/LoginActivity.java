@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         UserResponse userResponse =
                                 gson.fromJson(response, UserResponse.class);
 
-                        User userLogin = userResponse.getUserList().get(0);
+                        User userLogin = userResponse.getUser();
 
                         //TODO: Cek kondisi if, jika belum aktif / belum diverifikasi
                         if(user != null) //blm verif, diganti codenya
