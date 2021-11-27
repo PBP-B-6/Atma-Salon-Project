@@ -86,7 +86,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         reservationPreference = new ReservationPreference(this.getActivity());
         GetUserNowFromApi();
 
-        Toast.makeText(getActivity(), userLogin.getEmail(), Toast.LENGTH_SHORT).show();
         binding.namaProfil.setText(userPref.GetNamaUser());
         binding.emailProfil.setText(userPref.GetUserLogin().getEmail());
         binding.btnKeluar.setOnClickListener(this);
@@ -142,7 +141,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 frag.startActivityForResult(intent, CAMERA_REQUEST);
             }
 
-
         }
     }
 
@@ -183,7 +181,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
             binding.profileImage.setImageBitmap(bitmap);
             UpdateUser(stringBitmap);
 
-            CircleImageView activity = getActivity().findViewById(R.id.profile_image);
+            CircleImageView activity = getActivity().findViewById(R.id.profile_image_cont);
             activity.setImageBitmap(bitmap); // Setiap kali update, foto di container activity juga diupdate
         }
         catch (Exception e)
@@ -318,7 +316,8 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         Gson gson = new Gson();
                         UserResponse userResponse =
                                 gson.fromJson(response, UserResponse.class);
-                        userLogin = userResponse.getUser();
+
+                        SetUserLogin(userResponse.getUser());
 
 //                        setLoading(false);
                     }
@@ -350,5 +349,10 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         };
 
         queue.add(stringRequest);
+    }
+
+    private void SetUserLogin(UserFromJson user)
+    {
+        this.userLogin = user;
     }
 }
