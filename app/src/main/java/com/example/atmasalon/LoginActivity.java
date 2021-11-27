@@ -21,6 +21,7 @@ import com.example.atmasalon.api.UserApi;
 
 import com.example.atmasalon.databinding.ActivityLoginBinding;
 import com.example.atmasalon.entity.User;
+import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserLogin;
 import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.UserPreference;
@@ -114,9 +115,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         UserResponse userResponse =
                                 gson.fromJson(response, UserResponse.class);
 
-                        User userLogin = userResponse.getUser();
+                        UserFromJson userLogin = userResponse.getUser();
 
-                        if(!userLogin.isStatus()) //blm verif, diganti codenya
+                        if(userLogin.getStatus() == 0) //blm verif, diganti codenya
                         {
                             Toast.makeText(LoginActivity.this, "Aktifkan akun terlebih dahulu!", Toast.LENGTH_SHORT).show();
                             return;
@@ -132,7 +133,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             userPref.SetLogin(user, userLogin.getNama(), userLogin.getUrlGambar(), userLogin.getId());
                             CheckLogin();
                         }
-
 
 //                        setLoading(false);
                     }

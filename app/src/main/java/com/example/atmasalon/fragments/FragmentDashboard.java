@@ -45,8 +45,7 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
 
-        //TODO: diisi userPref
-//        userNow = GetUser();
+        userNow = userPref.GetUserLogin();
         binding.dashboardProfileName.setText(userNow.getNama());
         double saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";

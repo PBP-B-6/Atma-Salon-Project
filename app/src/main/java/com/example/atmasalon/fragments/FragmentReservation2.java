@@ -69,7 +69,7 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
                 totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
                 reservationPreference.SetFilled();
-                reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
+                reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga, userPreference.GetUserID());
 
                 //TODO: Uncomment, disesuailkan
 //                if(GetUser().getSaldo() >= totalHarga)
@@ -118,7 +118,7 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         warna = GetSelectedWarna().trim();
         totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
-        reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
+        reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga, userPreference.GetUserID());
         binding = null;
     }
 
