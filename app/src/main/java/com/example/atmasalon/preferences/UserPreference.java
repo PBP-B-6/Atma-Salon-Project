@@ -25,15 +25,13 @@ public class UserPreference {
         editor = sharedPreference.edit();
     }
 
-    public void SetLogin(UserLogin User, String nama, int ID, String url)
+    public void SetLogin(UserLogin User, String nama, String url)
     {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_EMAIL, User.getEmail());
         editor.putString(KEY_PASSWORD, User.getPassword());
         editor.putString(KEY_NAME, nama);
-        editor.putInt(KEY_ID, ID);
-        //TODO: bawah diunhide kalo sudah siap backend
-//        editor.putString(KEY_URLGAMBAR, url);
+        editor.putString(KEY_URLGAMBAR, url);
         editor.commit();
     }
 

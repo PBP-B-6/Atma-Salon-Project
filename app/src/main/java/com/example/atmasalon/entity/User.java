@@ -24,13 +24,13 @@ public class User extends BaseObservable {
     private String noTelp;
 
     @SerializedName("saldo")
-    private double saldo=0;
+    private double saldo = 0;
 
     @SerializedName("urlGambar")
-    private String urlGambar="";
+    private String urlGambar = "";
 
     @SerializedName("status")
-    private boolean status=false;
+    private boolean status = false;
 
     public User(){}
 

@@ -65,22 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String email = loginData.getEmail();
                 String pass = loginData.getPassword();
 
-                //TODO: Panggil Login() buat cek ke API
                 Login(new UserLogin(email, pass));
-
-                //TODO: Cek login ini
-//                if(CheckLoginStatus(email, pass))
-//                {
-//                    //TODO: kalo backend dah jalan, ini nanti dihapus jaa, jadi tinggal panggil Login tok
-//                    int id = GetUserId(email, pass);
-//                    //TODO: URL dikasi url orang yg login sekarang
-//                    userPref.SetLogin(loginData, GetName(email, pass), id, "");
-//                    CheckLogin();
-//                }
-//                else
-//                {
-//                    Toast.makeText(this, "Email / Sandi salah!", Toast.LENGTH_SHORT).show();
-//                }
             }
             else
             {
@@ -117,8 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    //TODO: Fungsi2Login?
-
     private void Login(UserLogin user) {
         //TODO: Mau ada loading nda?
 //        setLoading(true);
@@ -133,8 +116,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         User userLogin = userResponse.getUser();
 
-                        //TODO: Cek kondisi if, jika belum aktif / belum diverifikasi
-                        if(user != null) //blm verif, diganti codenya
+                        if(!userLogin.isStatus()) //blm verif, diganti codenya
                         {
                             Toast.makeText(LoginActivity.this, "Aktifkan akun terlebih dahulu!", Toast.LENGTH_SHORT).show();
                             return;
@@ -147,11 +129,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Intent returnIntent = new Intent();
                             setResult(Activity.RESULT_OK, returnIntent);
 
-//                            int id = GetUserId(user.getId(), );
-                            //TODO: URL dikasi url orang yg login sekarang, ID juga
-                            userPref.SetLogin(user, userLogin.getNama(), 0, "");
+                            userPref.SetLogin(user, userLogin.getNama(), userLogin.getUrlGambar());
                             CheckLogin();
-
                         }
 
 
