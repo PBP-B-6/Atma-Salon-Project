@@ -60,7 +60,7 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
             if(Validasi())
             {
                 //Update Saldo
-                double saldoBaru = userToUpdate.getSaldo() + Double.parseDouble(binding.inputLayoutTambahSaldo.getEditText().getText().toString());
+                float saldoBaru = userToUpdate.getSaldo() + Float.parseFloat(binding.inputLayoutTambahSaldo.getEditText().getText().toString());
                 userToUpdate.setSaldo(saldoBaru);
                 //TODO: UpdateUser
 //                UpdateUserSaldo(userToUpdate);

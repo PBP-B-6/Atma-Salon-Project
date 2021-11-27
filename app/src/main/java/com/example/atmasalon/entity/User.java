@@ -24,7 +24,7 @@ public class User extends BaseObservable {
     private String noTelp;
 
     @SerializedName("saldo")
-    private double saldo = 0;
+    private float saldo = 0;
 
     @SerializedName("urlGambar")
     private String urlGambar = "";
@@ -34,7 +34,7 @@ public class User extends BaseObservable {
 
     public User(){}
 
-    public User(String nama, String email, String password, boolean kelamin, String noTelp, double saldo, String urlGambar, boolean status) {
+    public User(String nama, String email, String password, boolean kelamin, String noTelp, float saldo, String urlGambar, boolean status) {
         this.nama = nama;
         this.email = email;
         this.password = password;
@@ -86,11 +86,11 @@ public class User extends BaseObservable {
     }
 
     @Bindable
-    public double getSaldo() {
+    public float getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(float saldo) {
         this.saldo = saldo;
         notifyPropertyChanged(BR.saldo);
     }
@@ -108,7 +108,7 @@ public class User extends BaseObservable {
         }
         else
         {
-            this.saldo = Double.parseDouble(saldo);
+            this.saldo = Float.parseFloat(saldo);
         }
         notifyPropertyChanged(BR.saldo);
     }
