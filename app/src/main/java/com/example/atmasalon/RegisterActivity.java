@@ -56,13 +56,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         {
             if(Validasi())
             {
-                User data = binding.getUser();
-                data.setSaldo(0);
-//                data.setJenisKelamin(GetKelamin());
-                data.setUrlGambar("");
-                data.setStatus(false);
-
-                //TODO: diubah yang volley, set URL jadi "", isVerified e 0
                 CreateUser();
 
                 Intent move = new Intent(this, LoginActivity.class);

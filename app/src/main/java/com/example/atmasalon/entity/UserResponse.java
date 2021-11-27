@@ -10,7 +10,7 @@ public class UserResponse
     private String message;
 
     @SerializedName("data")
-    private List<User> userList;
+    private User user;
 
     public String getMessage() {
         return message;
@@ -20,11 +20,11 @@ public class UserResponse
         this.message = message;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
