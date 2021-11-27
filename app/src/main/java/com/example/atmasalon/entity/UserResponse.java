@@ -10,7 +10,7 @@ public class UserResponse
     private String message;
 
     @SerializedName("data")
-    private User user;
+    private UserFromJson user;
 
     public String getMessage() {
         return message;
@@ -20,11 +20,11 @@ public class UserResponse
         this.message = message;
     }
 
-    public User getUser() {
+    public UserFromJson getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserFromJson user) {
         this.user = user;
     }
 }

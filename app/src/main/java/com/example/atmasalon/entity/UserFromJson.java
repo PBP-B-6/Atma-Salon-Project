@@ -6,21 +6,38 @@ import androidx.databinding.Bindable;
 import com.example.atmasalon.BR;
 import com.google.gson.annotations.SerializedName;
 
-public class User extends BaseObservable {
-
+public class UserFromJson extends BaseObservable {
+    //TODO: Sesuaiin sama database baru, database internal hapus2 ja
+    @SerializedName("id")
     private int id = 0;
+
+    @SerializedName("namaUser")
     private String nama;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("password")
     private String password;
-    private boolean jenisKelamin;
+
+    @SerializedName("jenisKelamin")
+    private int jenisKelamin;
+
+    @SerializedName("noTelpUser")
     private String noTelp;
+
+    @SerializedName("saldo")
     private float saldo = 0;
+
+    @SerializedName("urlGambar")
     private String urlGambar = "";
-    private boolean status = false;
 
-    public User(){}
+    @SerializedName("status")
+    private int status;
 
-    public User(int id, String nama, String email, String password, boolean kelamin, String noTelp, float saldo, String urlGambar, boolean status) {
+    public UserFromJson(){}
+
+    public UserFromJson(int id, String nama, String email, String password, int kelamin, String noTelp, float saldo, String urlGambar, int status) {
         this.id = id;
         this.nama = nama;
         this.email = email;
@@ -32,7 +49,7 @@ public class User extends BaseObservable {
         this.status = status;
     }
 
-    public User(String nama, String email, String password, boolean kelamin, String noTelp, float saldo, String urlGambar, boolean status) {
+    public UserFromJson(String nama, String email, String password, int kelamin, String noTelp, float saldo, String urlGambar, int status) {
         this.nama = nama;
         this.email = email;
         this.password = password;
@@ -43,75 +60,47 @@ public class User extends BaseObservable {
         this.status = status;
     }
 
-    @Bindable
     public String getNama() {
         return nama;
     }
 
     public void setNama(String nama) {
         this.nama = nama;
-        notifyPropertyChanged(BR.nama);
     }
 
-    @Bindable
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-        notifyPropertyChanged(BR.email);
     }
 
-    @Bindable
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-        notifyPropertyChanged(BR.password);
     }
 
-    @Bindable
     public String getNoTelp() {
         return noTelp;
     }
 
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
-        notifyPropertyChanged(BR.noTelp);
     }
 
-    @Bindable
     public float getSaldo() {
         return saldo;
     }
 
     public void setSaldo(float saldo) {
         this.saldo = saldo;
-        notifyPropertyChanged(BR.saldo);
     }
 
-    @Bindable
-    public String getStringSaldo(){
-        return String.valueOf(saldo);
-    }
 
-    public void setStringSaldo(String saldo)
-    {
-        if(saldo.isEmpty())
-        {
-            //blm tau
-        }
-        else
-        {
-            this.saldo = Float.parseFloat(saldo);
-        }
-        notifyPropertyChanged(BR.saldo);
-    }
-
-    @Bindable
     public String getUrlGambar() {
         return urlGambar;
     }
@@ -120,28 +109,27 @@ public class User extends BaseObservable {
         this.urlGambar = urlGambar;
     }
 
-    @Bindable
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public boolean isJenisKelamin() {
-        return jenisKelamin;
-    }
-
-    public void setJenisKelamin(boolean jenisKelamin) {
-        this.jenisKelamin = jenisKelamin;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(int jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

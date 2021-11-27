@@ -21,6 +21,7 @@ import com.example.atmasalon.api.UserApi;
 
 import com.example.atmasalon.databinding.ActivityLoginBinding;
 import com.example.atmasalon.entity.User;
+import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserLogin;
 import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.UserPreference;
@@ -114,9 +115,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         UserResponse userResponse =
                                 gson.fromJson(response, UserResponse.class);
 
-                        User userLogin = userResponse.getUser();
+                        UserFromJson userLogin = userResponse.getUser();
 
-                        if(!userLogin.isStatus()) //blm verif, diganti codenya
+                        if(userLogin.getStatus() == 0) //blm verif, diganti codenya
                         {
                             Toast.makeText(LoginActivity.this, "Aktifkan akun terlebih dahulu!", Toast.LENGTH_SHORT).show();
                             return;
@@ -129,10 +130,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Intent returnIntent = new Intent();
                             setResult(Activity.RESULT_OK, returnIntent);
 
-                            userPref.SetLogin(user, userLogin.getNama(), userLogin.getUrlGambar(), userLogin.getId());
+                            boolean kelamin;
+
+                            if(userLogin.getJenisKelamin() == 0)
+                            {
+                                kelamin = false;
+                            }
+                            else
+                            {
+                                kelamin = true;
+                            }
+
+                            User forPref = new User(userLogin.getId(), userLogin.getNama(), userLogin.getEmail(), userLogin.getPassword(), kelamin, userLogin.getNoTelp(), userLogin.getSaldo(), userLogin.getUrlGambar(), true);
+
+                            userPref.SetLogin(forPref);
                             CheckLogin();
                         }
-
 
 //                        setLoading(false);
                     }

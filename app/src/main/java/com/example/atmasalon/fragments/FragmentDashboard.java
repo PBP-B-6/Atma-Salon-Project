@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.atmasalon.AboutActivity;
 import com.example.atmasalon.R;
@@ -45,10 +46,9 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
 
-        //TODO: diisi userPref
-//        userNow = GetUser();
+        userNow = userPref.GetUserNow();
         binding.dashboardProfileName.setText(userNow.getNama());
-        double saldo = userNow.getSaldo();
+        float saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";
         binding.dashboardProfileSaldo.setText(saldoStr);
         binding.btnLihatProfil.setOnClickListener(this);
@@ -56,6 +56,8 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
         binding.btnReservasi.setOnClickListener(this);
         binding.btnTentangKami.setOnClickListener(this);
         nav = getActivity().findViewById(R.id.bottom_navigation);
+
+        Toast.makeText(this.getActivity(), String.valueOf(userNow.getId()), Toast.LENGTH_SHORT).show();
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Dashboard");
