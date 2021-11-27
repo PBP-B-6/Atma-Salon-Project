@@ -2,64 +2,58 @@ package com.example.atmasalon.entity;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
 import com.example.atmasalon.BR;
+import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "dataPelanggan")
-public class DataPelanggan extends BaseObservable {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+public class Pelanggan extends BaseObservable {
+    //TODO: Sesuaiin sama database baru, mungkin ada delet2 beberapa
+    @SerializedName("id")
+    private int id = 0;
 
-    @ColumnInfo(name = "userId")
-    private int userId;
-
-    @ColumnInfo(name = "lokasiSalon")
+    @SerializedName("lokasiSalon")
     private String lokasiSalon;
 
-    @ColumnInfo(name = "namaPemesan")
+    @SerializedName("namaPemesan")
     private String namaPemesan;
 
-    @ColumnInfo(name = "noTelp")
+    @SerializedName("noTelp")
     private String noTelp;
 
-    @ColumnInfo(name = "modelRambut")
+    @SerializedName("modelRambut")
     private String modelRambut;
 
-    @ColumnInfo(name = "warnaRambut")
+    @SerializedName("warnaRambut")
     private String warnaRambut;
 
-    @ColumnInfo(name = "statusPembayaran")
+    @SerializedName("totalHarga")
+    private float totalHarga;
+
+    @SerializedName("statusPembayaran")
     private String statusPembayaran;
 
-    public DataPelanggan (){}
+    public Pelanggan(){}
 
-    public DataPelanggan(int userId, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, String statusPembayaran) {
-        this.userId = userId;
+    //TODO: Constructor hapus ini, trs yang baru, kalo tidak perlu, kurangi parameter
+    public Pelanggan(int id, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
+        this.id = id;
         this.lokasiSalon = lokasiSalon;
         this.namaPemesan = namaPemesan;
         this.noTelp = noTelp;
         this.modelRambut = modelRambut;
         this.warnaRambut = warnaRambut;
+        this.totalHarga = totalHarga;
         this.statusPembayaran = statusPembayaran;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public Pelanggan(String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
+        this.lokasiSalon = lokasiSalon;
+        this.namaPemesan = namaPemesan;
+        this.noTelp = noTelp;
+        this.modelRambut = modelRambut;
+        this.warnaRambut = warnaRambut;
+        this.totalHarga = totalHarga;
+        this.statusPembayaran = statusPembayaran;
     }
 
     @Bindable
@@ -121,5 +115,22 @@ public class DataPelanggan extends BaseObservable {
     public void setStatusPembayaran(String statusPembayaran) {
         this.statusPembayaran = statusPembayaran;
         notifyPropertyChanged(BR.statusPembayaran);
+    }
+
+    @Bindable
+    public float getTotalHarga() {
+        return totalHarga;
+    }
+
+    public void setTotalHarga(float totalHarga) {
+        this.totalHarga = totalHarga;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

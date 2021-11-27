@@ -1,7 +1,6 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import android.app.Notification;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,11 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.atmasalon.database.DatabaseUser;
+import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentPembayaranBinding;
-import com.example.atmasalon.entity.DataPelanggan;
+import com.example.atmasalon.entity.Pelanggan;
 import com.example.atmasalon.entity.DataReservasi;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.ReservationPreference;
@@ -28,6 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentPembayaran extends Fragment implements View.OnClickListener{
 
+    //TODO: nanti GetUser itu dari userPreferencenya
     private FragmentPembayaranBinding binding;
     private UserPreference userPreference;
     private ReservationPreference reservationPreference;
@@ -78,77 +77,26 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         else if(view.getId() == R.id.btnBayarPembayaranBerhasil)
         {
 
-            // kurang saldo
-            User user = GetUser();
-            double saldo = user.getSaldo() - reservationPreference.GetTotalHarga();
-            user.setSaldo(saldo);
-            UpdateUserSaldo(user);
+            // Kurang Saldo
+            //TODO: GetFrom userPref
+//            User user = GetUser();
+//            double saldo = user.getSaldo() - reservationPreference.GetTotalHarga();
+//            user.setSaldo(saldo);
+//            UpdateUserSaldo(user);
 
             //Insert Data
             DataReservasi reservasi = reservationPreference.GetAllData();
             namaPemesan = reservasi.getNamaPemesan();
-            DataPelanggan data = new DataPelanggan(userPreference.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(),
-                    reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), "Lunas");
-            AddDataPelanggan(data);
+            //TODO: ID diisi, id Pelanggannya, uncomment
+//            Pelanggan data = new Pelanggan(reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), reservasi.getTotalHarga(), "Lunas");
+            //TODO: AddData
+//            AddDataPelanggan(data);
 
             //clear prefereceReserv
             reservationPreference.ClearPreference();
 
             //Firebase
         }
-    }
-
-    private void UpdateUserSaldo(User user) {
-        class UpdatingTodo extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                DatabaseUser.GetInstance(getActivity()).GetDatabase().userDao().UpdateUser(user);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void unused) {
-                super.onPostExecute(unused);
-            }
-        }
-        UpdatingTodo up = new UpdatingTodo();
-        up.execute();
-    }
-
-    private User GetUser()
-    {
-        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPreference.GetUserID());
-    }
-
-    private void AddDataPelanggan(DataPelanggan data)
-    {
-
-        class AddingUser extends AsyncTask<Void, Void, Void>
-        {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().dataPelangganDao().InsertDataPelanggan(data);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void unused) {
-                super.onPostExecute(unused);
-                Toast.makeText(getActivity(), "Berhasil menambah data", Toast.LENGTH_SHORT).show();
-                SendOnChannel(getView());
-
-                getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                        //Fargment Dashboard gant riwayat
-                    .replace(R.id.layout_fragment, new FragmentDashboard())
-                    .commit();
-
-                bottomNav.setSelectedItemId(R.id.menu_beranda);
-            }
-        }
-        AddingUser Add = new AddingUser();
-        Add.execute();
     }
 
     public void SendOnChannel(View v)
@@ -163,5 +111,11 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
                 .build();
 
         notificationManager.notify(2, notification);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

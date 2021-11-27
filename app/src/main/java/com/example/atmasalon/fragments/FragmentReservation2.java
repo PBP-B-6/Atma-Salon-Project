@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.atmasalon.database.DatabaseUser;
+import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentReservation2Binding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.ReservationPreference;
@@ -71,22 +71,23 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
                 reservationPreference.SetFilled();
                 reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
 
-                if(GetUser().getSaldo() >= totalHarga)
-                {
-                    this.getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.layout_fragment, new FragmentPembayaran())
-                        .commit();
-                }
-                else
-                {
-                    this.getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.layout_fragment, new FragmentPembayaranGagal())
-                        .commit();
-                }
+                //TODO: Uncomment, disesuailkan
+//                if(GetUser().getSaldo() >= totalHarga)
+//                {
+//                    this.getActivity()
+//                        .getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.layout_fragment, new FragmentPembayaran())
+//                        .commit();
+//                }
+//                else
+//                {
+//                    this.getActivity()
+//                        .getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.layout_fragment, new FragmentPembayaranGagal())
+//                        .commit();
+//                }
 
             }
             else
@@ -118,6 +119,7 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
         reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
+        binding = null;
     }
 
     private boolean Validation()
@@ -316,8 +318,4 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         }
     }
 
-    private User GetUser()
-    {
-        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPreference.GetUserID());
-    }
 }

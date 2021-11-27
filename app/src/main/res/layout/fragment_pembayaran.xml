@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FragmentPembayaran"
+        tools:context=".fragments.FragmentPembayaran"
         android:gravity="center"
         android:padding="20dp">
 

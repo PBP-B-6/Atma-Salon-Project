@@ -1,4 +1,4 @@
-package com.example.atmasalon;
+package com.example.atmasalon.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.atmasalon.database.DatabaseUser;
+import com.example.atmasalon.AboutActivity;
+import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentDashboardBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.UserPreference;
@@ -22,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentDashboard extends Fragment implements View.OnClickListener {
 
+    //TODO: nanti GetUser itu dari userPreferencenya
     private FragmentDashboardBinding binding;
     private UserPreference userPref;
     private User userNow;
@@ -43,7 +44,9 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
-        userNow = GetUser();
+
+        //TODO: diisi userPref
+//        userNow = GetUser();
         binding.dashboardProfileName.setText(userNow.getNama());
         double saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";
@@ -56,11 +59,6 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Dashboard");
-    }
-
-    private User GetUser()
-    {
-        return DatabaseUser.GetInstance(getActivity().getApplicationContext()).GetDatabase().userDao().GetUser(userPref.GetUserID());
     }
 
     @Override
@@ -91,5 +89,11 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
                 startActivity(move);
                 getActivity().finish();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
