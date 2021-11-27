@@ -2,8 +2,6 @@ package com.example.atmasalon.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserLogin;
@@ -19,7 +17,6 @@ public class UserPreference {
     public static final String KEY_EMAIL = "Username";
     public static final String KEY_PASSWORD = "Password";
     public static final String KEY_JENISKELAMIN = "Laki";
-    public static final String KEY_NOTELP = "624";
     public static final String KEY_SALDO = "624";
     public static final String KEY_URLGAMBAR = "URL";
 
@@ -38,7 +35,6 @@ public class UserPreference {
         editor.putString(KEY_EMAIL, user.getEmail());
         editor.putString(KEY_PASSWORD, user.getPassword());
         editor.putBoolean(KEY_JENISKELAMIN, user.isJenisKelamin());
-        editor.putString(KEY_NOTELP, user.getNoTelp());
         editor.putFloat(KEY_SALDO, user.getSaldo());
         editor.putString(KEY_URLGAMBAR, user.getUrlGambar());
 
@@ -56,25 +52,15 @@ public class UserPreference {
 
     public User GetUserNow()
     {
-        try
-        {
-            int id = sharedPreference.getInt(KEY_ID, -1);
-            boolean kelamin = sharedPreference.getBoolean(KEY_JENISKELAMIN, false);
-            float saldo = sharedPreference.getFloat(KEY_SALDO,0);
-            String email, password, nama, notelp, url;
-            email = sharedPreference.getString(KEY_EMAIL, null);
-            password = sharedPreference.getString(KEY_PASSWORD, null);
-            nama = sharedPreference.getString(KEY_NAME, null);
-            notelp = sharedPreference.getString(KEY_NOTELP, null);
-            url = sharedPreference.getString(KEY_URLGAMBAR, null);
+        int id = sharedPreference.getInt(KEY_ID, -1);
+        boolean kelamin = sharedPreference.getBoolean(KEY_JENISKELAMIN, false);
+        float saldo = sharedPreference.getFloat(KEY_SALDO,0);
+        String email, nama, url;
+        email = sharedPreference.getString(KEY_EMAIL, null);
+        nama = sharedPreference.getString(KEY_NAME, null);
+        url = sharedPreference.getString(KEY_URLGAMBAR, null);
 
-            return new User(id, nama, email, password, kelamin, notelp, saldo, url, true);
-        }
-        catch (Exception e)
-        {
-            Log.v("PREFERENCE ERROR:", e.getMessage());
-            return null;
-        }
+        return new User(id, nama, email, "", kelamin, "", saldo, url, true);
     }
 
     public int GetUserID()

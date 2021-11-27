@@ -44,12 +44,14 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        userPref = new UserPreference(this.getActivity());
+        userPref = new UserPreference(this.getActivity().getApplicationContext());
 
         userNow = userPref.GetUserNow();
+        Toast.makeText(this.getActivity(), userNow.getNama(), Toast.LENGTH_SHORT).show();
         binding.dashboardProfileName.setText(userNow.getNama());
         float saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";
+
         binding.dashboardProfileSaldo.setText(saldoStr);
         binding.btnLihatProfil.setOnClickListener(this);
         binding.btnTambahSaldo.setOnClickListener(this);
@@ -57,7 +59,6 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
         binding.btnTentangKami.setOnClickListener(this);
         nav = getActivity().findViewById(R.id.bottom_navigation);
 
-        Toast.makeText(this.getActivity(), String.valueOf(userNow.getId()), Toast.LENGTH_SHORT).show();
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Dashboard");
