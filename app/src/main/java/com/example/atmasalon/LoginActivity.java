@@ -130,7 +130,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Intent returnIntent = new Intent();
                             setResult(Activity.RESULT_OK, returnIntent);
 
-                            userPref.SetLogin(user, userLogin.getNama(), userLogin.getUrlGambar(), userLogin.getId());
+                            boolean kelamin;
+
+                            if(userLogin.getJenisKelamin() == 0)
+                            {
+                                kelamin = false;
+                            }
+                            else
+                            {
+                                kelamin = true;
+                            }
+
+                            User forPref = new User(userLogin.getId(), userLogin.getNama(), userLogin.getEmail(), userLogin.getPassword(), kelamin, userLogin.getNoTelp(), userLogin.getSaldo(), userLogin.getUrlGambar(), true);
+
+                            userPref.SetLogin(forPref);
                             CheckLogin();
                         }
 

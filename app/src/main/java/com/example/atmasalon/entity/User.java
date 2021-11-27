@@ -7,32 +7,15 @@ import com.example.atmasalon.BR;
 import com.google.gson.annotations.SerializedName;
 
 public class User extends BaseObservable {
-    //TODO: Sesuaiin sama database baru, database internal hapus2 ja
-//    @SerializedName("id")
+
     private int id = 0;
-
-//    @SerializedName("namaUser")
     private String nama;
-
-//    @SerializedName("email")
     private String email;
-
-//    @SerializedName("password")
     private String password;
-
-//    @SerializedName("jenisKelamin")
     private boolean jenisKelamin;
-
-//    @SerializedName("noTelpUser")
     private String noTelp;
-
-//    @SerializedName("saldo")
     private float saldo = 0;
-
-//    @SerializedName("urlGambar")
     private String urlGambar = "";
-
-//    @SerializedName("status")
     private boolean status = false;
 
     public User(){}

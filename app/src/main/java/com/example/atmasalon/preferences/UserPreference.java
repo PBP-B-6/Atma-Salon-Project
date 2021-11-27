@@ -2,6 +2,8 @@ package com.example.atmasalon.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserLogin;
@@ -54,10 +56,25 @@ public class UserPreference {
 
     public User GetUserNow()
     {
-        int id = sharedPreference.getInt(KEY_ID, null);
-        boolean kelamin ;
-        float saldo;
-        String email, password, nama, notelp, url;
+        try
+        {
+            int id = sharedPreference.getInt(KEY_ID, -1);
+            boolean kelamin = sharedPreference.getBoolean(KEY_JENISKELAMIN, false);
+            float saldo = sharedPreference.getFloat(KEY_SALDO,0);
+            String email, password, nama, notelp, url;
+            email = sharedPreference.getString(KEY_EMAIL, null);
+            password = sharedPreference.getString(KEY_PASSWORD, null);
+            nama = sharedPreference.getString(KEY_NAME, null);
+            notelp = sharedPreference.getString(KEY_NOTELP, null);
+            url = sharedPreference.getString(KEY_URLGAMBAR, null);
+
+            return new User(id, nama, email, password, kelamin, notelp, saldo, url, true);
+        }
+        catch (Exception e)
+        {
+            Log.v("PREFERENCE ERROR:", e.getMessage());
+            return null;
+        }
     }
 
     public int GetUserID()
