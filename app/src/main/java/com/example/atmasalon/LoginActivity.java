@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         binding.btnLinkDaftar.setOnClickListener(this);
         binding.btnMasuk.setOnClickListener(this);
 
-        userPref = new UserPreference(LoginActivity.this);
+        userPref = new UserPreference(this);
 
         CheckLogin();
     }
@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             User forPref = new User(userLogin.getId(), userLogin.getNama(), userLogin.getEmail(), userLogin.getPassword(), kelamin, userLogin.getNoTelp(), userLogin.getSaldo(), userLogin.getUrlGambar(), true);
 
-                            userPref.SetLogin(forPref);
+                            LoginActivity.this.userPref.SetLogin(forPref);
                             CheckLogin();
                         }
 

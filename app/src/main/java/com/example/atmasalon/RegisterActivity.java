@@ -21,6 +21,7 @@ import com.example.atmasalon.api.UserApi;
 
 import com.example.atmasalon.databinding.ActivityRegisterBinding;
 import com.example.atmasalon.entity.User;
+import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserResponse;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -142,7 +143,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 //        setLoading(true);
         User data = binding.getUser();
 
-        User user = new User(data.getNama(), data.getEmail(), data.getPassword(), GetKelamin(), data.getNoTelp(), 0, "", false);
+        int kelamin;
+        if(GetKelamin())
+        {
+            kelamin = 1;
+        }
+        else
+        {
+            kelamin = 0;
+        }
+
+        UserFromJson user = new UserFromJson(data.getNama(), data.getEmail(), data.getPassword(), kelamin, data.getNoTelp(), 0, "", 0);
 
         final StringRequest stringRequest = new StringRequest(POST, UserApi.ADD_URL,
                 new Response.Listener<String>() {
