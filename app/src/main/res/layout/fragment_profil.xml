@@ -46,20 +46,116 @@
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:fontFamily="@font/inter_regular"
-                android:id="@+id/btnTambahSaldo"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tambah_saldo"
+                android:orientation="horizontal"
+                android:layout_marginTop="33dp"
+                android:layout_marginBottom="33dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:fontFamily="@font/inter_regular"
+                    android:id="@+id/btnTambahSaldo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tambah_saldo"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/primary_green"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_border"
+                    android:layout_marginEnd="2.5dp"
+                    android:layout_weight="1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:fontFamily="@font/inter_regular"
+                    android:id="@+id/btnEditProfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_profil"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:backgroundTint="#EDA70A"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_border"
+                    android:layout_weight="1"
+                    android:layout_marginStart="2.5dp"/>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutTestimoni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/InputAtmaSalon"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_user"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopStart="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:fontFamily="@font/inter_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/testimoni"
+                    android:inputType="textMultiLine"
+                    android:textSize="14sp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textColor="@color/black"
+                    app:passwordToggleEnabled="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnTambahTestimoni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tambah_testimoni"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:layout_marginBottom="33dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginBottom="0dp"
                 android:backgroundTint="@color/primary_green"
                 android:textColor="@color/white"
                 android:background="@drawable/custom_border"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:fontFamily="@font/inter_regular"
+                    android:id="@+id/btnEditTestimoni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_testimoni"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/primary_green"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_border"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="2.5dp"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:fontFamily="@font/inter_regular"
+                    android:id="@+id/btnHapusTestimoni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hapus_testimoni"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:backgroundTint="#B94343"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_border"
+                    android:layout_weight="1"
+                    android:layout_marginStart="2.5dp"/>
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:fontFamily="@font/inter_regular"
@@ -71,7 +167,7 @@
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:layout_marginBottom="33dp"
-                android:layout_marginTop="125dp"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="#B94343"
                 android:textColor="@color/white"
                 android:background="@drawable/custom_border"/>
