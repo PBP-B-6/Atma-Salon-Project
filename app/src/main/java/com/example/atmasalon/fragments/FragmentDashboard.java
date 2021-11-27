@@ -18,6 +18,7 @@ import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentDashboardBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.UserPreference;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentDashboard extends Fragment implements View.OnClickListener {
 
@@ -25,6 +26,7 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
     private FragmentDashboardBinding binding;
     private UserPreference userPref;
     private User userNow;
+    private BottomNavigationView nav;
 
     public FragmentDashboard() {
         // Required empty public constructor
@@ -53,6 +55,7 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
         binding.btnTambahSaldo.setOnClickListener(this);
         binding.btnReservasi.setOnClickListener(this);
         binding.btnTentangKami.setOnClickListener(this);
+        nav = getActivity().findViewById(R.id.bottom_navigation);
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Dashboard");
@@ -66,18 +69,21 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
                     .beginTransaction()
                     .replace(R.id.layout_fragment, new FragmentProfil())
                     .commit();
+            nav.setSelectedItemId(R.id.menu_profil);
         } else if(view.getId() == R.id.btnTambahSaldo){
             this.getActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.layout_fragment, new FragmentTopup())
                 .commit();
+            nav.setSelectedItemId(R.id.menu_profil);
         } else if(view.getId() == R.id.btnReservasi){
             this.getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.layout_fragment, new FragmentReservation2())
                     .commit();
+            nav.setSelectedItemId(R.id.menu_reservasi);
         } else if(view.getId() == R.id.btnTentangKami){
                 Intent move = new Intent(this.getActivity(), AboutActivity.class);
                 startActivity(move);

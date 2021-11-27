@@ -78,4 +78,9 @@
     <string name="model">Model</string>
     <string name="warna">Warna</string>
     <string name="status">Status</string>
+    <string name="edit_testimoni">Edit Testimoni</string>
+    <string name="hapus_testimoni">Hapus Testimoni</string>
+    <string name="tambah_testimoni">Tambah Testimoni</string>
+    <string name="testimoni">Testimoni</string>
+    <string name="edit_profil">Edit Profil</string>
 </resources>
