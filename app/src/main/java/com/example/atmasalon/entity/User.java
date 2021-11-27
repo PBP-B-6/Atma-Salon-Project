@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 public class User extends BaseObservable {
     //TODO: Sesuaiin sama database baru, database internal hapus2 ja
     @SerializedName("id")
-    private int id;
+    private int id = 0;
 
     @SerializedName("namaUser")
     private String nama;
