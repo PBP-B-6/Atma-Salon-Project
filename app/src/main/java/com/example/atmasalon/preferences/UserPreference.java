@@ -25,8 +25,9 @@ public class UserPreference {
         editor = sharedPreference.edit();
     }
 
-    public void SetLogin(UserLogin User, String nama, String url)
+    public void SetLogin(UserLogin User, String nama, String url, int id)
     {
+        editor.putInt(KEY_ID, id);
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_EMAIL, User.getEmail());
         editor.putString(KEY_PASSWORD, User.getPassword());
