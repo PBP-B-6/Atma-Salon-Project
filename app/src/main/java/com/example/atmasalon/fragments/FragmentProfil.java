@@ -65,8 +65,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private static final int PERMISSION_REQUEST_CAMERA = 100;
     private static final int CAMERA_REQUEST = 2;
 
-//TODO: Tambah saldo, updet disana, trs updet userPref
-    //TODO: WAKTU PESAN kurang saldo updet user pref lagi
         //TODO:Delete User jgn lupa
     public FragmentProfil() {
         // Required empty public constructor

@@ -33,7 +33,7 @@ public class ReservationPreference {
         editor.commit();
     }
 
-    public void FillDataPage2(String lokasi, String nama, String telp, String model, String warna, double totalHarga, int id)
+    public void FillDataPage2(String lokasi, String nama, String telp, String model, String warna, float totalHarga, int id)
     {
         editor.putInt(KEY_ID, id);
         editor.putString(KEY_LOKASI, lokasi);
@@ -41,7 +41,7 @@ public class ReservationPreference {
         editor.putString(KEY_NOTELP, telp);
         editor.putString(KEY_MODELRAMBUT, model);
         editor.putString(KEY_WARNARAMBUT, warna);
-        editor.putString(KEY_TOTALHARGA, String.valueOf(totalHarga));
+        editor.putFloat(KEY_TOTALHARGA, totalHarga);
         editor.commit();
     }
 
@@ -55,13 +55,13 @@ public class ReservationPreference {
         model = sharedPreference.getString(KEY_MODELRAMBUT, "");
         warna = sharedPreference.getString(KEY_WARNARAMBUT, "");
 
-        float total = Float.parseFloat(sharedPreference.getString(KEY_TOTALHARGA, "0"));
+        float total = sharedPreference.getFloat(KEY_TOTALHARGA, 0.f);
         return new DataReservasi(lokasi, nama, telp, model, warna, total);
     }
 
     public double GetTotalHarga()
     {
-        return Double.parseDouble(sharedPreference.getString(KEY_TOTALHARGA, "0"));
+        return sharedPreference.getFloat(KEY_TOTALHARGA, 0.f);
     }
 
     public boolean GetIsFilled()
@@ -84,7 +84,7 @@ public class ReservationPreference {
         editor.putString(KEY_NOTELP, "");
         editor.putString(KEY_MODELRAMBUT, "");
         editor.putString(KEY_WARNARAMBUT, "");
-        editor.putString(KEY_TOTALHARGA, "0");
+        editor.putFloat(KEY_TOTALHARGA, 0.f);
         editor.putBoolean(IS_FILLED, false);
         editor.commit();
     }
