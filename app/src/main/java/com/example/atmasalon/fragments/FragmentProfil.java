@@ -91,6 +91,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.btnKeluar.setOnClickListener(this);
         binding.btnTambahSaldo.setOnClickListener(this);
         binding.profileImage.setOnClickListener(this);
+        binding.btnEditProfil.setOnClickListener(this);
 
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
@@ -116,6 +117,14 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 .beginTransaction()
                 .replace(R.id.layout_fragment, new FragmentTopup())
                 .commit();
+        }
+        else if(view.getId() == R.id.btnEditProfil)
+        {
+            this.getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.layout_fragment, new FragmentEditUser())
+                    .commit();
         }
         else if(view.getId() == R.id.btnKeluar)
         {
@@ -253,7 +262,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         UserResponse produkResponse =
                                 gson.fromJson(response, UserResponse.class);
 
-                        Toast.makeText(FragmentProfil.this.getActivity(), produkResponse.getMessage(),
+                        Toast.makeText(getActivity(), produkResponse.getMessage(),
                                 Toast.LENGTH_SHORT).show();
 
                         Intent returnIntent = new Intent();
@@ -271,10 +280,10 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                             new String(error.networkResponse.data, StandardCharsets.UTF_8);
                     JSONObject errors = new JSONObject(responseBody);
 
-                    Toast.makeText(FragmentProfil.this.getActivity(), errors.getString("message"),
+                    Toast.makeText(getActivity(), errors.getString("message"),
                             Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Toast.makeText(FragmentProfil.this.getActivity(), e.getMessage(),
+                    Toast.makeText(getActivity(), e.getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -331,10 +340,10 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                             new String(error.networkResponse.data, StandardCharsets.UTF_8);
                     JSONObject errors = new JSONObject(responseBody);
 
-                    Toast.makeText(FragmentProfil.this.getActivity(), errors.getString("message"),
+                    Toast.makeText(getActivity(), errors.getString("message"),
                             Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Toast.makeText(FragmentProfil.this.getActivity(), e.getMessage(),
+                    Toast.makeText(getActivity(), e.getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
             }

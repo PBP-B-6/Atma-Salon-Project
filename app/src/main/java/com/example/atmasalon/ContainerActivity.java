@@ -48,7 +48,7 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
             img = Base64ToBitmap(userPref.GetURLProfilePic());
             if(img != null)
             {
-                binding.profileImage.setImageBitmap(img);
+                binding.profileImageCont.setImageBitmap(img);
             }
         }
 
