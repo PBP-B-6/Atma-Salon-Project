@@ -4,7 +4,9 @@ import static android.app.Activity.RESULT_OK;
 
 import static com.android.volley.Request.Method.DELETE;
 import static com.android.volley.Request.Method.GET;
+import static com.android.volley.Request.Method.POST;
 import static com.android.volley.Request.Method.PUT;
+import static com.android.volley.Request.Method.POST;
 
 import android.Manifest;
 import android.app.Activity;
@@ -36,13 +38,18 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.atmasalon.LoginActivity;
 import com.example.atmasalon.R;
+import com.example.atmasalon.api.TestimoniApi;
 import com.example.atmasalon.api.UserApi;
 import com.example.atmasalon.databinding.FragmentProfilBinding;
+import com.example.atmasalon.entity.Testimoni;
+import com.example.atmasalon.entity.TestimoniFromJson;
+import com.example.atmasalon.entity.TestimoniResponse;
 import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -66,6 +73,8 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private static final int PERMISSION_REQUEST_CAMERA = 100;
     private static final int CAMERA_REQUEST = 2;
 
+    private Testimoni testimoni;
+
         //TODO:Delete User jgn lupa
     public FragmentProfil() {
         // Required empty public constructor
@@ -74,6 +83,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profil, container, false);
         return binding.getRoot();
@@ -88,6 +98,9 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
 
         GetUserNowFromApi();
 
+        testimoni = new Testimoni();
+        binding.setTestimoni(testimoni);
+
         binding.namaProfil.setText(userPref.GetNamaUser());
         binding.emailProfil.setText(userPref.GetUserLogin().getEmail());
         binding.btnKeluar.setOnClickListener(this);
@@ -95,6 +108,10 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.profileImage.setOnClickListener(this);
         binding.btnEditProfil.setOnClickListener(this);
         binding.btnDeleteUser.setOnClickListener(this);
+
+        binding.btnTambahTestimoni.setOnClickListener(this);
+        binding.btnEditTestimoni.setOnClickListener(this);
+        binding.btnHapusTestimoni.setOnClickListener(this);
 
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
@@ -164,6 +181,102 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                     })
                     .show();
         }
+        else if(view.getId() == R.id.btnTambahTestimoni)
+        {
+            if(Validasi())
+            {
+                CreateTestimoni();
+            }
+        }
+    }
+
+    private boolean Validasi()
+    {
+        if(CekKosong())
+        {
+            return true;
+        }
+        else
+        {
+            Toast.makeText(getContext(), "Testimoni belum ditambahkan!", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    private boolean CekKosong()
+    {
+        if(binding.inputLayoutTestimoni.getEditText().getText().toString().isEmpty())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void CreateTestimoni() {
+        //TODO: Mau ada loading nda?
+//        setLoading(true);
+        Testimoni data = binding.getTestimoni();
+
+        TestimoniFromJson testimoni = new TestimoniFromJson(userPref.GetUserID(), data.getTestimoni());
+
+        final StringRequest stringRequest = new StringRequest(POST, TestimoniApi.ADD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        TestimoniResponse testimoniResponse =
+                                gson.fromJson(response, TestimoniResponse.class);
+
+                        Toast.makeText(getContext(), testimoniResponse.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+
+//                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getContext(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                String requestBody = gson.toJson(testimoni);
+
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+        };
+
+        queue.add(stringRequest);
     }
 
     @Override
