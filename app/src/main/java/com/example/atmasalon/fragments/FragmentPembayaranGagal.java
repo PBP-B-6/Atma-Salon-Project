@@ -41,10 +41,9 @@ public class FragmentPembayaranGagal extends Fragment implements View.OnClickLis
         userPreference = new UserPreference(getActivity());
         reservationPreference = new ReservationPreference(getActivity());
 
-        double totalHarga = reservationPreference.GetTotalHarga();
+        float totalHarga = (float) reservationPreference.GetTotalHarga();
         String saldoStr = "Rp. " + String.format("%.0f", totalHarga) + ",00";
         binding.inputLayoutTotalHargaGagal.getEditText().setText(saldoStr);
-
         binding.btnLinkTopupPembayaranGagal.setOnClickListener(this);
 
         TextView text = getActivity().findViewById(R.id.page_name);

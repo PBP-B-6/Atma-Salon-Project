@@ -23,9 +23,9 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
     private FragmentReservation2Binding binding;
     private UserPreference userPreference;
     private ReservationPreference reservationPreference;
-    private double totalHarga = 0;
-    private double hargaModel = 0, hargaWarna = 0;
-    private static double hargaJasaSalon = 40000;
+    private float totalHarga = 0;
+    private float hargaModel = 0, hargaWarna = 0;
+    private static float hargaJasaSalon = 40000;
     private String modelRambut = "", warnaRambut = "";
 
     public FragmentReservation2() {

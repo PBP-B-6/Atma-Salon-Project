@@ -90,6 +90,12 @@ public class UserPreference {
         editor.commit();
     }
 
+    public void SetSaldo(float saldo)
+    {
+        editor.putFloat(KEY_SALDO, saldo);
+        editor.commit();
+    }
+
     public String GetURLProfilePic()
     {
         return sharedPreference.getString(KEY_URLGAMBAR, null);
