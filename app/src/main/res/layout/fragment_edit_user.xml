@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.FragmentEditUser">
+
+        <LinearLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            tools:context=".RegisterActivity">
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="100dp"
+                    android:paddingBottom="100dp"
+                    android:paddingHorizontal="45dp">
+                    <ImageView
+                        android:layout_width="213dp"
+                        android:layout_height="77dp"
+                        android:src="@drawable/logo"
+                        android:layout_marginBottom="20dp"
+                        android:contentDescription="@string/image"/>
+
+                    <TextView
+                        android:fontFamily="@font/playfair_display_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/form_edit"
+                        android:textColor="#008C6E"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="26dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputLayoutNamaEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/InputAtmaSalon"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_user"
+                        app:boxCornerRadiusBottomEnd="30dp"
+                        app:boxCornerRadiusTopEnd="30dp"
+                        app:boxCornerRadiusBottomStart="30dp"
+                        app:boxCornerRadiusTopStart="30dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/nama_lengkap"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textCursorDrawable="@drawable/custom_cursor"
+                            android:textColor="@color/black"
+                            app:passwordToggleEnabled="true"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupKelaminEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:errorEnabled="true"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:fontFamily="@font/inter_regular"
+                            android:id="@+id/radioPriaEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pria"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="30dp"/>
+                        <RadioButton
+                            android:fontFamily="@font/inter_regular"
+                            android:id="@+id/radioWanitaEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wanita"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
+                    </RadioGroup>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputLayoutPhoneEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/InputAtmaSalon"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_phone"
+                        app:boxCornerRadiusBottomEnd="30dp"
+                        app:boxCornerRadiusTopEnd="30dp"
+                        app:boxCornerRadiusBottomStart="30dp"
+                        app:boxCornerRadiusTopStart="30dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/no_telepon"
+                            android:textSize="14sp"
+                            android:textCursorDrawable="@drawable/custom_cursor"
+                            android:inputType="text"
+                            android:textColor="@color/black"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:fontFamily="@font/inter_regular"
+                        android:id="@+id/btnEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="33dp"
+                        android:backgroundTint="@color/primary_green"
+                        android:textColor="@color/white"
+                        android:background="@drawable/custom_border"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

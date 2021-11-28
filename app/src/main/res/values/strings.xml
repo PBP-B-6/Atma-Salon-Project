@@ -83,4 +83,6 @@
     <string name="tambah_testimoni">Tambah Testimoni</string>
     <string name="testimoni">Testimoni</string>
     <string name="edit_profil">Edit Profil</string>
+    <string name="form_edit">Form Edit</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -91,6 +91,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.btnKeluar.setOnClickListener(this);
         binding.btnTambahSaldo.setOnClickListener(this);
         binding.profileImage.setOnClickListener(this);
+        binding.btnEditProfil.setOnClickListener(this);
 
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
@@ -116,6 +117,14 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 .beginTransaction()
                 .replace(R.id.layout_fragment, new FragmentTopup())
                 .commit();
+        }
+        else if(view.getId() == R.id.btnEditProfil)
+        {
+            this.getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.layout_fragment, new FragmentEditUser())
+                    .commit();
         }
         else if(view.getId() == R.id.btnKeluar)
         {
