@@ -2,6 +2,7 @@ package com.example.atmasalon.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.atmasalon.entity.DataReservasi;
 import com.example.atmasalon.entity.UserLogin;
@@ -59,7 +60,7 @@ public class ReservationPreference {
         return new DataReservasi(lokasi, nama, telp, model, warna, total);
     }
 
-    public double GetTotalHarga()
+    public float GetTotalHarga()
     {
         return sharedPreference.getFloat(KEY_TOTALHARGA, 0.f);
     }
@@ -72,6 +73,11 @@ public class ReservationPreference {
     public String GetLokasi()
     {
         return sharedPreference.getString(KEY_LOKASI, null);
+    }
+
+    public String GetTelp()
+    {
+        return sharedPreference.getString(KEY_NOTELP, null);
     }
 
     public int GetOrderId(){return sharedPreference.getInt(KEY_ID, -1);}

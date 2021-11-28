@@ -2,11 +2,13 @@ package com.example.atmasalon.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.android.volley.Request.Method.DELETE;
 import static com.android.volley.Request.Method.GET;
 import static com.android.volley.Request.Method.PUT;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -32,16 +34,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.example.atmasalon.LoginActivity;
 import com.example.atmasalon.R;
 import com.example.atmasalon.api.UserApi;
 import com.example.atmasalon.databinding.FragmentProfilBinding;
-import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -84,6 +85,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         userPref = new UserPreference(this.getActivity());
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
         reservationPreference = new ReservationPreference(this.getActivity());
+
         GetUserNowFromApi();
 
         binding.namaProfil.setText(userPref.GetNamaUser());
@@ -92,6 +94,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.btnTambahSaldo.setOnClickListener(this);
         binding.profileImage.setOnClickListener(this);
         binding.btnEditProfil.setOnClickListener(this);
+        binding.btnDeleteUser.setOnClickListener(this);
 
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
@@ -128,11 +131,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         }
         else if(view.getId() == R.id.btnKeluar)
         {
-            userPref.Logout();
-            reservationPreference.ClearPreference();
-            Intent move = new Intent(this.getActivity(), LoginActivity.class);
-            startActivity(move);
-            getActivity().finish();
+            Logout();
         }
         else if(view.getId() == R.id.profile_image)
         {
@@ -149,7 +148,21 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 frag.startActivityForResult(intent, CAMERA_REQUEST);
             }
-
+        }
+        else if(view.getId() == R.id.btnDeleteUser)
+        {
+            MaterialAlertDialogBuilder materialAlertDialogBuilder =
+                    new MaterialAlertDialogBuilder(getActivity());
+            materialAlertDialogBuilder.setTitle("Konfirmasi")
+                    .setMessage("Apakah anda yakin ingin menutup akun anda?")
+                    .setNegativeButton("Batal", null)
+                    .setPositiveButton("Tutup", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            DeleteUser();
+                        }
+                    })
+                    .show();
         }
     }
 
@@ -363,5 +376,62 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private void SetUserLogin(UserFromJson user)
     {
         this.userLogin = user;
+    }
+
+    public void DeleteUser() {
+        //TODO: Set Loading
+//        setLoading(true);
+
+        final StringRequest stringRequest = new StringRequest(DELETE, UserApi.DELETE_URL + userPref.GetUserID(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        UserResponse userResponse =
+                                gson.fromJson(response, UserResponse.class);
+
+//                        setLoading(false);
+                        Toast.makeText(getActivity(), userResponse.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+
+                        Logout();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getActivity(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+    private void Logout()
+    {
+        userPref.Logout();
+        reservationPreference.ClearPreference();
+        Intent move = new Intent(this.getActivity(), LoginActivity.class);
+        startActivity(move);
+        getActivity().finish();
     }
 }

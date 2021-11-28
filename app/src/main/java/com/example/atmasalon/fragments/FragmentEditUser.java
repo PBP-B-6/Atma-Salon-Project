@@ -69,6 +69,7 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
+
         GetUserNowFromApi();
         binding.btnEdit.setOnClickListener(this);
 

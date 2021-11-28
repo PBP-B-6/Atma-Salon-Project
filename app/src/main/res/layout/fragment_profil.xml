@@ -159,6 +159,21 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnDeleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutup_akun"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_marginBottom="33dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#B94343"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_border"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:fontFamily="@font/inter_regular"
                 android:id="@+id/btnKeluar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

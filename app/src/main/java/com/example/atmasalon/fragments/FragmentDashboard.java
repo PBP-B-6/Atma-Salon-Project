@@ -45,12 +45,12 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity().getApplicationContext());
-
         userNow = userPref.GetUserNow();
-        binding.dashboardProfileName.setText(userNow.getNama());
+
         float saldo = userNow.getSaldo();
         String saldoStr = "Rp. " + String.format("%.0f", saldo) + ",00";
 
+        binding.dashboardProfileName.setText(userNow.getNama());
         binding.dashboardProfileSaldo.setText(saldoStr);
         binding.btnLihatProfil.setOnClickListener(this);
         binding.btnTambahSaldo.setOnClickListener(this);

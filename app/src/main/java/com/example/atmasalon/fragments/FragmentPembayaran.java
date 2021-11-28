@@ -71,7 +71,6 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.btnBayarPembayaranBerhasil.setOnClickListener(this);
         userPref = new UserPreference(this.getActivity());
         reservationPreference = new ReservationPreference(this.getActivity());
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
@@ -84,6 +83,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         double totalHarga = reservationPreference.GetTotalHarga();
         String saldoStr = "Rp. " + String.format("%.0f", totalHarga) + ",00";
         binding.inputLayoutTotalHargaBerhasil.getEditText().setText(saldoStr);
+        binding.btnBayarPembayaranBerhasil.setOnClickListener(this);
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Pembayaran");
