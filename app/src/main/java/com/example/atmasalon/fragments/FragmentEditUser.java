@@ -112,7 +112,7 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
                         Intent returnIntent = new Intent();
                         getActivity().setResult(Activity.RESULT_OK, returnIntent);
 
-                        //TODO: Edit User Preferences nya ato gimana lah
+                        userPref.SetUserName(userLogin.getNama());
 
                         FragmentEditUser.this.getActivity()
                                 .getSupportFragmentManager()
