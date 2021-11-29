@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -71,21 +72,26 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
                     .beginTransaction()
                     .replace(R.id.layout_fragment, new FragmentProfil())
                     .commit();
-            nav.setSelectedItemId(R.id.menu_profil);
+//            userPref.SetSwitch(4);
+            MenuItem item = nav.getMenu().findItem(R.id.menu_profil);
+            item.setChecked(true);
         } else if(view.getId() == R.id.btnTambahSaldo){
             this.getActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.layout_fragment, new FragmentTopup())
                 .commit();
-            nav.setSelectedItemId(R.id.menu_profil);
+            MenuItem item = nav.getMenu().findItem(R.id.menu_profil);
+            item.setChecked(true);
         } else if(view.getId() == R.id.btnReservasi){
             this.getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.layout_fragment, new FragmentReservation2())
                     .commit();
-            nav.setSelectedItemId(R.id.menu_reservasi);
+//            userPref.SetSwitch(3);
+            MenuItem item = nav.getMenu().findItem(R.id.menu_reservasi);
+            item.setChecked(true);
         } else if(view.getId() == R.id.btnTentangKami){
                 Intent move = new Intent(this.getActivity(), AboutActivity.class);
                 startActivity(move);

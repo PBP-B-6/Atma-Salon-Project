@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private static final int CAMERA_REQUEST = 2;
 
     private Testimoni testimoni;
+    private TestimoniFromJson testimoniFJ;
 
         //TODO:Delete User jgn lupa
     public FragmentProfil() {
@@ -83,7 +85,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profil, container, false);
         return binding.getRoot();
@@ -97,6 +98,8 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         reservationPreference = new ReservationPreference(this.getActivity());
 
         GetUserNowFromApi();
+
+        Toast.makeText(getActivity(), String.valueOf(userPref.GetUserID()), Toast.LENGTH_LONG).show();
 
         testimoni = new Testimoni();
         binding.setTestimoni(testimoni);
@@ -116,10 +119,13 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
         {
+            Toast.makeText(getActivity(), "A", Toast.LENGTH_LONG).show();
             Bitmap img = null;
             img = Base64ToBitmap(userPref.GetURLProfilePic());
+            Toast.makeText(getActivity(), "B", Toast.LENGTH_LONG).show();
             if(img != null)
             {
+                Toast.makeText(getActivity(), "C", Toast.LENGTH_LONG).show();
                 binding.profileImage.setImageBitmap(img);
             }
         }
@@ -188,6 +194,20 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 CreateTestimoni();
             }
         }
+        else if(view.getId() == R.id.btnEditTestimoni)
+        {
+            if(Validasi())
+            {
+                UpdateTestimoni();
+            }
+        }
+        else if(view.getId() == R.id.btnHapusTestimoni)
+        {
+            if(Validasi())
+            {
+                DeleteTestimoni();
+            }
+        }
     }
 
     private boolean Validasi()
@@ -225,11 +245,17 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
-                        TestimoniResponse testimoniResponse =
-                                gson.fromJson(response, TestimoniResponse.class);
+//                        TestimoniResponse testimoniResponse =
+//                                gson.fromJson(response, TestimoniResponse.class);
 
-                        Toast.makeText(getContext(), testimoniResponse.getMessage(),
+                        TestimoniFromJson testi =
+                                gson.fromJson(response, TestimoniFromJson.class);
+
+                        Toast.makeText(getContext(), "Testimoni berhasil ditambahkan",
                                 Toast.LENGTH_SHORT).show();
+
+                        binding.btnTambahTestimoni.setVisibility(View.GONE);
+                        binding.wrapButton.setVisibility(View.VISIBLE);
 
 //                        setLoading(false);
                     }
@@ -273,6 +299,185 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
 
 
                 return requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+    private void UpdateTestimoni() {
+        //TODO: SetLoading
+//        setLoading(true);
+
+        testimoni.setTestimoni(binding.inputLayoutTestimoni.getEditText().getText().toString());
+
+        final StringRequest stringRequest = new StringRequest(PUT, TestimoniApi.UPDATE_URL + userPref.GetUserID(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+//                        TestimoniResponse testimoniResponse =
+//                                gson.fromJson(response, TestimoniResponse.class);
+
+                        TestimoniFromJson testi =
+                                gson.fromJson(response, TestimoniFromJson.class);
+
+                        Toast.makeText(getActivity(), "Update Testimoni berhasil",
+                                Toast.LENGTH_SHORT).show();
+
+//                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getActivity(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                String requestBody = gson.toJson(testimoni);
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+    public void DeleteTestimoni() {
+        //TODO: Set Loading
+//        setLoading(true);
+
+        final StringRequest stringRequest = new StringRequest(DELETE, TestimoniApi.DELETE_URL + userPref.GetUserID(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+
+                        TestimoniFromJson testi =
+                                gson.fromJson(response, TestimoniFromJson.class);
+
+                        Toast.makeText(getActivity(), "Delete Testimoni berhasil",
+                                Toast.LENGTH_SHORT).show();
+
+                        binding.inputLayoutTestimoni.getEditText().setText("");
+                        binding.btnTambahTestimoni.setVisibility(View.VISIBLE);
+                        binding.wrapButton.setVisibility(View.GONE);
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getActivity(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+    private void GetTestimoni()
+    {
+        //TODO: set loding
+//        setLoading(true);
+
+        final StringRequest stringRequest = new StringRequest(GET, TestimoniApi.GET_BY_ID_URL + userPref.GetUserID(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        TestimoniResponse testimoniResponse =
+                                gson.fromJson(response, TestimoniResponse.class);
+
+//                        TestimoniFromJson newTesti = gson.fromJson(response, TestimoniFromJson.class);
+//                        String helo = newTesti.getTesti();
+
+                        if( testimoniResponse != null && testimoniResponse.getTestimoni().size() != 0 ){
+                            testimoniFJ = testimoniResponse.getTestimoni().get(0);
+                            if( testimoniFJ.getTesti().isEmpty() ){
+                                binding.btnTambahTestimoni.setVisibility(View.VISIBLE);
+                                binding.wrapButton.setVisibility(View.GONE);
+                            } else {
+                                binding.btnTambahTestimoni.setVisibility(View.GONE);
+                                binding.wrapButton.setVisibility(View.VISIBLE);
+                                binding.inputLayoutTestimoni.getEditText().setText(testimoniFJ.getTesti());
+                            }
+                        } else {
+                            binding.btnTambahTestimoni.setVisibility(View.VISIBLE);
+                            binding.wrapButton.setVisibility(View.GONE);
+                        }
+
+//                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getActivity(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
             }
         };
 
@@ -489,6 +694,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private void SetUserLogin(UserFromJson user)
     {
         this.userLogin = user;
+        GetTestimoni();
     }
 
     public void DeleteUser() {

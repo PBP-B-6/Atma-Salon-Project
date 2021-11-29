@@ -2,13 +2,15 @@ package com.example.atmasalon.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class TestimoniResponse
 {
     @SerializedName("message")
     private String message;
 
     @SerializedName("data")
-    private TestimoniFromJson testimoni;
+    private List<TestimoniFromJson> testimoni;
 
     public String getMessage() {
         return message;
@@ -18,11 +20,11 @@ public class TestimoniResponse
         this.message = message;
     }
 
-    public TestimoniFromJson getTestimoni() {
+    public List<TestimoniFromJson> getTestimoni() {
         return testimoni;
     }
 
-    public void setTestimoni(TestimoniFromJson testimoni) {
+    public void setTestimoni(List<TestimoniFromJson> testimoni) {
         this.testimoni = testimoni;
     }
 }
