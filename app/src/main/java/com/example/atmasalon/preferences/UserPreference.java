@@ -84,6 +84,18 @@ public class UserPreference {
         editor.commit();
     }
 
+    public void SetUserName(String name)
+    {
+        editor.putString(KEY_NAME, name);
+        editor.commit();
+    }
+
+    public void SetSaldo(float saldo)
+    {
+        editor.putFloat(KEY_SALDO, saldo);
+        editor.commit();
+    }
+
     public String GetURLProfilePic()
     {
         return sharedPreference.getString(KEY_URLGAMBAR, null);

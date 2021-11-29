@@ -2,11 +2,15 @@ package com.example.atmasalon.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.android.volley.Request.Method.DELETE;
 import static com.android.volley.Request.Method.GET;
+import static com.android.volley.Request.Method.POST;
 import static com.android.volley.Request.Method.PUT;
+import static com.android.volley.Request.Method.POST;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -32,16 +36,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.example.atmasalon.LoginActivity;
 import com.example.atmasalon.R;
+import com.example.atmasalon.api.TestimoniApi;
 import com.example.atmasalon.api.UserApi;
 import com.example.atmasalon.databinding.FragmentProfilBinding;
-import com.example.atmasalon.entity.User;
+import com.example.atmasalon.entity.Testimoni;
+import com.example.atmasalon.entity.TestimoniFromJson;
+import com.example.atmasalon.entity.TestimoniResponse;
 import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -65,7 +73,9 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private static final int PERMISSION_REQUEST_CAMERA = 100;
     private static final int CAMERA_REQUEST = 2;
 
+    private Testimoni testimoni;
 
+        //TODO:Delete User jgn lupa
     public FragmentProfil() {
         // Required empty public constructor
     }
@@ -73,6 +83,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profil, container, false);
         return binding.getRoot();
@@ -84,7 +95,11 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         userPref = new UserPreference(this.getActivity());
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
         reservationPreference = new ReservationPreference(this.getActivity());
+
         GetUserNowFromApi();
+
+        testimoni = new Testimoni();
+        binding.setTestimoni(testimoni);
 
         binding.namaProfil.setText(userPref.GetNamaUser());
         binding.emailProfil.setText(userPref.GetUserLogin().getEmail());
@@ -92,6 +107,11 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.btnTambahSaldo.setOnClickListener(this);
         binding.profileImage.setOnClickListener(this);
         binding.btnEditProfil.setOnClickListener(this);
+        binding.btnDeleteUser.setOnClickListener(this);
+
+        binding.btnTambahTestimoni.setOnClickListener(this);
+        binding.btnEditTestimoni.setOnClickListener(this);
+        binding.btnHapusTestimoni.setOnClickListener(this);
 
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
@@ -128,11 +148,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         }
         else if(view.getId() == R.id.btnKeluar)
         {
-            userPref.Logout();
-            reservationPreference.ClearPreference();
-            Intent move = new Intent(this.getActivity(), LoginActivity.class);
-            startActivity(move);
-            getActivity().finish();
+            Logout();
         }
         else if(view.getId() == R.id.profile_image)
         {
@@ -149,8 +165,118 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 frag.startActivityForResult(intent, CAMERA_REQUEST);
             }
-
         }
+        else if(view.getId() == R.id.btnDeleteUser)
+        {
+            MaterialAlertDialogBuilder materialAlertDialogBuilder =
+                    new MaterialAlertDialogBuilder(getActivity());
+            materialAlertDialogBuilder.setTitle("Konfirmasi")
+                    .setMessage("Apakah anda yakin ingin menutup akun anda?")
+                    .setNegativeButton("Batal", null)
+                    .setPositiveButton("Tutup", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            DeleteUser();
+                        }
+                    })
+                    .show();
+        }
+        else if(view.getId() == R.id.btnTambahTestimoni)
+        {
+            if(Validasi())
+            {
+                CreateTestimoni();
+            }
+        }
+    }
+
+    private boolean Validasi()
+    {
+        if(CekKosong())
+        {
+            return true;
+        }
+        else
+        {
+            Toast.makeText(getContext(), "Testimoni belum ditambahkan!", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    private boolean CekKosong()
+    {
+        if(binding.inputLayoutTestimoni.getEditText().getText().toString().isEmpty())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void CreateTestimoni() {
+        //TODO: Mau ada loading nda?
+//        setLoading(true);
+        Testimoni data = binding.getTestimoni();
+
+        TestimoniFromJson testimoni = new TestimoniFromJson(userPref.GetUserID(), data.getTestimoni());
+
+        final StringRequest stringRequest = new StringRequest(POST, TestimoniApi.ADD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        TestimoniResponse testimoniResponse =
+                                gson.fromJson(response, TestimoniResponse.class);
+
+                        Toast.makeText(getContext(), testimoniResponse.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+
+//                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getContext(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                String requestBody = gson.toJson(testimoni);
+
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+        };
+
+        queue.add(stringRequest);
     }
 
     @Override
@@ -363,5 +489,62 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private void SetUserLogin(UserFromJson user)
     {
         this.userLogin = user;
+    }
+
+    public void DeleteUser() {
+        //TODO: Set Loading
+//        setLoading(true);
+
+        final StringRequest stringRequest = new StringRequest(DELETE, UserApi.DELETE_URL + userPref.GetUserID(),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        UserResponse userResponse =
+                                gson.fromJson(response, UserResponse.class);
+
+//                        setLoading(false);
+                        Toast.makeText(getActivity(), userResponse.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+
+                        Logout();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getActivity(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+    private void Logout()
+    {
+        userPref.Logout();
+        reservationPreference.ClearPreference();
+        Intent move = new Intent(this.getActivity(), LoginActivity.class);
+        startActivity(move);
+        getActivity().finish();
     }
 }

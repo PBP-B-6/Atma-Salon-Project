@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="testimoni"
+            type="com.example.atmasalon.entity.Testimoni" />
+    </data>
+
     <FrameLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -101,6 +107,7 @@
                     android:hint="@string/testimoni"
                     android:inputType="textMultiLine"
                     android:textSize="14sp"
+                    android:text="@={testimoni.testimoni}"
                     android:textCursorDrawable="@drawable/custom_cursor"
                     android:textColor="@color/black"
                     app:passwordToggleEnabled="true"/>
@@ -156,6 +163,21 @@
                     android:layout_weight="1"
                     android:layout_marginStart="2.5dp"/>
             </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnDeleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutup_akun"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_marginBottom="33dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#B94343"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_border"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:fontFamily="@font/inter_regular"

@@ -69,6 +69,7 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         userPref = new UserPreference(this.getActivity());
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
+
         GetUserNowFromApi();
         binding.btnEdit.setOnClickListener(this);
 
@@ -112,16 +113,9 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
                         Intent returnIntent = new Intent();
                         getActivity().setResult(Activity.RESULT_OK, returnIntent);
 
-                        //TODO: Edit User Preferences nya ato gimana lah
+                        userPref.SetUserName(userLogin.getNama());
 
-                        FragmentEditUser.this.getActivity()
-                                .getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.layout_fragment, new FragmentDashboard())
-                                .commit();
-
-                        BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
-                        nav.setSelectedItemId(R.id.menu_beranda);
+                        ChangeToDashboard();
 
 //                        setLoading(false);
                     }
@@ -221,6 +215,18 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
         this.userLogin = user;
 
         SetBindingToText();
+    }
+
+    private void ChangeToDashboard()
+    {
+        this.getActivity()
+            .getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.layout_fragment, new FragmentDashboard())
+            .commit();
+
+        BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
+        nav.setSelectedItemId(R.id.menu_beranda);
     }
 
     private void SetBindingToText()

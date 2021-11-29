@@ -58,10 +58,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             if(Validasi())
             {
                 CreateUser();
-
-                Intent move = new Intent(this, LoginActivity.class);
-                startActivity(move);
-                finish();
             }
         }
         else if(view.getId() == R.id.btnLinkMasuk)
@@ -168,6 +164,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                         Intent returnIntent = new Intent();
                         setResult(Activity.RESULT_OK, returnIntent);
+
+                        Intent move = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(move);
+                        finish();
 
 //                        setLoading(false);
                     }
