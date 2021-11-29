@@ -20,6 +20,8 @@ public class UserPreference {
     public static final String KEY_SALDO = "624";
     public static final String KEY_URLGAMBAR = "URL";
 
+//    public static final String KEY_SWITCH = "0";
+
     public UserPreference(Context C)
     {
         con = C;
@@ -68,6 +70,11 @@ public class UserPreference {
         return sharedPreference.getInt(KEY_ID, -1);
     }
 
+//    public int GetSwitch()
+//    {
+//        return sharedPreference.getInt(KEY_SWITCH, 0);
+//    }
+
     public String GetNamaUser()
     {
         return sharedPreference.getString(KEY_NAME, null);
@@ -95,6 +102,12 @@ public class UserPreference {
         editor.putFloat(KEY_SALDO, saldo);
         editor.commit();
     }
+
+//    public void SetSwitch(int s)
+//    {
+//        editor.putInt(KEY_SWITCH, s);
+//        editor.commit();
+//    }
 
     public String GetURLProfilePic()
     {
