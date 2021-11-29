@@ -13,16 +13,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.atmasalon.R;
 import com.example.atmasalon.databinding.FragmentReservation2Binding;
+import com.example.atmasalon.entity.Pelanggan;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
 
 public class FragmentReservation2 extends Fragment implements View.OnClickListener{
     private FragmentReservation2Binding binding;
-    private UserPreference userPreference;
-    private ReservationPreference reservationPreference;
+    private Pelanggan pelanggan;
+    private RequestQueue queue;
+
     private double totalHarga = 0;
     private double hargaModel = 0, hargaWarna = 0;
     private static double hargaJasaSalon = 40000;
@@ -37,14 +41,19 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_reservation_2, container, false);
+
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        reservationPreference = new ReservationPreference(this.getActivity());
-        userPreference = new UserPreference(this.getActivity());
+
+        queue = Volley.newRequestQueue(this.getContext());
+
+        pelanggan = new Pelanggan();
+        binding.setPelangganList(pelanggan);
+
         binding.btnBayarReservasi.setOnClickListener(this);
 
         SetAllRadioOnClick();
