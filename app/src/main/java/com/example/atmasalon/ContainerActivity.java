@@ -27,6 +27,7 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
     private ActivityContainerBinding binding;
     private UserPreference userPref;
     private Bitmap bitmap = null;
+    private int switchId = 0;
 
 
     @Override
@@ -38,7 +39,7 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         FirebaseMessaging.getInstance().subscribeToTopic("sample_notification");
 
         userPref = new UserPreference(this);
-//        userPref.SetSwitch(0);
+        switchId = 0;
 
         changeFragment(new FragmentDashboard());
 
@@ -58,18 +59,18 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.menu_beranda){
+        if(item.getItemId() == R.id.menu_beranda && switchId != 1){
             changeFragment(new FragmentDashboard());
-//            userPref.SetSwitch(1);
-        }else if(item.getItemId() == R.id.menu_riwayat) {
+            switchId = 1;
+        }else if(item.getItemId() == R.id.menu_riwayat && switchId != 2) {
             changeFragment(new FragmentRiwayat());
-//            userPref.SetSwitch(2);
-        }else if(item.getItemId() == R.id.menu_reservasi) {
+            switchId = 2;
+        }else if(item.getItemId() == R.id.menu_reservasi && switchId != 3) {
             changeFragment(new FragmentReservation2());
-//            userPref.SetSwitch(3);
-        }else if(item.getItemId() == R.id.menu_profil){
+            switchId = 3;
+        }else if(item.getItemId() == R.id.menu_profil && switchId != 4){
             changeFragment(new FragmentProfil());
-//            userPref.SetSwitch(4);
+            switchId = 4;
         }
 
         return true;
@@ -80,6 +81,11 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
                 .beginTransaction()
                 .replace(R.id.layout_fragment, fragment)
                 .commit();
+    }
+
+    public void setSwitchId(int i)
+    {
+        switchId = i;
     }
 
     private void CheckLogin()
