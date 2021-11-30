@@ -2,7 +2,6 @@ package com.example.atmasalon.fragments;
 
 import static com.android.volley.Request.Method.DELETE;
 import static com.android.volley.Request.Method.GET;
-import static com.android.volley.Request.Method.PUT;
 
 import android.os.Bundle;
 
@@ -11,9 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import com.example.atmasalon.R;
 import com.example.atmasalon.api.PelangganApi;
 import com.example.atmasalon.databinding.FragmentRiwayatBinding;
@@ -33,6 +33,7 @@ import com.example.atmasalon.entity.PelangganFromJson;
 import com.example.atmasalon.entity.PelangganResponse;
 import com.example.atmasalon.preferences.UserPreference;
 import com.example.atmasalon.adapter.rv_riwayatAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -113,6 +114,10 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                     .beginTransaction()
                     .replace(R.id.layout_fragment, new FragmentReservation2())
                     .commit();
+
+            BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
+            MenuItem item = nav.getMenu().findItem(R.id.menu_reservasi);
+            item.setChecked(true);
         }
     }
 

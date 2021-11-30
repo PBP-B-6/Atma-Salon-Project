@@ -5,7 +5,6 @@ import static com.android.volley.Request.Method.PUT;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,8 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -226,14 +226,15 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
             .commit();
 
         BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
-        nav.setSelectedItemId(R.id.menu_beranda);
+        MenuItem item = nav.getMenu().findItem(R.id.menu_beranda);
+        item.setChecked(true);
     }
 
     private void SetBindingToText()
     {
         binding.inputLayoutNamaEdit.getEditText().setText(userLogin.getNama());
         binding.inputLayoutPhoneEdit.getEditText().setText(userLogin.getNoTelp());
-        if(binding.radioGroupKelaminEdit.getCheckedRadioButtonId() == binding.radioPriaEdit.getId())
+        if(userLogin.getJenisKelamin() == 1)
         {
             binding.radioPriaEdit.setChecked(true);
             binding.radioWanitaEdit.setChecked(false);

@@ -23,6 +23,9 @@ import com.example.atmasalon.databinding.ActivityRegisterBinding;
 import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserResponse;
+import com.example.atmasalon.unitTesting.ActivityUtil;
+import com.example.atmasalon.unitTesting.UserPresenter;
+import com.example.atmasalon.unitTesting.UserView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
@@ -32,10 +35,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener, UserView {
     private ActivityRegisterBinding binding;
     private User user;
     private RequestQueue queue;
+
+    private UserPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,52 +75,61 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private boolean Validasi()
     {
-        if(CekKosong())
-        {
-            String pwd = binding.getUser().getPassword();
-            TextInputLayout txtInput = binding.inputLayoutRepeatPassword;
-            String pwdRepeat = txtInput.getEditText().getText().toString();
-
-            if(pwd.equals(pwdRepeat))
-            {
-                return true;
-            }
-            else
-            {
-                Toast.makeText(this, "Kata sandi tidak sama!", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else
-        {
-            Toast.makeText(this, "Silahkan isi semua field", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
-
-    private boolean CekKosong()
-    {
+        String regexPhone = "08+[0-9]{8,11}";
+        String regexEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(binding.inputLayoutNama.getEditText().getText().toString().isEmpty())
         {
+            Toast.makeText(this, "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(binding.inputLayoutEmail.getEditText().getText().toString().isEmpty())
         {
+            Toast.makeText(this, "Email tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!binding.inputLayoutEmail.getEditText().getText().toString().matches(regexEmail))
+        {
+            Toast.makeText(this, "Email tidak sesuai format", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(binding.inputLayoutPasswordRegister.getEditText().getText().toString().isEmpty())
         {
-            return false;
-        }
-        else if(binding.inputLayoutPhone.getEditText().getText().toString().isEmpty())
-        {
+            Toast.makeText(this, "Password tidak boleh kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(binding.inputLayoutRepeatPassword.getEditText().getText().toString().isEmpty())
         {
+            Toast.makeText(this, "Password tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!binding.inputLayoutPasswordRegister.getEditText().getText().toString().equals(binding.inputLayoutRepeatPassword.getEditText().getText().toString()))
+        {
+            Toast.makeText(this, "Password harus sesuai", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(!binding.radioPria.isChecked() && !binding.radioWanita.isChecked())
         {
+            Toast.makeText(this, "Jenis Kelamin harus dipilih", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(binding.inputLayoutPhone.getEditText().getText().toString().isEmpty())
+        {
+            Toast.makeText(this, "Nomor Telepon tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(binding.inputLayoutPhone.getEditText().getText().toString().length() < 10 || binding.inputLayoutPhone.getEditText().getText().toString().length() > 13)
+        {
+            Toast.makeText(this, "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!binding.inputLayoutPhone.getEditText().getText().toString().matches(regexPhone))
+        {
+            Toast.makeText(this, "Nomor Telepon tidak sesuai format", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(binding.inputLayoutPhone.getEditText().getText().toString().length() < 10 || binding.inputLayoutPhone.getEditText().getText().toString().length() > 13)
+        {
+            Toast.makeText(this, "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -214,6 +228,98 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         };
 
+//        presenter.onProfilClicked();
         queue.add(stringRequest);
+    }
+
+    @Override
+    public String getNama() {
+        return binding.inputLayoutNama.getEditText().getText().toString();
+    }
+
+    @Override
+    public void showNamaError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public String getEmail() {
+        return binding.inputLayoutEmail.getEditText().getText().toString();
+    }
+
+    @Override
+    public void showEmailError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public String getPassword1() {
+        return binding.inputLayoutPasswordRegister.getEditText().getText().toString();
+    }
+
+    @Override
+    public void showPassword1Error(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public String getPassword2() {
+        return binding.inputLayoutRepeatPassword.getEditText().getText().toString();
+    }
+
+    @Override
+    public void showPassword2Error(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showPasswordMatchingError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public String getPhone() {
+        return binding.inputLayoutPhone.getEditText().getText().toString();
+    }
+
+    @Override
+    public void showPhoneError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public int getKelaminValue() {
+        if(!binding.radioPria.isChecked() && !binding.radioWanita.isChecked())
+        {
+            return -1;
+        }
+        else if(GetKelamin())
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    @Override
+    public void showKelaminError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void startMainUser() {
+        new ActivityUtil(this).startMainUser();
+    }
+
+    @Override
+    public void showUserError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showErrorResponse(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

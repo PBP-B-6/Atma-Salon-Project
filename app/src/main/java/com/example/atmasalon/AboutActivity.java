@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;

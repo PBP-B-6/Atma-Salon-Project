@@ -6,7 +6,6 @@ import static com.android.volley.Request.Method.DELETE;
 import static com.android.volley.Request.Method.GET;
 import static com.android.volley.Request.Method.POST;
 import static com.android.volley.Request.Method.PUT;
-import static com.android.volley.Request.Method.POST;
 
 import android.Manifest;
 import android.app.Activity;
@@ -24,7 +23,6 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +48,6 @@ import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.ReservationPreference;
 import com.example.atmasalon.preferences.UserPreference;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -99,8 +96,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
 
         GetUserNowFromApi();
 
-        Toast.makeText(getActivity(), String.valueOf(userPref.GetUserID()), Toast.LENGTH_LONG).show();
-
         testimoni = new Testimoni();
         binding.setTestimoni(testimoni);
 
@@ -119,13 +114,10 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
         {
-            Toast.makeText(getActivity(), "A", Toast.LENGTH_LONG).show();
             Bitmap img = null;
             img = Base64ToBitmap(userPref.GetURLProfilePic());
-            Toast.makeText(getActivity(), "B", Toast.LENGTH_LONG).show();
             if(img != null)
             {
-                Toast.makeText(getActivity(), "C", Toast.LENGTH_LONG).show();
                 binding.profileImage.setImageBitmap(img);
             }
         }
