@@ -3,29 +3,35 @@ package com.example.atmasalon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
 
+import com.anychart.AnyChart;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Cartesian;
+import com.anychart.core.cartesian.series.Column;
+import com.anychart.enums.Anchor;
+import com.anychart.enums.HoverMode;
+import com.anychart.enums.Position;
+import com.anychart.enums.TooltipPositionMode;
+import com.anychart.palettes.RangeColors;
 import com.example.atmasalon.databinding.ActivityAboutBinding;
-import com.example.atmasalon.databinding.ActivityContainerBinding;
-import com.google.android.gms.common.Feature;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.atmasalon.preferences.UserPreference;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
-import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.Icon;
-import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.location.LocationComponentOptions;
@@ -36,6 +42,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AboutActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, View.OnClickListener {
@@ -44,6 +51,7 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
     private PermissionsManager permissionsManager;
     private MapboxMap mapboxMap;
     private MapView mapView;
+    private UserPreference userPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +61,62 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
         binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
         binding.btnKembali.setOnClickListener(this);
 
+        userPref = new UserPreference(this);
+
+        //TODO: kalo ada bug gambar, otomatis ini dibenarkan
+        if(userPref.GetURLProfilePic() != null)
+        {
+            Bitmap img = null;
+            img = Base64ToBitmap(userPref.GetURLProfilePic());
+            if(img != null)
+            {
+                binding.profileImage.setImageBitmap(img);
+            }
+        }
 
         mapView = binding.mapView;
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
+
+        Cartesian cartesian = AnyChart.column();
+        List<DataEntry> data = new ArrayList<>();
+        data.add(new ValueDataEntry("2016", 2150));
+        data.add(new ValueDataEntry("2017", 4300));
+        data.add(new ValueDataEntry("2018", 5500));
+        data.add(new ValueDataEntry("2019", 4900));
+        data.add(new ValueDataEntry("2020", 6270));
+        data.add(new ValueDataEntry("2021", 7150));
+        Column column = cartesian.column(data);
+        column.tooltip()
+                .titleFormat("{%X}")
+                .position(Position.CENTER_BOTTOM)
+                .anchor(Anchor.CENTER_BOTTOM)
+                .offsetX(0d)
+                .offsetY(5d)
+                .format("{%Value}{groupsSeparator: }");
+        cartesian.animation(true);
+        cartesian.title("Chart Penggunaan Aplikasi");
+        cartesian.yScale().minimum(0d);
+        cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
+        cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
+        cartesian.interactivity().hoverMode(HoverMode.BY_X);
+        cartesian.xAxis(0).title("Tahun");
+        cartesian.yAxis(0).title("Pengguna");
+
+        //Add Color
+        RangeColors palette = RangeColors.instantiate();
+        palette.items("#008C6E", "");
+        palette.count(10);
+
+        RangeColors palette2 = RangeColors.instantiate();
+        palette2.items("#FAFAFA", "#EDA70A");
+        palette2.count(10);
+
+        cartesian.palette(palette);
+        cartesian.yGrid(0).palette(palette2);
+
+        binding.chart.setChart(cartesian);
+        binding.chart.setProgressBar(binding.progressbar);
     }
 
 
@@ -86,6 +146,21 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
             }
         });
 
+    }
+
+    private Bitmap Base64ToBitmap(String encodedImage)
+    {
+        if(encodedImage.isEmpty() || encodedImage == null){return null;}
+        try
+        {
+            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            return decodedByte;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     @SuppressWarnings({"MissingPermission"})
