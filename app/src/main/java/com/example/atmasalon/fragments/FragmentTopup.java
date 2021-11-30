@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -248,6 +249,7 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
             .commit();
 
         BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
-        nav.setSelectedItemId(R.id.menu_beranda);
+        MenuItem item = nav.getMenu().findItem(R.id.menu_beranda);
+        item.setChecked(true);
     }
 }

@@ -19,7 +19,6 @@ public class ReservationPreference {
     private static final String KEY_MODELRAMBUT = "model";
     private static final String KEY_WARNARAMBUT = "warna";
     private static final String KEY_TOTALHARGA = "22000";
-    private static final String KEY_ID = "0";
 
     public ReservationPreference(Context C)
     {
@@ -34,9 +33,8 @@ public class ReservationPreference {
         editor.commit();
     }
 
-    public void FillDataPage2(String lokasi, String nama, String telp, String model, String warna, float totalHarga, int id)
+    public void FillDataPage2(String lokasi, String nama, String telp, String model, String warna, float totalHarga)
     {
-        editor.putInt(KEY_ID, id);
         editor.putString(KEY_LOKASI, lokasi);
         editor.putString(KEY_NAMA, nama);
         editor.putString(KEY_NOTELP, telp);
@@ -80,11 +78,8 @@ public class ReservationPreference {
         return sharedPreference.getString(KEY_NOTELP, null);
     }
 
-    public int GetOrderId(){return sharedPreference.getInt(KEY_ID, -1);}
-
     public void ClearPreference()
     {
-        editor.putInt(KEY_ID, -1);
         editor.putString(KEY_LOKASI, "");
         editor.putString(KEY_NAMA, "");
         editor.putString(KEY_NOTELP, "");

@@ -69,25 +69,24 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
                 totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
                 reservationPreference.SetFilled();
-                reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga, userPreference.GetUserID());
+                reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
 
-                //TODO: Uncomment, disesuailkan
-//                if(GetUser().getSaldo() >= totalHarga)
-//                {
-//                    this.getActivity()
-//                        .getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.layout_fragment, new FragmentPembayaran())
-//                        .commit();
-//                }
-//                else
-//                {
-//                    this.getActivity()
-//                        .getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.layout_fragment, new FragmentPembayaranGagal())
-//                        .commit();
-//                }
+                if(userPreference.GetUserNow().getSaldo() >= totalHarga)
+                {
+                    this.getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.layout_fragment, new FragmentPembayaran())
+                        .commit();
+                }
+                else
+                {
+                    this.getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.layout_fragment, new FragmentPembayaranGagal())
+                        .commit();
+                }
 
             }
             else
@@ -118,7 +117,7 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
         warna = GetSelectedWarna().trim();
         totalHarga = hargaModel + hargaWarna + hargaJasaSalon;
 
-        reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga, userPreference.GetUserID());
+        reservationPreference.FillDataPage2(lokasi ,nama, telp, model, warna, totalHarga);
         binding = null;
     }
 
