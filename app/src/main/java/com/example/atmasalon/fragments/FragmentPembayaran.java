@@ -1,6 +1,7 @@
 package com.example.atmasalon.fragments;
 
 import static com.android.volley.Request.Method.GET;
+import static com.android.volley.Request.Method.POST;
 import static com.android.volley.Request.Method.PUT;
 
 import android.app.Activity;
@@ -27,10 +28,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.atmasalon.LoginActivity;
 import com.example.atmasalon.R;
+import com.example.atmasalon.RegisterActivity;
+import com.example.atmasalon.api.PelangganApi;
 import com.example.atmasalon.api.UserApi;
 import com.example.atmasalon.databinding.FragmentPembayaranBinding;
 import com.example.atmasalon.entity.DataReservasi;
+import com.example.atmasalon.entity.Pelanggan;
+import com.example.atmasalon.entity.PelangganFromJson;
+import com.example.atmasalon.entity.PelangganResponse;
+import com.example.atmasalon.entity.User;
 import com.example.atmasalon.entity.UserFromJson;
 import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.ReservationPreference;
@@ -104,8 +112,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
 
             // Kurang Saldo
             //TODO: 2 baris kode dibawah, dicut, dipindah didalam CreateOrder yoo
-//            float saldoNow = userLogin.getSaldo() - (float) reservationPreference.GetTotalHarga();
-//            UpdateUser(saldoNow);
+//
 
             //Insert Data
             DataReservasi reservasi = reservationPreference.GetAllData();
@@ -274,5 +281,74 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
 
         BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.menu_beranda);
+    }
+
+    private void CreateOrder() {
+        //TODO: Mau ada loading nda?
+//        setLoading(true);
+        DataReservasi reservasi = reservationPreference.GetAllData();
+        PelangganFromJson data = new PelangganFromJson(userPref.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut());
+
+        final StringRequest stringRequest = new StringRequest(POST, PelangganApi.ADD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        PelangganResponse pelangganResponse =
+                                gson.fromJson(response, PelangganResponse.class);
+
+                        Toast.makeText(getContext(), pelangganResponse.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+
+                        Intent returnIntent = new Intent();
+                        getActivity().setResult(Activity.RESULT_OK, returnIntent);
+
+                        float saldoNow = userLogin.getSaldo() - (float) reservationPreference.GetTotalHarga();
+                        UpdateUser(saldoNow);
+//                        setLoading(false);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setLoading(false);
+
+                try {
+                    String responseBody =
+                            new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+
+                    Toast.makeText(getContext(), errors.getString("message"),
+                            Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+
+                return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                String requestBody = gson.toJson(data);
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+        };
+
+        queue.add(stringRequest);
     }
 }

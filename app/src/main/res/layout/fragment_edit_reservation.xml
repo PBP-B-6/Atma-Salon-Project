@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.FragmentReservation2"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/isi_formulir"
+                android:textColor="@color/black"
+                android:layout_marginBottom="15dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutLokasiSalonEdit"
+                style="@style/InputAtmaSalon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:fontFamily="@font/inter_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/pilih_salon_terdekat"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textColor="@color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutNamaReservasiEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/InputAtmaSalon"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_user"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopStart="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nama_pemesan"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    app:passwordToggleEnabled="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutTelpReservasiEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/InputAtmaSalon"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_phone"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopStart="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nomor_telepon_pemesan"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    app:passwordToggleEnabled="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:fontFamily="@font/inter_regular"
+                android:id="@+id/btnUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Data"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:layout_marginBottom="33dp"
+                android:backgroundTint="@color/primary_green"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_border"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</layout>

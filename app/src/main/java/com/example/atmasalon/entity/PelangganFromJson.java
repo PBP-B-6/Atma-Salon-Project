@@ -6,22 +6,39 @@ import androidx.databinding.Bindable;
 import com.example.atmasalon.BR;
 import com.google.gson.annotations.SerializedName;
 
-public class Pelanggan extends BaseObservable {
-
+public class PelangganFromJson extends BaseObservable {
+    //TODO: Sesuaiin sama database baru, mungkin ada delet2 beberapa
+    @SerializedName("id")
     private int id = 0;
+
+    @SerializedName("idUser")
     private int idUser = 0;
+
+    @SerializedName("lokasiSalon")
     private String lokasiSalon;
+
+    @SerializedName("namaPemesan")
     private String namaPemesan;
+
+    @SerializedName("noTelp")
     private String noTelp;
+
+    @SerializedName("modelRambut")
     private String modelRambut;
+
+    @SerializedName("warnaRambut")
     private String warnaRambut;
+
+    @SerializedName("totalHarga")
     private float totalHarga;
+
+    @SerializedName("statusPembayaran")
     private String statusPembayaran;
 
-    public Pelanggan(){}
+    public PelangganFromJson(){}
 
     //TODO: Constructor hapus ini, trs yang baru, kalo tidak perlu, kurangi parameter
-    public Pelanggan(int id, int idUser, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
+    public PelangganFromJson(int id, int idUser, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
         this.id = id;
         this.idUser = idUser;
         this.lokasiSalon = lokasiSalon;
@@ -33,15 +50,13 @@ public class Pelanggan extends BaseObservable {
         this.statusPembayaran = statusPembayaran;
     }
 
-    public Pelanggan(int idUser, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
+    public PelangganFromJson(int idUser, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut) {
         this.idUser = idUser;
         this.lokasiSalon = lokasiSalon;
         this.namaPemesan = namaPemesan;
         this.noTelp = noTelp;
         this.modelRambut = modelRambut;
         this.warnaRambut = warnaRambut;
-        this.totalHarga = totalHarga;
-        this.statusPembayaran = statusPembayaran;
     }
 
     @Bindable

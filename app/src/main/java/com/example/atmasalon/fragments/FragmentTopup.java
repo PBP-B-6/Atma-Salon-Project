@@ -248,6 +248,5 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
             .commit();
 
         BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
-        nav.setSelectedItemId(R.id.menu_beranda);
     }
 }
