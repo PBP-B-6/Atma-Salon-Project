@@ -30,7 +30,7 @@ public class UserFromJson extends BaseObservable {
     private float saldo = 0;
 
     @SerializedName("urlGambar")
-    private String urlGambar = "";
+    private String urlGambar = "default";
 
     @SerializedName("status")
     private int status;

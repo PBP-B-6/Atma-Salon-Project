@@ -79,12 +79,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/kata_sandi"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:textSize="14sp"
                 android:textCursorDrawable="@drawable/custom_cursor"
                 android:textColor="@color/black"
                 android:text="@={loginData.password}"
-                app:passwordToggleEnabled="true"/>
+                app:passwordToggleEnabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

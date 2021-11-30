@@ -38,6 +38,7 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         FirebaseMessaging.getInstance().subscribeToTopic("sample_notification");
 
         userPref = new UserPreference(this);
+//        userPref.SetSwitch(0);
 
         changeFragment(new FragmentDashboard());
 
@@ -59,12 +60,16 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.menu_beranda){
             changeFragment(new FragmentDashboard());
+//            userPref.SetSwitch(1);
         }else if(item.getItemId() == R.id.menu_riwayat) {
             changeFragment(new FragmentRiwayat());
+//            userPref.SetSwitch(2);
         }else if(item.getItemId() == R.id.menu_reservasi) {
             changeFragment(new FragmentReservation2());
-        }else{
+//            userPref.SetSwitch(3);
+        }else if(item.getItemId() == R.id.menu_profil){
             changeFragment(new FragmentProfil());
+//            userPref.SetSwitch(4);
         }
 
         return true;
