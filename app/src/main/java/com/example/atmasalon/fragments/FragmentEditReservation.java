@@ -24,6 +24,7 @@ import com.example.atmasalon.R;
 import com.example.atmasalon.api.PelangganApi;
 import com.example.atmasalon.databinding.FragmentEditReservationBinding;
 import com.example.atmasalon.entity.Pelanggan;
+import com.example.atmasalon.entity.PelangganFromJson;
 import com.example.atmasalon.entity.PelangganResponse;
 import com.example.atmasalon.entity.UserResponse;
 import com.google.gson.Gson;
@@ -75,13 +76,21 @@ public class FragmentEditReservation extends Fragment {
         //TODO: set loding
 //        setLoading(true);
 
+        data.setLokasiSalon(binding.inputLayoutLokasiSalonEdit.getEditText().getText().toString());
+        data.setNamaPemesan(binding.inputLayoutNamaReservasiEdit.getEditText().getText().toString());
+        data.setNoTelp(binding.inputLayoutTelpReservasiEdit.getEditText().getText().toString());
+
         final StringRequest stringRequest = new StringRequest(PUT, PelangganApi.UPDATE_URL + data.getId(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
-                        PelangganResponse pelangganResponse =
-                                gson.fromJson(response, PelangganResponse.class);
+//                        PelangganResponse pelangganResponse =
+//                                gson.fromJson(response, PelangganResponse.class);
+                        PelangganFromJson pelangganFromJson = gson.fromJson(response, PelangganFromJson.class);
+
+                        Toast.makeText(getActivity(), "Berhasil Mengubah Reservasi",
+                                Toast.LENGTH_SHORT).show();
 
                         getActivity()
                                 .getSupportFragmentManager()
@@ -114,6 +123,19 @@ public class FragmentEditReservation extends Fragment {
                 headers.put("Accept", "application/json");
 
                 return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                String requestBody = gson.toJson(data);
+
+                return requestBody.getBytes(StandardCharsets.UTF_8);
             }
         };
 

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +27,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.atmasalon.R;
 import com.example.atmasalon.api.PelangganApi;
-import com.example.atmasalon.api.UserApi;
 import com.example.atmasalon.databinding.FragmentRiwayatBinding;
 import com.example.atmasalon.entity.Pelanggan;
+import com.example.atmasalon.entity.PelangganFromJson;
 import com.example.atmasalon.entity.PelangganResponse;
-import com.example.atmasalon.entity.UserResponse;
 import com.example.atmasalon.preferences.UserPreference;
 import com.example.atmasalon.adapter.rv_riwayatAdapter;
 import com.google.gson.Gson;
@@ -38,6 +38,7 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,7 +75,29 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
         //TODO: GetAll Data diperbaiki
 //        pelanggan = GetAll(userPreference.GetUserID());
+        pelanggan = new ArrayList<>();
+//        binding.srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                GetPelanggan();
+//                if( pelanggan.isEmpty() ){
+//                    pelanggan.clear();
+//                    binding.riwayatStatus.setVisibility(View.VISIBLE);
+//                } else {
+//                    binding.riwayatStatus.setVisibility(View.GONE);
+//                    binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
+//                    binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
+//                }
+//            }
+//        });
+//        if(pelanggan.isEmpty()) {
+//            pelanggan.clear();
+//            binding.riwayatStatus.setVisibility(View.GONE);
+//            binding.rvRiwayat.setVisibility(View.VISIBLE);
+//        }
         GetPelanggan();
+
+
 
         binding.btnMulaiReservasi.setOnClickListener(this);
 
@@ -99,7 +122,7 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
         binding = null;
     }
 
-    public void DeletePelanggan(int id) {
+    public void DeletePelanggan(int id, Pelanggan P) {
         //TODO: Set Loading
 //        setLoading(true);
 
@@ -108,13 +131,19 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
-                        UserResponse userResponse =
-                                gson.fromJson(response, UserResponse.class);
-
+//                        PelangganResponse pelangganResponse =
+//                                gson.fromJson(response, PelangganResponse.class);
+                        PelangganFromJson pelangganFromJson = gson.fromJson(response, PelangganFromJson.class);
 //                        setLoading(false);
-                        Toast.makeText(getActivity(), userResponse.getMessage(),
-                                Toast.LENGTH_SHORT).show();
 
+                        GetPelanggan();
+                        Toast.makeText(getActivity(), "Pemesanan Dibatalkan",
+                                Toast.LENGTH_SHORT).show();
+//                        for(Pelanggan P : pelanggan){
+//                            if(P.getId() == id) {
+//                                pelanggan.remove(P);
+//                            }
+//                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -150,7 +179,6 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
     {
         //TODO: set loding
 //        setLoading(true);
-
         final StringRequest stringRequest = new StringRequest(GET, PelangganApi.GET_URL + userPreference.GetUserID(),
                 new Response.Listener<String>() {
                     @Override
@@ -162,6 +190,7 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                         pelanggan = pelangganResponse.getPelangganList();
 
                         if( pelanggan.isEmpty() ){
+                            pelanggan.clear();
                             binding.riwayatStatus.setVisibility(View.VISIBLE);
                             Toast.makeText(getContext(), "Data Riwayat masih kosong!", Toast.LENGTH_SHORT).show();
                         } else {
@@ -176,7 +205,6 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
             @Override
             public void onErrorResponse(VolleyError error) {
 //                setLoading(false);
-
                 try {
                     String responseBody =
                             new String(error.networkResponse.data, StandardCharsets.UTF_8);
@@ -184,6 +212,17 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
 
                     Toast.makeText(getContext(), errors.getString("message"),
                             Toast.LENGTH_SHORT).show();
+
+//                    if( pelanggan.isEmpty() ){
+//                        pelanggan.clear();
+//                        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
+//                        binding.riwayatStatus.setVisibility(View.VISIBLE);
+//                        Toast.makeText(getContext(), "Data Riwayat masih kosong!", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        binding.riwayatStatus.setVisibility(View.GONE);
+//                        binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
+//                        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
+//                    }
                 } catch (Exception e) {
                     Toast.makeText(getContext(), e.getMessage(),
                             Toast.LENGTH_SHORT).show();

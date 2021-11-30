@@ -109,18 +109,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         }
         else if(view.getId() == R.id.btnBayarPembayaranBerhasil)
         {
-
-            // Kurang Saldo
-            //TODO: 2 baris kode dibawah, dicut, dipindah didalam CreateOrder yoo
-//
-
-            //Insert Data
-            DataReservasi reservasi = reservationPreference.GetAllData();
-            namaPemesan = reservasi.getNamaPemesan();
-            //TODO: ID diisi, id Pelanggannya, uncomment
-//            Pelanggan data = new Pelanggan(reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), reservasi.getTotalHarga(), "Lunas");
-            //TODO: AddData
-//            AddDataPelanggan(data);
+            CreateOrder();
         }
     }
 
@@ -287,17 +276,18 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         //TODO: Mau ada loading nda?
 //        setLoading(true);
         DataReservasi reservasi = reservationPreference.GetAllData();
-        PelangganFromJson data = new PelangganFromJson(userPref.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut());
+        PelangganFromJson data = new PelangganFromJson(userPref.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), reservasi.getTotalHarga(), "LUNAS");
 
-        final StringRequest stringRequest = new StringRequest(POST, PelangganApi.ADD_URL,
+        final StringRequest stringRequest = new StringRequest(POST, PelangganApi.ADD_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
-                        PelangganResponse pelangganResponse =
-                                gson.fromJson(response, PelangganResponse.class);
+//                        PelangganResponse pelangganResponse =
+//                                gson.fromJson(response, PelangganResponse.class);
+                        PelangganFromJson pelangganFromJson = gson.fromJson(response, PelangganFromJson.class);
 
-                        Toast.makeText(getContext(), pelangganResponse.getMessage(),
+                        Toast.makeText(getContext(), "Pemesanan Berhasil",
                                 Toast.LENGTH_SHORT).show();
 
                         Intent returnIntent = new Intent();
