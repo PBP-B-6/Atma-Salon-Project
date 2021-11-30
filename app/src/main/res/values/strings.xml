@@ -13,6 +13,7 @@
     <string name="silver">Silver</string>
     <string name="merah">Merah</string>
     <string name="oranye">Oranye</string>
+    <string name="tentang">Tentang Kami</string>
     <string name="tentang_kami">
         <u>Tentang Kami</u>.
     </string>
@@ -86,4 +87,7 @@
     <string name="form_edit">Form Edit</string>
     <string name="edit">Edit</string>
     <string name="tutup_akun">Tutup Akun</string>
+    <string name="chart_penggunaan_aplikasi">
+        <u>Chart Penggunaan Aplikasi</u>.
+    </string>
 </resources>
