@@ -9,9 +9,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -40,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private User user;
     private RequestQueue queue;
 
-    private UserPresenter presenter;
+//    private UserPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,8 +151,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void CreateUser() {
-        //TODO: Mau ada loading nda?
-//        setLoading(true);
+        setLoading(true);
         User data = binding.getUser();
 
         int kelamin;
@@ -163,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             kelamin = 0;
         }
 
-        UserFromJson user = new UserFromJson(data.getNama(), data.getEmail(), data.getPassword(), kelamin, data.getNoTelp(), 0, "", 0);
+        UserFromJson user = new UserFromJson(data.getNama(), data.getEmail(), data.getPassword(), kelamin, data.getNoTelp(), 0, "default", 0);
 
         final StringRequest stringRequest = new StringRequest(POST, UserApi.ADD_URL,
                 new Response.Listener<String>() {
@@ -179,16 +180,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         Intent returnIntent = new Intent();
                         setResult(Activity.RESULT_OK, returnIntent);
 
+                        setLoading(false);
+
                         Intent move = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(move);
                         finish();
 
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -203,7 +205,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             Toast.LENGTH_SHORT).show();
                 }
 
-                }
+            }
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -229,6 +231,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         };
 
 //        presenter.onProfilClicked();
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(stringRequest);
     }
 
@@ -321,5 +327,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void showErrorResponse(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
     }
 }

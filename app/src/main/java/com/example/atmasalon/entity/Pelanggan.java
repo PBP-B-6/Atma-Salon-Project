@@ -20,7 +20,6 @@ public class Pelanggan extends BaseObservable {
 
     public Pelanggan(){}
 
-    //TODO: Constructor hapus ini, trs yang baru, kalo tidak perlu, kurangi parameter
     public Pelanggan(int id, int idUser, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
         this.id = id;
         this.idUser = idUser;
