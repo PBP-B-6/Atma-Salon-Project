@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentDashboard extends Fragment implements View.OnClickListener {
 
-    //TODO: nanti GetUser itu dari userPreferencenya
     private FragmentDashboardBinding binding;
     private UserPreference userPref;
     private User userNow;
@@ -104,4 +104,5 @@ public class FragmentDashboard extends Fragment implements View.OnClickListener 
         super.onDestroyView();
         binding = null;
     }
+
 }

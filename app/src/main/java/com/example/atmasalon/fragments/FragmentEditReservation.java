@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -73,8 +74,7 @@ public class FragmentEditReservation extends Fragment {
 
     private void UpdatePesanan()
     {
-        //TODO: set loding
-//        setLoading(true);
+        setLoading(true);
 
         data.setLokasiSalon(binding.inputLayoutLokasiSalonEdit.getEditText().getText().toString());
         data.setNamaPemesan(binding.inputLayoutNamaReservasiEdit.getEditText().getText().toString());
@@ -92,17 +92,18 @@ public class FragmentEditReservation extends Fragment {
                         Toast.makeText(getActivity(), "Berhasil Mengubah Reservasi",
                                 Toast.LENGTH_SHORT).show();
 
+                        setLoading(false);
+
                         getActivity()
                                 .getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.layout_fragment, new FragmentRiwayat())
                                 .commit();
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -163,5 +164,16 @@ public class FragmentEditReservation extends Fragment {
         }
 
         return true;
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
     }
 }
