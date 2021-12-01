@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -120,8 +121,7 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
     }
 
     private void UpdateUser(float saldo) {
-        //TODO: SetLoading
-//        setLoading(true);
+        setLoading(true);
 
         userLogin.setSaldo(saldo);
 
@@ -141,14 +141,14 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
 
                         userPref.SetSaldo(saldo);
 
+                        setLoading(false);
                         ChangeToDashboard();
 
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -190,8 +190,7 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
 
     private void GetUserNowFromApi()
     {
-        //TODO: set loding
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(GET, UserApi.GET_BY_ID_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
@@ -202,13 +201,12 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
                                 gson.fromJson(response, UserResponse.class);
 
                         SetUserLogin(userResponse.getUser());
-
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -251,5 +249,16 @@ public class FragmentTopup extends Fragment implements View.OnClickListener{
         BottomNavigationView nav = getActivity().findViewById(R.id.bottom_navigation);
         MenuItem item = nav.getMenu().findItem(R.id.menu_beranda);
         item.setChecked(true);
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
     }
 }
