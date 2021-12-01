@@ -7,7 +7,6 @@ import com.example.atmasalon.BR;
 import com.google.gson.annotations.SerializedName;
 
 public class PelangganFromJson extends BaseObservable {
-    //TODO: Sesuaiin sama database baru, mungkin ada delet2 beberapa
     @SerializedName("id")
     private int id = 0;
 
@@ -37,7 +36,6 @@ public class PelangganFromJson extends BaseObservable {
 
     public PelangganFromJson(){}
 
-    //TODO: Constructor hapus ini, trs yang baru, kalo tidak perlu, kurangi parameter
     public PelangganFromJson(int idUser, String lokasiSalon, String namaPemesan, String noTelp, String modelRambut, String warnaRambut, float totalHarga, String statusPembayaran) {
         this.idUser = idUser;
         this.lokasiSalon = lokasiSalon;

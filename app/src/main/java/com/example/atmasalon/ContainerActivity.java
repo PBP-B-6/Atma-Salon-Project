@@ -43,7 +43,6 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
 
         changeFragment(new FragmentDashboard());
 
-        //TODO: kalo ada bug gambar, otomatis ini dibenarkan
         if(userPref.GetURLProfilePic() != null)
         {
             Bitmap img = null;

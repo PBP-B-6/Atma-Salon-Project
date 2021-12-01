@@ -238,9 +238,12 @@
                         android:letterSpacing="0"
                         android:text="@string/masuk"/>
                 </LinearLayout>
+        <include
+            android:id="@+id/layout_loading"
+            layout="@layout/layout_loading"
+            android:visibility="gone" />
             </LinearLayout>
         </ScrollView>
-
     </LinearLayout>
 
 </layout>

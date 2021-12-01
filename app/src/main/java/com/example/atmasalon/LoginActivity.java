@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -104,8 +105,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void Login(UserLogin user) {
-        //TODO: Mau ada loading nda?
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(POST, UserApi.LOGIN_URL,
                 new Response.Listener<String>() {
@@ -117,7 +117,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         UserFromJson userLogin = userResponse.getUser();
 
-                        if(userLogin.getStatus() == 0) //blm verif, diganti codenya
+                        setLoading(false);
+                        if(userLogin.getStatus() == 0) //blm verif
                         {
                             Toast.makeText(LoginActivity.this, "Aktifkan akun terlebih dahulu!", Toast.LENGTH_SHORT).show();
                             return;
@@ -146,13 +147,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             LoginActivity.this.userPref.SetLogin(forPref);
                             CheckLogin();
                         }
-
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -190,5 +189,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         };
 
         queue.add(stringRequest);
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
     }
 }

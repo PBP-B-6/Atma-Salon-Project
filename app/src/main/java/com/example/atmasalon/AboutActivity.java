@@ -62,7 +62,6 @@ public class AboutActivity extends AppCompatActivity implements OnMapReadyCallba
 
         userPref = new UserPreference(this);
 
-        //TODO: kalo ada bug gambar, otomatis ini dibenarkan
         if(userPref.GetURLProfilePic() != null)
         {
             Bitmap img = null;

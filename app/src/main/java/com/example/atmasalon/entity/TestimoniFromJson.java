@@ -5,7 +5,6 @@ import androidx.databinding.BaseObservable;
 import com.google.gson.annotations.SerializedName;
 
 public class TestimoniFromJson extends BaseObservable {
-    //TODO: Sesuaiin sama database baru, database internal hapus2 ja
     @SerializedName("id")
     private int id = 0;
 
