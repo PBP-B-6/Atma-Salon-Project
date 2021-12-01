@@ -26,6 +26,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,7 +75,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private Testimoni testimoni;
     private TestimoniFromJson testimoniFJ;
 
-        //TODO:Delete User jgn lupa
     public FragmentProfil() {
         // Required empty public constructor
     }
@@ -111,7 +111,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.btnEditTestimoni.setOnClickListener(this);
         binding.btnHapusTestimoni.setOnClickListener(this);
 
-        //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
         {
             Bitmap img = null;
@@ -226,8 +225,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     }
 
     private void CreateTestimoni() {
-        //TODO: Mau ada loading nda?
-//        setLoading(true);
+        setLoading(true);
         Testimoni data = binding.getTestimoni();
 
         TestimoniFromJson testimoni = new TestimoniFromJson(userPref.GetUserID(), data.getTestimoni());
@@ -249,12 +247,12 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         binding.btnTambahTestimoni.setVisibility(View.GONE);
                         binding.wrapButton.setVisibility(View.VISIBLE);
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -298,8 +296,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     }
 
     private void UpdateTestimoni() {
-        //TODO: SetLoading
-//        setLoading(true);
+        setLoading(true);
 
         testimoni.setTestimoni(binding.inputLayoutTestimoni.getEditText().getText().toString());
 
@@ -317,12 +314,12 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         Toast.makeText(getActivity(), "Update Testimoni berhasil",
                                 Toast.LENGTH_SHORT).show();
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -363,8 +360,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     }
 
     public void DeleteTestimoni() {
-        //TODO: Set Loading
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(DELETE, TestimoniApi.DELETE_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
@@ -381,12 +377,13 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         binding.inputLayoutTestimoni.getEditText().setText("");
                         binding.btnTambahTestimoni.setVisibility(View.VISIBLE);
                         binding.wrapButton.setVisibility(View.GONE);
+                        setLoading(false);
 
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -415,9 +412,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
 
     private void GetTestimoni()
     {
-        //TODO: set loding
-//        setLoading(true);
-
         final StringRequest stringRequest = new StringRequest(GET, TestimoniApi.GET_BY_ID_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
                     @Override
@@ -444,12 +438,12 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                             binding.wrapButton.setVisibility(View.GONE);
                         }
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -508,7 +502,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
             bitmap = getResizedBitmap(bitmap, 512);
             String stringBitmap = bitmapToBase64(bitmap);
 
-            //TODO: Update Profil Foto ke databaes disini
             userPref.SetURLProfilePic(stringBitmap);
             binding.profileImage.setImageBitmap(bitmap);
             UpdateUser(stringBitmap);
@@ -572,8 +565,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     }
 
     private void UpdateUser(String url) {
-        //TODO: SetLoading
-//        setLoading(true);
+        setLoading(true);
 
         userLogin.setUrlGambar(url);
 
@@ -591,12 +583,12 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         Intent returnIntent = new Intent();
                         getActivity().setResult(Activity.RESULT_OK, returnIntent);
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -638,8 +630,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
 
     private void GetUserNowFromApi()
     {
-        //TODO: set loding
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(GET, UserApi.GET_BY_ID_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
@@ -650,13 +641,11 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                                 gson.fromJson(response, UserResponse.class);
 
                         SetUserLogin(userResponse.getUser());
-
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -690,8 +679,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     }
 
     public void DeleteUser() {
-        //TODO: Set Loading
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(DELETE, UserApi.DELETE_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
@@ -701,7 +689,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                         UserResponse userResponse =
                                 gson.fromJson(response, UserResponse.class);
 
-//                        setLoading(false);
+                        setLoading(false);
                         Toast.makeText(getActivity(), userResponse.getMessage(),
                                 Toast.LENGTH_SHORT).show();
 
@@ -710,7 +698,7 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -744,5 +732,16 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         Intent move = new Intent(this.getActivity(), LoginActivity.class);
         startActivity(move);
         getActivity().finish();
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
     }
 }

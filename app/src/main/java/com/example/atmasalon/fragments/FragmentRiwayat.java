@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,9 +75,9 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
 
         userPreference = new UserPreference(getActivity());
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
-        //TODO: GetAll Data diperbaiki
-//        pelanggan = GetAll(userPreference.GetUserID());
         pelanggan = new ArrayList<>();
+
+//        pelanggan = GetAll(userPreference.GetUserID());
 //        binding.srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
 //            public void onRefresh() {
@@ -128,8 +129,7 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
     }
 
     public void DeletePelanggan(int id, Pelanggan P) {
-        //TODO: Set Loading
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(DELETE, PelangganApi.DELETE_URL + id,
                 new Response.Listener<String>() {
@@ -139,7 +139,6 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
 //                        PelangganResponse pelangganResponse =
 //                                gson.fromJson(response, PelangganResponse.class);
                         PelangganFromJson pelangganFromJson = gson.fromJson(response, PelangganFromJson.class);
-//                        setLoading(false);
 
                         GetPelanggan();
                         Toast.makeText(getActivity(), "Pemesanan Dibatalkan",
@@ -153,7 +152,7 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -182,8 +181,7 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
 
     private void GetPelanggan()
     {
-        //TODO: set loding
-//        setLoading(true);
+        setLoading(true);
         final StringRequest stringRequest = new StringRequest(GET, PelangganApi.GET_URL + userPreference.GetUserID(),
                 new Response.Listener<String>() {
                     @Override
@@ -204,12 +202,12 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                             binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
                         }
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
                 try {
                     String responseBody =
                             new String(error.networkResponse.data, StandardCharsets.UTF_8);
@@ -246,5 +244,14 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
         queue.add(stringRequest);
     }
 
-
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
+    }
 }

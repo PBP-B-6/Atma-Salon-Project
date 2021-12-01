@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -83,8 +84,7 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
     }
 
     private void UpdateUser() {
-        //TODO: SetLoading
-//        setLoading(true);
+        setLoading(true);
 
         userLogin.setNama(binding.inputLayoutNamaEdit.getEditText().getText().toString());
         userLogin.setNoTelp(binding.inputLayoutPhoneEdit.getEditText().getText().toString());
@@ -117,12 +117,12 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
 
                         ChangeToDashboard();
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -164,8 +164,7 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
 
     private void GetUserNowFromApi()
     {
-        //TODO: set loding
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(GET, UserApi.GET_BY_ID_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
@@ -178,12 +177,12 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
                         SetUserLogin(userResponse.getUser());
 
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -263,9 +262,52 @@ public class FragmentEditUser extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         if(view.getId() == R.id.btnEdit)
         {
-            UpdateUser();
+            if(Validasi())
+            {
+                UpdateUser();
+            }
+        }
+    }
 
+    private boolean Validasi()
+    {
+        String regexPhone = "08+[0-9]{8,11}";
+        if(binding.inputLayoutNamaEdit.getEditText().getText().toString().isEmpty())
+        {
+            Toast.makeText(getActivity(), "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(binding.inputLayoutPhoneEdit.getEditText().getText().toString().isEmpty())
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(binding.inputLayoutPhoneEdit.getEditText().getText().toString().length() < 10 || binding.inputLayoutPhoneEdit.getEditText().getText().toString().length() > 13)
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!binding.inputLayoutPhoneEdit.getEditText().getText().toString().matches(regexPhone))
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak sesuai format", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(binding.inputLayoutPhoneEdit.getEditText().getText().toString().length() < 10 || binding.inputLayoutPhoneEdit.getEditText().getText().toString().length() > 13)
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
         }
     }
 }
