@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +55,6 @@ import java.util.Map;
 
 public class FragmentPembayaran extends Fragment implements View.OnClickListener{
 
-    //TODO: nanti GetUser itu dari userPreferencenya
     private FragmentPembayaranBinding binding;
     private UserPreference userPref;
     private ReservationPreference reservationPreference;
@@ -134,8 +134,6 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
     }
 
     private void UpdateUser(float saldo) {
-        //TODO: SetLoading
-//        setLoading(true);
 
         userLogin.setSaldo(saldo);
 
@@ -161,14 +159,14 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
                         //Firebase
                         SendOnChannel(FragmentPembayaran.this.getView());
 
+                        setLoading(false);
                         ChangeToDashboard();
 
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -210,8 +208,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
 
     private void GetUserNowFromApi()
     {
-        //TODO: set loding
-//        setLoading(true);
+        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(GET, UserApi.GET_BY_ID_URL + userPref.GetUserID(),
                 new Response.Listener<String>() {
@@ -223,12 +220,12 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
 
                         SetUserLogin(userResponse.getUser());
 
-//                        setLoading(false);
+                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -273,8 +270,7 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
     }
 
     private void CreateOrder() {
-        //TODO: Mau ada loading nda?
-//        setLoading(true);
+        setLoading(true);
         DataReservasi reservasi = reservationPreference.GetAllData();
         PelangganFromJson data = new PelangganFromJson(userPref.GetUserID(), reservasi.getLokasiSalon(), reservasi.getNamaPemesan(), reservasi.getNoTelp(), reservasi.getModelRambut(), reservasi.getWarnaRambut(), reservasi.getTotalHarga(), "LUNAS");
 
@@ -295,12 +291,11 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
 
                         float saldoNow = userLogin.getSaldo() - (float) reservationPreference.GetTotalHarga();
                         UpdateUser(saldoNow);
-//                        setLoading(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                setLoading(false);
+                setLoading(false);
 
                 try {
                     String responseBody =
@@ -340,5 +335,16 @@ public class FragmentPembayaran extends Fragment implements View.OnClickListener
         };
 
         queue.add(stringRequest);
+    }
+
+    private void setLoading(boolean isLoading) {
+        if (isLoading) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.VISIBLE);
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            binding.layoutLoading.setVisibility(View.GONE);
+        }
     }
 }

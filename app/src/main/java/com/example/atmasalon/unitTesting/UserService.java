@@ -23,7 +23,6 @@ import java.util.Map;
 public class UserService
 {
     public void CreateUser(UserFromJson user, UserView view, Context con, UserCallback callback) {
-        //TODO: Mau ada loading nda?
 //        setLoading(true);
 
         final StringRequest stringRequest = new StringRequest(POST, UserApi.ADD_URL,

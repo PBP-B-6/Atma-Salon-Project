@@ -75,7 +75,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
     private Testimoni testimoni;
     private TestimoniFromJson testimoniFJ;
 
-        //TODO:Delete User jgn lupa
     public FragmentProfil() {
         // Required empty public constructor
     }
@@ -112,7 +111,6 @@ public class FragmentProfil extends Fragment implements View.OnClickListener
         binding.btnEditTestimoni.setOnClickListener(this);
         binding.btnHapusTestimoni.setOnClickListener(this);
 
-        //TODO: Cek apakah ada bug disini? inni dilakukan setelah backend jalan
         if(userPref.GetURLProfilePic() != null)
         {
             Bitmap img = null;
