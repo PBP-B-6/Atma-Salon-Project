@@ -89,10 +89,6 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
                 }
 
             }
-            else
-            {
-                Toast.makeText(getActivity(), "Silahkan isi semua field!", Toast.LENGTH_SHORT).show();
-            }
         }
         else if(view.getId() == R.id.radio_model_keriting || view.getId() == R.id.radio_model_lurus || view.getId() == R.id.radio_model_mohawk)
         {
@@ -124,23 +120,49 @@ public class FragmentReservation2 extends Fragment implements View.OnClickListen
     private boolean Validation()
     {
         //Validasi untuk model dan warna juga
-        String nama, telp;
+        String nama, telp, lokasi;
+        String regexPhone = "08+[0-9]{8,11}";
         nama = binding.inputLayoutNamaReservasi.getEditText().getText().toString();
         telp = binding.inputLayoutTelpReservasi.getEditText().getText().toString();
-        if(nama.isEmpty())
+        lokasi = binding.inputLayoutLokasiSalon.getEditText().getText().toString();
+        if(lokasi.isEmpty())
         {
+            Toast.makeText(getActivity(), "Lokasi tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(nama.isEmpty())
+        {
+            Toast.makeText(getActivity(), "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(telp.isEmpty())
         {
+            Toast.makeText(getActivity(), "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(telp.length() < 10 || telp.length() > 13)
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!telp.matches(regexPhone))
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak sesuai format", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(telp.length() < 10 || telp.length() > 13)
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(modelRambut.isEmpty())
         {
+            Toast.makeText(getActivity(), "Model rambut harus dipilih", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(warnaRambut.isEmpty())
         {
+            Toast.makeText(getActivity(), "Warna rambut harus dipilih", Toast.LENGTH_SHORT).show();
             return false;
         }
 

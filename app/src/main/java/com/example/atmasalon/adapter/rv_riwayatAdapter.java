@@ -63,13 +63,10 @@ public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.My
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FragmentManager fragmentManager  = fm;
                                 Fragment currentFragment = fragmentManager.findFragmentById(R.id.layout_fragment);
-//                                if(listReservasi.size() == 1) {
-//                                    listReservasi.clear();
-//                                }
+
                                 if(currentFragment instanceof FragmentRiwayat) {
                                     ((FragmentRiwayat) currentFragment).DeletePelanggan(data.getId(), data);
-//                                    notifyItemRemoved(position);
-                                    notifyDataSetChanged();
+                                    notifyItemRemoved(position);
                                 }
 
                             }

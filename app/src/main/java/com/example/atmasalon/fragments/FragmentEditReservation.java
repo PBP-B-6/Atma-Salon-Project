@@ -66,8 +66,6 @@ public class FragmentEditReservation extends Fragment {
             public void onClick(View view) {
                 if(Validation())
                     UpdatePesanan();
-                else
-                    Toast.makeText(getActivity(), "Silahkan isi semua field!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -145,21 +143,39 @@ public class FragmentEditReservation extends Fragment {
 
     private boolean Validation()
     {
-        //Validasi untuk model dan warna juga
         String lokasi, nama, telp;
+        String regexPhone = "08+[0-9]{8,11}";
         lokasi = binding.inputLayoutLokasiSalonEdit.getEditText().getText().toString();
         nama = binding.inputLayoutNamaReservasiEdit.getEditText().getText().toString();
         telp = binding.inputLayoutTelpReservasiEdit.getEditText().getText().toString();
         if(lokasi.isEmpty())
         {
+            Toast.makeText(getActivity(), "Lokasi tidak boleh kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(nama.isEmpty())
         {
+            Toast.makeText(getActivity(), "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(telp.isEmpty())
         {
+            Toast.makeText(getActivity(), "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(telp.length() < 10 || telp.length() > 13)
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!telp.matches(regexPhone))
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak sesuai format", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(telp.length() < 10 || telp.length() > 13)
+        {
+            Toast.makeText(getActivity(), "Nomor Telepon tidak boleh < 10 dan > 13 digit", Toast.LENGTH_SHORT).show();
             return false;
         }
 

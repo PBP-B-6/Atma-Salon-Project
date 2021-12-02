@@ -77,35 +77,12 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
         queue = Volley.newRequestQueue(this.getActivity().getApplicationContext());
         pelanggan = new ArrayList<>();
 
-//        pelanggan = GetAll(userPreference.GetUserID());
-//        binding.srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                GetPelanggan();
-//                if( pelanggan.isEmpty() ){
-//                    pelanggan.clear();
-//                    binding.riwayatStatus.setVisibility(View.VISIBLE);
-//                } else {
-//                    binding.riwayatStatus.setVisibility(View.GONE);
-//                    binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
-//                    binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
-//                }
-//            }
-//        });
-//        if(pelanggan.isEmpty()) {
-//            pelanggan.clear();
-//            binding.riwayatStatus.setVisibility(View.GONE);
-//            binding.rvRiwayat.setVisibility(View.VISIBLE);
-//        }
         GetPelanggan();
-
-
 
         binding.btnMulaiReservasi.setOnClickListener(this);
 
         TextView text = getActivity().findViewById(R.id.page_name);
         text.setText("Riwayat");
-
     }
 
     public void onClick(View view) {
@@ -143,11 +120,6 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                         GetPelanggan();
                         Toast.makeText(getActivity(), "Pemesanan Dibatalkan",
                                 Toast.LENGTH_SHORT).show();
-//                        for(Pelanggan P : pelanggan){
-//                            if(P.getId() == id) {
-//                                pelanggan.remove(P);
-//                            }
-//                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -216,16 +188,13 @@ public class FragmentRiwayat extends Fragment implements View.OnClickListener  {
                     Toast.makeText(getContext(), errors.getString("message"),
                             Toast.LENGTH_SHORT).show();
 
-//                    if( pelanggan.isEmpty() ){
-//                        pelanggan.clear();
-//                        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
-//                        binding.riwayatStatus.setVisibility(View.VISIBLE);
-//                        Toast.makeText(getContext(), "Data Riwayat masih kosong!", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        binding.riwayatStatus.setVisibility(View.GONE);
-//                        binding.rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
-//                        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
-//                    }
+                    if(errors.getString("message").equalsIgnoreCase("empty"))
+                    {
+                        pelanggan.clear();
+                        binding.rvRiwayat.setAdapter(new rv_riwayatAdapter(pelanggan,getFragmentManager()));
+                        binding.riwayatStatus.setVisibility(View.VISIBLE);
+                    }
+
                 } catch (Exception e) {
                     Toast.makeText(getContext(), e.getMessage(),
                             Toast.LENGTH_SHORT).show();
