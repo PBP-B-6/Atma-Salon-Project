@@ -49,14 +49,14 @@ public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Pelanggan data = listReservasi.get(position);
+        Pelanggan data = listReservasi.get(holder.getAdapterPosition());
         holder.binding.setVariable(BR.data, data);
         holder.binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(view.getContext());
                 materialAlertDialogBuilder.setTitle("Konfirmasi")
-                        .setMessage("Apakah anda yakin ingin menghapus data mahasiswa ini?")
+                        .setMessage("Apakah anda yakin ingin menghapus data riwayat ini?")
                         .setNegativeButton("Batal", null)
                         .setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
                             @Override
@@ -66,7 +66,7 @@ public class rv_riwayatAdapter extends RecyclerView.Adapter<rv_riwayatAdapter.My
 
                                 if(currentFragment instanceof FragmentRiwayat) {
                                     ((FragmentRiwayat) currentFragment).DeletePelanggan(data.getId(), data);
-                                    notifyItemRemoved(position);
+                                    notifyItemRemoved(holder.getAdapterPosition());
                                 }
 
                             }
